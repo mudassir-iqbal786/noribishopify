@@ -432,6 +432,60 @@ address {
 swatch-dropdown.active {
   --color-border: var(--color-dark);
 }
+.product-form__option-select-wrap {
+  position: relative;
+}
+.product-form__option-select {
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent !important;
+  background-image: none !important;
+  cursor: pointer;
+  padding-right: 4.8rem;
+}
+.product-form__option-select.is-placeholder {
+  color: #7a7171;
+}
+.product-form__option-select-wrap.invalid .product-form__option-select,
+.product-form__option-select.is-invalid {
+  --color-border: #d0473e;
+  background: #fadfdf !important;
+}
+.product-form__option-select::-ms-expand {
+  display: none;
+}
+.product-form__option-select-icon {
+  position: absolute;
+  top: 50%;
+  right: 1.8rem;
+  transform: translateY(-50%);
+  color: var(--color-heading);
+}
+.product-form__input--dropdown .option_drop_value .option_value {
+  display: none;
+}
+.product-form__option-error {
+  display: inline-flex;
+  align-items: center;
+  color: #b20f32;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  gap: 0.8rem;
+}
+.product-form__option-error.hidden {
+  display: none;
+}
+.product-form__option-error-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  min-width: 1.6rem;
+  border-radius: 50%;
+  background: #b20f32;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
 
 [data-type="dropdown"]
   .product-form__input

@@ -169,7 +169,10 @@
             endif
           endfor
           assign op = 'option' | append: option.position
-          assign op_value = product.selected_or_first_available_variant[op]
+          assign op_value = ''
+          if product.selected_variant
+            assign op_value = product.selected_variant[op]
+          endif
         -%}
         <fieldset class="product-form__input product-form__input--dropdown flex flex-wrap gap-15 row-gap-0 mb-22 relative p-0 border-0 m-0">
           <div class="flex align-center gap-15 flex-wrap w-full justify-between row-gap-0">
@@ -177,7 +180,7 @@
               class="form__label lh-normal option_drop_value"
               for="Option-{{ product_form_id }}-{{ forloop.index0 }}"
             >
-              {{ option.name }}:
+              {{ option.name }}
               <span
                 data-option-name="{{ option.name }}"
                 class="option_value heading-style capitalize swatch-selected-value"
@@ -220,40 +223,45 @@
               {%- endif -%}
             {%- endif -%}
           </div>
-          <swatch-dropdown
-            data-span-for="Option-{{ product_form_id }}-{{ forloop.index0 }}"
-            class="select-custom mt-12 pointer user-select-none w-full border transition rounded-3 h-45 px-20 flex align-center skeleton-loading"
-          >
-            <swatch-dropdown-select-value class="uppercase-first-letter select-selected user-select-none w-full py-10 inline-flex justify-between align-center gap-10 gap-lg-20 lh-normal pointer overlay">
-              <span
-                data-option-name="{{ option.name }}"
-                class="option_value heading-color subheading_weight uppercase-first-letter"
-              >
-                {{ op_value }}
-              </span>
-              <svg width="9" height="7" fill="none" class="icon-down transition-short active-rotated">
-                <path fill="#111" d="M.196 2.018A.573.573 0 0 1 0 1.582c0-.18.065-.336.196-.467.12-.12.27-.18.451-.18.18 0 .331.06.452.18L4.5 4.517l3.401-3.402c.12-.12.271-.18.452-.18.18 0 .33.06.451.18.13.13.196.286.196.467 0 .17-.065.316-.196.436L4.952 5.871a.589.589 0 0 1-.452.196.589.589 0 0 1-.452-.196L.196 2.018Z"/>
-              </svg>
-            </swatch-dropdown-select-value>
-            <div
-              class="w-full select-custom__content facet-filters__sort invisible transition-short select__select absolute shadow list-none z-2 p-5 border rounded-3 color-default{% if enable_rtl %} left-0{% else %} right-0{% endif %}"
+          <div class="product-form__option-select-wrap mt-12 w-full skeleton-loading">
+            <select
               id="Option-{{ product_form_id }}-{{ forloop.index0 }}"
-              aria-describedby="a11y-refresh-page-message"
-              style="--color-border: var(--color-dark);"
+              class="product-form__option-select heading-color subheading_weight w-full border rounded-3 h-45 px-20{% if product.selected_variant == blank %} is-placeholder{% endif %}"
+              name="options[{{ option.name | escape }}]"
+              form="{{ product_form_id }}"
+              data-option-name="{{ option.name | escape }}"
+              data-placeholder-text="Select an option"
             >
-              <div class="h-full overflow-auto">
-                {% render 'product-variant-options',
-                  product: product,
-                  option: option,
-                  isColorOption: is_color_option,
-                  option_name: option_name,
-                  swatch_item_type: swatch_item_type,
-                  variant_type: 'dropdown',
-                  product_form_id: product_form_id
-                %}
-              </div>
-            </div>
-          </swatch-dropdown>
+              <option
+                value=""
+                data-option-label="Select an option"
+                {% if product.selected_variant == blank %}
+                  selected
+                {% endif %}
+              >
+                Select an option
+              </option>
+              {% render 'product-variant-options',
+                product: product,
+                option: option,
+                isColorOption: is_color_option,
+                option_name: option_name,
+                swatch_item_type: swatch_item_type,
+                variant_type: 'dropdown',
+                product_form_id: product_form_id,
+                selected_variant: product.selected_variant
+              %}
+            </select>
+            <span class="product-form__option-select-icon pointer-none inline-flex align-center justify-center">
+              <svg width="9" height="7" fill="none" aria-hidden="true">
+                <path fill="currentColor" d="M.196 2.018A.573.573 0 0 1 0 1.582c0-.18.065-.336.196-.467.12-.12.27-.18.451-.18.18 0 .331.06.452.18L4.5 4.517l3.401-3.402c.12-.12.271-.18.452-.18.18 0 .33.06.451.18.13.13.196.286.196.467 0 .17-.065.316-.196.436L4.952 5.871a.589.589 0 0 1-.452.196.589.589 0 0 1-.452-.196L.196 2.018Z"/>
+              </svg>
+            </span>
+          </div>
+          <div class="product-form__option-error mt-8 inline-flex align-center hidden">
+            <span class="product-form__option-error-icon inline-flex align-center justify-center">!</span>
+            <span class="product-form__option-error-text ml-8">Please select an option</span>
+          </div>
         </fieldset>
       {%- endfor -%}
       <script type="application/json">

@@ -5133,6 +5133,18 @@ class SwatchFunctions extends SwatchInit {
   onVariantChange(e) {
     this.productTarget = this.closest('.product__item-js');
     const target = e.target;
+    if (target.matches('select.product-form__option-select')) {
+      const fieldset = target.closest('.product-form__input--dropdown');
+      const selectWrap = fieldset?.querySelector(
+        '.product-form__option-select-wrap'
+      );
+      const error = fieldset?.querySelector('.product-form__option-error');
+      target.classList.toggle('is-placeholder', !target.value);
+      target.classList.remove('is-invalid');
+      target.setAttribute('aria-invalid', 'false');
+      selectWrap?.classList.remove('invalid');
+      error?.classList.add('hidden');
+    }
     const variantQtyData = JSON.parse(
       this.productTarget.querySelector('.productVariantsQty').textContent
     );
@@ -5151,8 +5163,38 @@ class SwatchFunctions extends SwatchInit {
     this.updateMediaSticky();
   }
   groupFunctionsUnavailable(target) {
+    if (this.hasIncompleteSelection()) {
+      this.setIncompleteSelection(target);
+      return;
+    }
     this.toggleAddButton(true, '', true);
     this.setUnavailable(target);
+  }
+  hasIncompleteSelection() {
+    const dropdowns = this.querySelectorAll('select.product-form__option-select');
+    if (!dropdowns.length) return false;
+    return Array.from(dropdowns).some((select) => !select.value);
+  }
+  setIncompleteSelection(target) {
+    const button = document.getElementById(
+      `product-form-${this.dataset.section}`
+    );
+    const addButton = button?.querySelector('[name="add"]');
+    const addButtonText = button?.querySelector('[name="add"] > span');
+
+    if (target) {
+      const fieldset = target.closest('fieldset');
+      const optionSelected = fieldset?.querySelector('.option_value');
+      if (optionSelected) optionSelected.textContent = target.value;
+    }
+
+    if (addButton) {
+      addButton.removeAttribute('disabled');
+    }
+    if (addButtonText) {
+      addButtonText.textContent = window.variantStrings.addToCart;
+    }
+    this.setAvailable();
   }
   groupFunctionsAvailable(variantQtyData, target) {
     this.updateURL();
@@ -5432,15 +5474,6 @@ class SwatchFunctions extends SwatchInit {
         updateOptionValues('.option_value');
       } else {
         updateOptionValues('.option_drop_value .option_value');
-        updateOptionValues('swatch-dropdown-select-value .option_value');
-
-        const closestSwatchDropdown = target.closest('swatch-dropdown');
-        if (
-          closestSwatchDropdown &&
-          closestSwatchDropdown.classList.contains('active')
-        ) {
-          closestSwatchDropdown.classList.remove('active');
-        }
       }
     }
 
@@ -5713,17 +5746,34 @@ class SwatchFunctions extends SwatchInit {
     });
   }
   updateVariantStatuses() {
-    const selectedOptionOneVariants = this.variantData.filter(
-      (variant) => this.querySelector(':checked').value === variant.option1
-    );
+    const firstSelectedValue = this.querySelector(':checked')?.value;
     const inputWrappers = [...this.querySelectorAll('.product-form__input')];
+
+    if (!firstSelectedValue) {
+      inputWrappers.forEach((option, index) => {
+        if (index === 0) return;
+        const optionInputs = [
+          ...option.querySelectorAll('input[type="radio"], option'),
+        ];
+        this.setInputAvailability(optionInputs, null);
+      });
+      return;
+    }
+
+    const selectedOptionOneVariants = this.variantData.filter(
+      (variant) => firstSelectedValue === variant.option1
+    );
     inputWrappers.forEach((option, index) => {
       if (index === 0) return;
       const optionInputs = [
         ...option.querySelectorAll('input[type="radio"], option'),
       ];
       const previousOptionSelected =
-        inputWrappers[index - 1].querySelector(':checked').value;
+        inputWrappers[index - 1].querySelector(':checked')?.value;
+      if (!previousOptionSelected) {
+        this.setInputAvailability(optionInputs, null);
+        return;
+      }
       const availableOptionInputsValue = selectedOptionOneVariants
         .filter(
           (variant) =>
@@ -5737,22 +5787,92 @@ class SwatchFunctions extends SwatchInit {
   setInputAvailability(elementList, availableValuesList) {
     elementList.forEach((element) => {
       const value = element.getAttribute('value');
+      const optionLabel = element.dataset.optionLabel || value;
+      if (value === '') {
+        if (element.tagName === 'OPTION') {
+          element.disabled = false;
+          element.innerText = optionLabel;
+        }
+        return;
+      }
+
+      if (!Array.isArray(availableValuesList)) {
+        if (element.tagName === 'INPUT') {
+          element.classList.remove('option-disabled');
+        } else if (element.tagName === 'OPTION') {
+          const parentSelect = element.parentElement;
+          if (
+            parentSelect?.classList.contains('product-form__option-select') &&
+            parentSelect.value !== ''
+          ) {
+            parentSelect.value = '';
+            parentSelect.classList.add('is-placeholder');
+            parentSelect.classList.remove('is-invalid');
+            parentSelect.setAttribute('aria-invalid', 'false');
+            parentSelect
+              .closest('.product-form__input--dropdown')
+              ?.querySelector('.product-form__option-select-wrap')
+              ?.classList.remove('invalid');
+            parentSelect
+              .closest('.product-form__input--dropdown')
+              ?.querySelector('.product-form__option-error')
+              ?.classList.add('hidden');
+          }
+          element.disabled = false;
+          element.innerText = optionLabel;
+        }
+        return;
+      }
+
       const availableElement = availableValuesList.includes(value);
 
       if (element.tagName === 'INPUT') {
         element.classList.toggle('option-disabled', !availableElement);
       } else if (element.tagName === 'OPTION') {
+        const parentSelect = element.parentElement;
+        element.disabled = !availableElement;
+        if (!availableElement && element.selected && parentSelect) {
+          parentSelect.value = '';
+          parentSelect.classList.add('is-placeholder');
+          parentSelect.classList.remove('is-invalid');
+          parentSelect.setAttribute('aria-invalid', 'false');
+          parentSelect
+            .closest('.product-form__input--dropdown')
+            ?.querySelector('.product-form__option-select-wrap')
+            ?.classList.remove('invalid');
+          parentSelect
+            .closest('.product-form__input--dropdown')
+            ?.querySelector('.product-form__option-error')
+            ?.classList.add('hidden');
+        }
         element.innerText = availableElement
-          ? value
+          ? optionLabel
           : window.variantStrings.unavailable_with_option.replace(
               '[value]',
-              value
+              optionLabel
             );
       }
     });
   }
   updateOptions() {
     this.options = [];
+    if (this.querySelector('.product-form__option-select')) {
+      this.querySelectorAll('.product-form__input').forEach((element) => {
+        const select = element.querySelector('select.product-form__option-select');
+        if (select) {
+          this.options.push(select.value);
+          return;
+        }
+
+        this.options.push(
+          Array.from(element.querySelectorAll('input')).find(
+            (radio) => radio.checked
+          )?.value
+        );
+      });
+      return;
+    }
+
     Array.from(this.querySelectorAll('select, fieldset'), (element) => {
       if (element.tagName === 'SELECT') {
         let array = element.value.split(' / ');
@@ -6203,6 +6323,12 @@ class VariantRadiosDetail extends SwatchFunctions {
         select.options[i].selected = true;
 
         detailRadio.querySelectorAll('fieldset').forEach((fieldset, index) => {
+          const selectInput = fieldset.querySelector('select');
+          if (selectInput) {
+            selectInput.value = this.currentVariant[`option${index + 1}`];
+            return;
+          }
+
           fieldset.querySelectorAll('input').forEach((input) => {
             input.removeAttribute('checked');
             if (input.value === this.currentVariant[`option${index + 1}`]) {
@@ -7031,6 +7157,7 @@ if (!customElements.get('product-form')) {
         this.form = this.querySelector('form');
         this.form.querySelector('[name=id]').disabled = false;
         this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
+        this.form.addEventListener('change', this.onVariantInputChange.bind(this));
         this.cart =
           document.querySelector('cart-notification') ||
           document.querySelector('cart-drawer');
@@ -7044,6 +7171,7 @@ if (!customElements.get('product-form')) {
       onSubmitHandler(evt) {
         evt.preventDefault();
         if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
+        if (!this.validateVariantSelections()) return;
         this.syncVariantIdBeforeSubmit();
 
         this.handleErrorMessage();
@@ -7255,6 +7383,24 @@ if (!customElements.get('product-form')) {
           });
       }
 
+      onVariantInputChange(evt) {
+        const select = evt.target.closest('select.product-form__option-select');
+        if (!select) return;
+
+        const fieldset = select.closest('.product-form__input--dropdown');
+        const selectWrap = fieldset?.querySelector(
+          '.product-form__option-select-wrap'
+        );
+        const error = fieldset?.querySelector('.product-form__option-error');
+
+        select.classList.toggle('is-placeholder', !select.value);
+        select.classList.remove('is-invalid');
+        select.setAttribute('aria-invalid', 'false');
+        selectWrap?.classList.remove('invalid');
+        error?.classList.add('hidden');
+        this.handleErrorMessage();
+      }
+
       syncVariantIdBeforeSubmit() {
         const idInput = this.form?.querySelector('input[name="id"]');
         if (!idInput) return;
@@ -7283,20 +7429,40 @@ if (!customElements.get('product-form')) {
           const variantData = JSON.parse(variantDataNode.textContent);
 
           const options = [];
-          Array.from(variantPicker.querySelectorAll('select, fieldset')).forEach(
-            (element) => {
-              if (element.tagName === 'SELECT') {
-                const values = element.value.split(' / ');
-                values.forEach((value) => options.push(value));
-              } else {
+          if (variantPicker.querySelector('.product-form__option-select')) {
+            variantPicker
+              .querySelectorAll('.product-form__input')
+              .forEach((element) => {
+                const select = element.querySelector(
+                  'select.product-form__option-select'
+                );
+                if (select) {
+                  options.push(select.value);
+                  return;
+                }
+
                 options.push(
                   Array.from(element.querySelectorAll('input')).find(
                     (radio) => radio.checked
                   )?.value
                 );
+              });
+          } else {
+            Array.from(variantPicker.querySelectorAll('select, fieldset')).forEach(
+              (element) => {
+                if (element.tagName === 'SELECT') {
+                  const values = element.value.split(' / ');
+                  values.forEach((value) => options.push(value));
+                } else {
+                  options.push(
+                    Array.from(element.querySelectorAll('input')).find(
+                      (radio) => radio.checked
+                    )?.value
+                  );
+                }
               }
-            }
-          );
+            );
+          }
 
           const matchedVariant = variantData.find((variant) => {
             return !variant.options
@@ -7369,6 +7535,54 @@ if (!customElements.get('product-form')) {
           .catch((e) => {
             throw e;
           });
+      }
+
+      validateVariantSelections() {
+        const variantPicker =
+          this.closest('.video-item__popup')?.querySelector(
+            'variant-group-detail, variant-radios-detail, variant-radios-single, variant-group-sticky, variant-radios-sticky, variant-radios-bundle, variant-radios'
+          ) ||
+          this.closest('.product__item-js')?.querySelector(
+            'variant-group-detail, variant-radios-detail, variant-radios-single, variant-group-sticky, variant-radios-sticky, variant-radios-bundle, variant-radios'
+          ) ||
+          this.closest('.product-detail')?.querySelector(
+            'variant-group-detail, variant-radios-detail, variant-radios-single, variant-group-sticky, variant-radios-sticky, variant-radios-bundle, variant-radios'
+          );
+        if (!variantPicker) return true;
+
+        const dropdowns = variantPicker.querySelectorAll(
+          'select.product-form__option-select'
+        );
+        if (!dropdowns.length) return true;
+
+        let firstInvalid = null;
+        dropdowns.forEach((select) => {
+          const fieldset = select.closest('.product-form__input--dropdown');
+          const selectWrap = fieldset?.querySelector(
+            '.product-form__option-select-wrap'
+          );
+          const error = fieldset?.querySelector('.product-form__option-error');
+          const isInvalid = !select.value;
+
+          select.classList.toggle('is-placeholder', !select.value);
+          select.classList.toggle('is-invalid', isInvalid);
+          select.setAttribute('aria-invalid', isInvalid ? 'true' : 'false');
+          selectWrap?.classList.toggle('invalid', isInvalid);
+          error?.classList.toggle('hidden', !isInvalid);
+
+          if (isInvalid && !firstInvalid) {
+            firstInvalid = select;
+          }
+        });
+
+        if (firstInvalid) {
+          this.handleErrorMessage();
+          firstInvalid.focus();
+          return false;
+        }
+
+        this.handleErrorMessage();
+        return true;
       }
     }
   );
