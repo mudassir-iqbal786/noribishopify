@@ -30,15 +30,6 @@
             "show_vendor": true
           }
         },
-        "review_and_sold_AAbJC9": {
-          "type": "review_and_sold",
-          "settings": {
-            "show_review": true,
-            "show_sold_products": true,
-            "sold": "8,10,12,15,17,22",
-            "hours": "10,12,15,16,18,20,24"
-          }
-        },
         "price_VJ4N8m": {
           "type": "price",
           "settings": {}
@@ -47,27 +38,6 @@
           "type": "short_description",
           "settings": {
             "excerpt_length": 200
-          }
-        },
-        "delivery_return_iJHeMD": {
-          "type": "delivery_return",
-          "settings": {
-            "delivery_design": "vertical",
-            "delivery_content_icon": "truck",
-            "delivery_content": "<p>Estimate delivery times:<strong> 3-5 days International.</strong></p>",
-            "discount_content_icon": "discount",
-            "discount_content": "<p>Use code \"<strong>WELCOME15</strong>\" for discount 15% on your first order.</p>",
-            "return_content_icon": "free_shipping",
-            "return_content": "<p>Free shipping & returns: <strong>On all orders over $150.</strong></p>"
-          }
-        },
-        "live_view_rzDP6G": {
-          "type": "live_view",
-          "settings": {
-            "min_number": 10,
-            "max_number": 40,
-            "interval_time": 10,
-            "content": "[count] peoples are viewing this right now"
           }
         },
         "countdown_timer_QB4Ydn": {
@@ -100,10 +70,6 @@
             "message": "Hurry up! Only [count] items left in stock",
             "stock_items": 30
           }
-        },
-        "appstle_subscription_appstle_subscription_product_page_widget_6FUiag": {
-          "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
-          "settings": {}
         },
         "buy_buttons_LcQGtR": {
           "type": "buy_buttons",
@@ -160,6 +126,18 @@
             "image_width": 340
           }
         },
+        "delivery_return_iJHeMD": {
+          "type": "delivery_return",
+          "settings": {
+            "delivery_design": "vertical",
+            "delivery_content_icon": "truck",
+            "delivery_content": "<p>Estimate delivery times:<strong> 3-5 days International.</strong></p>",
+            "discount_content_icon": "discount",
+            "discount_content": "<p>Use code \"<strong>WELCOME15</strong>\" for discount 15% on your first order.</p>",
+            "return_content_icon": "free_shipping",
+            "return_content": "<p>Free shipping & returns: <strong>On all orders over $150.</strong></p>"
+          }
+        },
         "collapsible_row_m3g6f8": {
           "type": "collapsible_row",
           "settings": {
@@ -202,16 +180,12 @@
       "block_order": [
         "badges_RwfTMp",
         "title_G6tU8U",
-        "review_and_sold_AAbJC9",
         "price_VJ4N8m",
         "short_description_9BGxVm",
-        "delivery_return_iJHeMD",
-        "live_view_rzDP6G",
         "countdown_timer_QB4Ydn",
         "variant_picker_tcCihG",
         "product_addons_YRaprz",
         "stock_countdown_JNK9zi",
-        "appstle_subscription_appstle_subscription_product_page_widget_6FUiag",
         "buy_buttons_LcQGtR",
         "model_size_XM7z6E",
         "pickup_avaiability_cyVydQ",
@@ -220,6 +194,7 @@
         "text_CzxwUn",
         "product_meta_kiKPhW",
         "trust_badge_qKXhpg",
+        "delivery_return_iJHeMD",
         "collapsible_row_m3g6f8",
         "collapsible_row_eLaQpR",
         "collapsible_row_DA4FUC",
@@ -269,15 +244,6 @@
     },
     "1716793714ce89e457": {
       "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_KQ3ADT": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_KQ3ADT"
-      ],
       "settings": {}
     },
     "divider_TKLM6L": {
