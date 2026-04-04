@@ -74,7 +74,8 @@
 }
 @media (min-width: 768px) {
   .sec__featured-product[data-desktop-layout="thumbnail_left"] .main-product {
-    --col-width: 56%;
+    --col-width: 62%;
+    --col-gap-desktop: 2.4rem;
   }
   .product-detail__media :is(
       .media-gallery__image,
