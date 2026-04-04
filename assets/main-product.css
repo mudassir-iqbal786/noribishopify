@@ -96,6 +96,16 @@
   cursor: zoom-in;
 }
 @media (min-width: 768px) {
+  .product-detail__media
+    .media-main-swiper
+    :is(
+      .media-gallery__image,
+      .media-gallery__local-video,
+      .media-gallery__external-video,
+      .media-gallery__model
+    ) {
+    --aspect-ratio: 1 / 1 !important;
+  }
   .stacked {
     grid-template-columns: repeat(2, 1fr);
   }
