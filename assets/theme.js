@@ -8340,7 +8340,9 @@ class SlideWithThumbs extends HTMLElement {
     var direction = this.dataset.thumbDirection
       ? this.dataset.thumbDirection
       : 'horizontal';
-    const slidesPerView = Number(this.dataset.thumbSlidesPerView || 4);
+    const slidesPerView = this.dataset.thumbSlidesPerView
+      ? this.dataset.thumbSlidesPerView
+      : 4;
     const spaceBetween = this.dataset.thumbSpaceBetween
       ? this.dataset.thumbSpaceBetween
       : 10;
@@ -8355,14 +8357,14 @@ class SlideWithThumbs extends HTMLElement {
       // centeredSlidesBounds: true,
       direction: 'horizontal',
       spaceBetween: spaceBetween,
-      slidesPerView: slidesPerView,
+      slidesPerView: 5,
       watchSlidesVisibility: watchSlidesVisibility,
       watchSlidesProgress: true,
       watchOverflow: watchOverflow,
       breakpoints: {
         768: {
           direction: direction,
-          slidesPerView: slidesPerView,
+          slidesPerView: direction == 'vertical' ? 10 : 6,
         },
       },
     });
