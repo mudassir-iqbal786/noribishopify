@@ -417,7 +417,7 @@ sticky-add-cart variant-group-sticky select {
     flex: 0 0 100%;
     width: calc(100% + (var(--bs-gutter-x, 1.5rem) * 2));
     max-width: calc(100% + (var(--bs-gutter-x, 1.5rem) * 2));
-    margin: 0 calc(var(--bs-gutter-x, 1.5rem) * -1) 2rem;
+    margin: 0 calc(var(--bs-gutter-x, 1.5rem) * -1) 0.8rem;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
@@ -475,7 +475,7 @@ sticky-add-cart variant-group-sticky select {
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
     .product-gallery-pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
-    bottom: -1.8rem;
+    bottom: 1.2rem;
     left: 50%;
     right: auto;
     top: auto;
@@ -484,6 +484,7 @@ sticky-add-cart variant-group-sticky select {
     justify-content: center;
     gap: 0.7rem;
     width: max-content;
+    z-index: 3;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
