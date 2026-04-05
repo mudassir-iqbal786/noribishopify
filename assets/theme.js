@@ -8279,6 +8279,9 @@ class SlideWithThumbs extends HTMLElement {
     }
     const container = this.querySelector('.main-slide__navigation');
     const initSwiper = this.querySelector('.swiper-wrapper-preview');
+    const useBulletPaginationOnMobile =
+      window.innerWidth <= 767 &&
+      this.dataset.mobilePagination === 'bullets';
 
     this.globalSlide = new Swiper(initSwiper, {
       slidesPerView: autoItem ? 'auto' : itemMobile,
@@ -8297,10 +8300,12 @@ class SlideWithThumbs extends HTMLElement {
       pagination: {
         clickable: true,
         el: this.querySelector('.swiper-pagination'),
-        type: 'custom',
-        renderCustom: function (swiper, current, total) {
-          return current + '/' + total;
-        },
+        type: useBulletPaginationOnMobile ? 'bullets' : 'custom',
+        renderCustom: useBulletPaginationOnMobile
+          ? undefined
+          : function (swiper, current, total) {
+              return current + '/' + total;
+            },
       },
       on: {
         init: function () {
