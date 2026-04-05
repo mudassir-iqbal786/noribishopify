@@ -390,7 +390,22 @@ sticky-add-cart variant-group-sticky select {
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media {
+    flex: 0 0 100%;
+    width: 100%;
     margin-bottom: 0.5rem;
+  }
+  .sec__featured-product[data-desktop-layout="thumbnail_left"]
+    .product-detail__media
+    .media-main-swiper {
+    width: min(100%, 44rem);
+    margin-inline: auto;
+  }
+  .sec__featured-product[data-desktop-layout="thumbnail_left"]
+    .product-detail__media
+    .swiper-wrapper-preview {
+    width: 100%;
+    max-width: 44rem;
+    margin-inline: auto;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
