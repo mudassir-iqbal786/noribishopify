@@ -8267,7 +8267,11 @@ class SlideWithThumbs extends HTMLElement {
     var speed = this?.dataset.speed ? this?.dataset.speed : 400;
     const effect = this?.dataset.effect ? this?.dataset.effect : 'slide';
     var spacing = this?.dataset.spacing ? this?.dataset.spacing : 30;
+    const mobileSpacing = this?.dataset.mobileSpacing
+      ? Number(this?.dataset.mobileSpacing)
+      : null;
     const autoItem = this?.dataset.itemMobile === 'true';
+    const useBulletPagination = this.dataset.mobilePagination === 'bullets';
     spacing = Number(spacing);
     autoplaySpeed = Number(autoplaySpeed);
     speed = Number(speed);
@@ -8276,12 +8280,12 @@ class SlideWithThumbs extends HTMLElement {
     }
     if (window.innerWidth < 767) {
       direction = 'horizontal';
+      if (mobileSpacing !== null) {
+        spacing = mobileSpacing;
+      }
     }
     const container = this.querySelector('.main-slide__navigation');
     const initSwiper = this.querySelector('.swiper-wrapper-preview');
-    const useBulletPaginationOnMobile =
-      window.innerWidth <= 767 &&
-      this.dataset.mobilePagination === 'bullets';
 
     this.globalSlide = new Swiper(initSwiper, {
       slidesPerView: autoItem ? 'auto' : itemMobile,
@@ -8300,8 +8304,8 @@ class SlideWithThumbs extends HTMLElement {
       pagination: {
         clickable: true,
         el: this.querySelector('.swiper-pagination'),
-        type: useBulletPaginationOnMobile ? 'bullets' : 'custom',
-        renderCustom: useBulletPaginationOnMobile
+        type: useBulletPagination ? 'bullets' : 'custom',
+        renderCustom: useBulletPagination
           ? undefined
           : function (swiper, current, total) {
               return current + '/' + total;

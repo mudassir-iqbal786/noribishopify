@@ -77,6 +77,7 @@
         data-section-id="{{ section.id }}"
         data-effect="slide"
         data-speed="500"
+        data-mobile-spacing="0"
         data-mobile="1"
         data-tablet="1"
         data-desktop="1"
@@ -138,7 +139,11 @@
               </div>
             </div>
           </div>
-          {% if section_st.mobile_options == 'hidden_thumbnail' and is_shopable_video == false %}
+          {% if is_shopable_video == false and desktop_layout == 'thumbnail_left' %}
+            <div
+              class="swiper-pagination product-gallery-pagination hidden-md"
+            ></div>
+          {% elsif section_st.mobile_options == 'hidden_thumbnail' and is_shopable_video == false %}
             <div
               class="swiper-pagination hidden-md"
             ></div>

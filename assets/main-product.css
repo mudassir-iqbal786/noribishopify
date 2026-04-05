@@ -410,19 +410,25 @@ sticky-add-cart variant-group-sticky select {
 }
 @media (max-width: 767.98px) {
   .sec__featured-product[data-desktop-layout="thumbnail_left"] .main-product {
-    --col-gap: 2.4rem;
+    --col-gap: 1.8rem;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media {
     flex: 0 0 100%;
     width: 100%;
-    margin: 0 calc(var(--bs-gutter-x, 1.5rem) * -1) 2.8rem;
+    margin: 0 calc(var(--bs-gutter-x, 1.5rem) * -1) 2rem;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
     .media-main-swiper {
     width: 100%;
     margin-inline: 0;
+  }
+  .sec__featured-product[data-desktop-layout="thumbnail_left"]
+    .product-detail__media
+    .media-main-swiper
+    .swiper-slide {
+    margin-right: 0 !important;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
@@ -467,25 +473,30 @@ sticky-add-cart variant-group-sticky select {
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
-    .swiper-pagination-bullets.swiper-pagination-horizontal {
-    inset: auto 0 -2rem 0;
+    .product-gallery-pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: -1.8rem;
+    left: 50%;
+    right: auto;
+    top: auto;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
     gap: 0.7rem;
-    width: 100%;
+    width: max-content;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
-    .swiper-pagination-bullet {
+    .product-gallery-pagination .swiper-pagination-bullet {
     width: 0.7rem;
     height: 0.7rem;
     margin: 0 !important;
     background: rgba(var(--color-heading-rgb), 0.22);
     opacity: 1;
+    flex: 0 0 auto;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
-    .swiper-pagination-bullet-active {
+    .product-gallery-pagination .swiper-pagination-bullet-active {
     background: rgb(var(--color-heading-rgb));
   }
   .thumbnail-slide .swiper-actions {
@@ -498,7 +509,7 @@ sticky-add-cart variant-group-sticky select {
   .thumbnail-slide__mobile--hidden {
     display: none;
   }
-  body .swiper-pagination-custom {
+  body .swiper-pagination-custom:not(.product-gallery-pagination) {
     --swiper-pagination-bottom: 1.5rem;
     --swiper-pagination-position: absolute;
     --swiper-pagination-mt: 0;
