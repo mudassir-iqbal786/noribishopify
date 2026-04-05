@@ -411,9 +411,10 @@ sticky-add-cart variant-group-sticky select {
 @media (max-width: 767.98px) {
   .sec__featured-product[data-desktop-layout="thumbnail_left"] .main-product {
     --col-gap: 1.8rem;
+    overflow-x: clip;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"] slide-with-thumbs {
-    overflow: visible !important;
+    overflow: hidden !important;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media {
@@ -475,12 +476,12 @@ sticky-add-cart variant-group-sticky select {
     .product-detail__media
     .swiper-wrapper-preview {
     border-radius: 0;
-    overflow: visible;
+    overflow: hidden;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
     .product-gallery-pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
-    bottom: -1.2rem;
+    bottom: 1rem;
     left: 50%;
     right: auto;
     top: auto;
