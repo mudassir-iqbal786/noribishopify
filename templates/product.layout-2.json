@@ -198,7 +198,7 @@
         "enable_frequently_bought_together": true,
         "enable_on_desktop": true,
         "enable_on_mobile": true,
-        "mobile_options": "show_thumbnails",
+        "mobile_options": "hidden_thumbnail",
         "padding_top": 0,
         "padding_bottom": 0,
         "reset_spacing": false
