@@ -5395,24 +5395,23 @@ class SwatchFunctions extends SwatchInit {
     if (layout === 'thumbnail') {
       const swiper = mediaGalleries.querySelector('slide-with-thumbs');
       if (!swiper) return;
-      const slide_items = swiper.querySelectorAll(
-        '.swiper-wrapper-preview .media-gallery__image.swiper-slide'
+      const slide_items = Array.from(
+        swiper.querySelectorAll(
+          '.swiper-wrapper-preview .swiper-slide[data-media-id]'
+        )
       );
 
       if (slide_items.length == 0) return;
 
       if (!this.currentVariant?.featured_media) return;
-      slide_items.forEach((e, index) => {
-        const mediaId = e.getAttribute('data-media-id');
-        if (
-          mediaId &&
-          mediaId ===
-            `${this.dataset.section}-${this.currentVariant.featured_media.id}`
-        ) {
-          const position = e.getAttribute('data-position');
-          swiper.functionGoto(position - 1);
-        }
+      const targetMediaId = `${this.dataset.section}-${this.currentVariant.featured_media.id}`;
+      const targetIndex = slide_items.findIndex((item) => {
+        return item.getAttribute('data-media-id') === targetMediaId;
       });
+
+      if (targetIndex > -1) {
+        swiper.functionGoto(targetIndex);
+      }
     } else {
       mediaGalleries.setActiveMedia(
         `${this.dataset.section}-${this.currentVariant.featured_media.id}`,
@@ -8239,6 +8238,7 @@ class SlideWithThumbs extends HTMLElement {
     this.init();
   }
   init() {
+    this.normalizeMediaOrder();
     const nothumb = this.dataset?.nothumb;
     if (!nothumb) {
       this.initThumbnail();
@@ -8257,6 +8257,9 @@ class SlideWithThumbs extends HTMLElement {
   initSlide() {
     var autoplaying = this?.dataset.autoplay === 'true';
     const loop = this?.dataset.loop === 'true';
+    const initialSlide = this?.dataset.initialSlide
+      ? Number(this.dataset.initialSlide)
+      : 0;
     const itemMobile = this?.dataset.mobile ? this?.dataset.mobile : 1;
     var direction = this?.dataset.direction
       ? this?.dataset.direction
@@ -8288,6 +8291,7 @@ class SlideWithThumbs extends HTMLElement {
     const initSwiper = this.querySelector('.swiper-wrapper-preview');
 
     this.globalSlide = new Swiper(initSwiper, {
+      initialSlide: initialSlide,
       slidesPerView: autoItem ? 'auto' : itemMobile,
       spaceBetween: spacing >= 15 ? 15 : spacing,
       autoplay: autoplaying,
@@ -8346,6 +8350,9 @@ class SlideWithThumbs extends HTMLElement {
   initThumbnail() {
     const container = this.querySelector('.thumbnail-slide');
     if (!container) return;
+    const initialSlide = this?.dataset.initialSlide
+      ? Number(this.dataset.initialSlide)
+      : 0;
     var direction = this.dataset.thumbDirection
       ? this.dataset.thumbDirection
       : 'horizontal';
@@ -8362,6 +8369,7 @@ class SlideWithThumbs extends HTMLElement {
       ? this.dataset.thumbWatchOverflow
       : true;
     this.thumbnailSlide = new Swiper(container, {
+      initialSlide: initialSlide,
       // centeredSlides: true,
       // centeredSlidesBounds: true,
       direction: 'horizontal',
@@ -8417,6 +8425,39 @@ class SlideWithThumbs extends HTMLElement {
   }
 
   playActiveSlideVideo(swiper) {}
+
+  normalizeMediaOrder() {
+    const sortSlidesByPosition = (wrapper) => {
+      if (!wrapper) return;
+      const slides = Array.from(wrapper.children);
+      const slideIndexes = new Map();
+      slides.forEach((slide, index) => slideIndexes.set(slide, index));
+      const hasSortableSlides = slides.some((slide) => {
+        return slide.dataset.adminPosition;
+      });
+      if (slides.length < 2 || !hasSortableSlides) {
+        return;
+      }
+
+      const getSlidePosition = (slide, index) => {
+        if (!slide.dataset.adminPosition) {
+          return Number.MAX_SAFE_INTEGER + index;
+        }
+        return Number(slide.dataset.adminPosition);
+      };
+
+      slides
+        .sort(
+          (a, b) =>
+            getSlidePosition(a, slideIndexes.get(a)) -
+            getSlidePosition(b, slideIndexes.get(b))
+        )
+        .forEach((slide) => wrapper.appendChild(slide));
+    };
+
+    sortSlidesByPosition(this.querySelector('.swiper-wrapper-preview .swiper-wrapper'));
+    sortSlidesByPosition(this.querySelector('.thumbnail-slide .swiper-wrapper'));
+  }
 
   functionGoto(position) {
     this.globalSlide.slideTo(position, 500);

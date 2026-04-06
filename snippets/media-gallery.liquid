@@ -75,6 +75,7 @@
       <slide-with-thumbs
         class="block relative {% if desktop_layout == 'thumbnail_left' %}justify-content-right {{ desktop_layout }} flex-md gap-10 overflow-hidden{% endif %}"
         data-section-id="{{ section.id }}"
+        data-initial-slide="{{ position_index | default: 0 }}"
         data-effect="slide"
         data-speed="500"
         data-mobile-spacing="0"

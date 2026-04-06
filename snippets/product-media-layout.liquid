@@ -116,6 +116,8 @@
         {%- endcapture -%}
       <div
         class="media-gallery__external-video{{ custom_class }} rounded-5"
+        data-admin-position="{{ featured_media.position }}"
+        data-media-id="{{ section.id }}-{{ featured_media.id }}"
         style="--aspect-ratio: {{ ratio }}"
       >
         {% if is_thumbnail == true %}
@@ -149,6 +151,8 @@
       {%- endcapture -%}
       <div
         class="media-gallery__local-video{{ custom_class }} rounded-5 w-full"
+        data-admin-position="{{ featured_media.position }}"
+        data-media-id="{{ section.id }}-{{ featured_media.id }}"
         style="--aspect-ratio: {{ ratio }}"
       >
         {%- liquid
@@ -199,6 +203,8 @@
       {% comment %} Case product 3d {% endcomment %}
       <div
         class="media-gallery__model{{ custom_class }} rounded-5 pointer"
+        data-admin-position="{{ featured_media.position }}"
+        data-media-id="{{ section.id }}-{{ featured_media.id }}"
         {% if is_thumbnail == true %}
           style="--aspect-ratio: {{ ratio }}"
         {% endif %}
@@ -260,6 +266,7 @@
           <a
             href="{{ featured_media.preview_image | image_url }}"
             class="media-gallery__image{{ custom_class }} rounded-5 pointer 1"
+            data-admin-position="{{ featured_media.position }}"
             {% if is_thumbnail == null or is_thumbnail == false %}
               data-position="{{ media_position }}"
               data-media-id="{{ section.id }}-{{ featured_media.id }}"
@@ -273,6 +280,7 @@
         {% else %}
           <div
             class="media-gallery__image{{ custom_class }} rounded-5 pointer 2"
+            data-admin-position="{{ featured_media.position }}"
             data-position="{{ media_position }}"
             data-media-id="{{ section.id }}-{{ featured_media.id }}"
             style="--aspect-ratio: {{ ratio }}"
@@ -349,6 +357,8 @@
           {%- endcapture -%}
         <div
           class="media-gallery__external-video{{ custom_class }} rounded-5"
+          data-admin-position="{{ image.position }}"
+          data-media-id="{{ section.id }}-{{ image.id }}"
           style="--aspect-ratio: {{ ratio }}"
         >
           {% if is_thumbnail == true %}
@@ -382,6 +392,8 @@
       {%- endcapture -%}
         <div
           class="media-gallery__local-video{{ custom_class }} rounded-5 w-full"
+          data-admin-position="{{ image.position }}"
+          data-media-id="{{ section.id }}-{{ image.id }}"
           style="--aspect-ratio: {{ ratio }}"
         >
           {%- liquid
@@ -432,6 +444,8 @@
         {% comment %} Case product 3d {% endcomment %}
         <div
           class="media-gallery__model{{ custom_class }} rounded-5 pointer"
+          data-admin-position="{{ image.position }}"
+          data-media-id="{{ section.id }}-{{ image.id }}"
           {% if is_thumbnail == true %}
             style="--aspect-ratio: {{ ratio }}"
           {% endif %}
@@ -489,6 +503,7 @@
             <a
               href="{{ image.preview_image | image_url }}"
               class="media-gallery__image{{ custom_class }} rounded-5 pointer"
+              data-admin-position="{{ image.position }}"
               {% if is_thumbnail == null or is_thumbnail == false %}
                 data-position="{{ media_position }}"
                 data-media-id="{{ section.id }}-{{ image.id }}"
@@ -502,6 +517,7 @@
           {% else %}
             <div
               class="media-gallery__image{{ custom_class }} rounded-5 pointer"
+              data-admin-position="{{ image.position }}"
               data-position="{{ media_position }}"
               data-media-id="{{ section.id }}-{{ image.id }}"
               style="--aspect-ratio: {{ ratio }}"
