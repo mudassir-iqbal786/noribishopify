@@ -475,116 +475,18 @@
     },
     "177548365409648259": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_118b877_qYQMQn": {
-          "type": "ai_gen_block_118b877",
-          "settings": {
-            "show_urgency": true,
-            "urgency_metafield": "",
-            "urgency_color": "#d0473e",
-            "sale_text": "Limited time sale",
-            "sale_text_color": "#14854e",
-            "show_tax_text": true,
-            "tax_text": "Local taxes included (where applicable)",
-            "tax_text_color": "#999999",
-            "background_color": "#ffffff",
-            "price_color": "#111111",
-            "compare_price_color": "#999999",
-            "title_color": "#111111",
-            "icon_background": "#ffffff",
-            "icon_color": "#111111"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_118b877_qYQMQn"
-      ],
       "settings": {}
     },
     "1775484221fad32c6a": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_259b053_4twica": {
-          "type": "ai_gen_block_259b053",
-          "settings": {
-            "show_wishlist": true,
-            "show_share": true,
-            "action_button_bg": "#ffffff",
-            "action_button_color": "#111111",
-            "show_urgency": true,
-            "urgency_color": "#d0473e",
-            "price_color": "#111111",
-            "compare_price_color": "#999999",
-            "sale_badge_bg": "#d0473e",
-            "sale_badge_color": "#ffffff",
-            "sale_text": "Limited time sale",
-            "sale_text_color": "#14854e",
-            "show_tax_text": true,
-            "tax_text": "Local taxes included (where applicable)",
-            "tax_text_color": "#666666",
-            "title_color": "#111111",
-            "background_color": "#ffffff"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_259b053_4twica"
-      ],
       "settings": {}
     },
     "1775484502fe3e7674": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_5916ab9_9JEdfm": {
-          "type": "ai_gen_block_5916ab9",
-          "settings": {
-            "background_color": "#ffffff",
-            "action_button_bg": "#ffffff",
-            "action_button_color": "#000000",
-            "urgency_color": "#d0473e",
-            "price_color": "#111111",
-            "compare_price_color": "#999999",
-            "discount_color": "#d0473e",
-            "sale_line_color": "#14854e",
-            "tax_text_color": "#666666",
-            "title_color": "#111111",
-            "tax_text": "Local taxes included (where applicable)"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_5916ab9_9JEdfm"
-      ],
       "settings": {}
     },
     "1775484846891f51cf": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_c0d516c_TVD377": {
-          "type": "ai_gen_block_c0d516c",
-          "settings": {
-            "background_color": "#ffffff",
-            "action_button_bg": "#ffffff",
-            "action_button_color": "#000000",
-            "urgency_color": "#d0473e",
-            "price_color": "#111111",
-            "compare_price_color": "#999999",
-            "discount_color": "#d0473e",
-            "sale_line_color": "#14854e",
-            "tax_text_color": "#999999",
-            "title_color": "#111111",
-            "sale_text": "Limited time sale",
-            "tax_text": "Local taxes included (where applicable)"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_c0d516c_TVD377"
-      ],
       "settings": {}
     }
   },
