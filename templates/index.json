@@ -559,6 +559,33 @@
         "ai_gen_block_5916ab9_9JEdfm"
       ],
       "settings": {}
+    },
+    "1775484846891f51cf": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_c0d516c_TVD377": {
+          "type": "ai_gen_block_c0d516c",
+          "settings": {
+            "background_color": "#ffffff",
+            "action_button_bg": "#ffffff",
+            "action_button_color": "#000000",
+            "urgency_color": "#d0473e",
+            "price_color": "#111111",
+            "compare_price_color": "#999999",
+            "discount_color": "#d0473e",
+            "sale_line_color": "#14854e",
+            "tax_text_color": "#999999",
+            "title_color": "#111111",
+            "sale_text": "Limited time sale",
+            "tax_text": "Local taxes included (where applicable)"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_c0d516c_TVD377"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -572,6 +599,7 @@
     "icon_box_igFNYD",
     "177548365409648259",
     "1775484221fad32c6a",
-    "1775484502fe3e7674"
+    "1775484502fe3e7674",
+    "1775484846891f51cf"
   ]
 }
