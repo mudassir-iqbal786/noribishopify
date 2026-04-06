@@ -473,71 +473,32 @@
         "reset_spacing": false
       }
     },
-    "177548138691391bec": {
+    "177548365409648259": {
       "type": "_blocks",
       "blocks": {
-        "ai_gen_block_5eaf5df_YCpPit": {
-          "type": "ai_gen_block_5eaf5df",
+        "ai_gen_block_118b877_qYQMQn": {
+          "type": "ai_gen_block_118b877",
           "settings": {
-            "desktop_width_percent": 100,
-            "info_spacing": 20,
-            "title_size": 20,
-            "title_weight": 400,
-            "title_color": "#111111",
-            "price_size": 24,
-            "price_weight": 600,
-            "price_color": "#111111",
-            "compare_price_color": "#999999",
-            "thumbnail_border_color": "#cccccc",
-            "thumbnail_active_border_color": "#111111",
-            "label_color": "#111111",
-            "input_background": "#ffffff",
-            "input_text_color": "#111111",
-            "input_border_color": "#cccccc",
-            "input_focus_color": "#111111",
-            "input_border_radius": 4,
-            "button_text": "Add to Cart",
-            "button_font_size": 16,
-            "button_padding": 16,
-            "button_text_color": "#ffffff",
-            "button_background": "#111111",
-            "button_hover_background": "#000000",
-            "button_border_radius": 24,
-            "description_color": "#666666"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_5eaf5df_YCpPit"
-      ],
-      "settings": {}
-    },
-    "17754834813fb2c239": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_10154a6_CkUVJb": {
-          "type": "ai_gen_block_10154a6",
-          "settings": {
-            "desktop_width_percent": 100,
-            "background_color": "#ffffff",
-            "show_wishlist": true,
-            "show_share": true,
-            "icon_background": "#ffffff",
-            "icon_color": "#111111",
             "show_urgency": true,
+            "urgency_metafield": "",
             "urgency_color": "#d0473e",
-            "price_color": "#111111",
-            "sale_text_color": "#008060",
+            "sale_text": "Limited time sale",
+            "sale_text_color": "#14854e",
             "show_tax_text": true,
             "tax_text": "Local taxes included (where applicable)",
-            "title_color": "#111111"
+            "tax_text_color": "#999999",
+            "background_color": "#ffffff",
+            "price_color": "#111111",
+            "compare_price_color": "#999999",
+            "title_color": "#111111",
+            "icon_background": "#ffffff",
+            "icon_color": "#111111"
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "ai_gen_block_10154a6_CkUVJb"
+        "ai_gen_block_118b877_qYQMQn"
       ],
       "settings": {}
     }
@@ -551,7 +512,6 @@
     "products_carousel_BrKFhr",
     "product_testimonials_DyerjT",
     "icon_box_igFNYD",
-    "177548138691391bec",
-    "17754834813fb2c239"
+    "177548365409648259"
   ]
 }
