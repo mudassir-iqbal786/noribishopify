@@ -6584,6 +6584,9 @@ class VariantGroupDetail extends VariantRadiosDetail {
     const mediaGalleries = this.productTarget?.querySelector('media-gallery');
     if (!mediaGalleries) return;
     const layout = mediaGalleries.dataset.layout;
+    const currentVariantMediaId = this.currentVariant?.featured_media?.id
+      ? `${this.dataset.section}-${this.currentVariant.featured_media.id}`
+      : null;
 
     if (layout === 'thumbnail') {
       const swiper = mediaGalleries.querySelector('slide-with-thumbs');
@@ -6596,7 +6599,21 @@ class VariantGroupDetail extends VariantRadiosDetail {
       if (!slideItems.length) return;
 
       let firstMediaIndex = 0;
-      if (altValue) {
+      if (currentVariantMediaId) {
+        const matchedVariantIndex = slideItems.findIndex((item) => {
+          return item.dataset.mediaId === currentVariantMediaId;
+        });
+        if (matchedVariantIndex > -1) {
+          firstMediaIndex = matchedVariantIndex;
+        } else if (altValue) {
+          const matchedIndex = slideItems.findIndex(
+            (item) => item.dataset.alt === altValue
+          );
+          if (matchedIndex > -1) {
+            firstMediaIndex = matchedIndex;
+          }
+        }
+      } else if (altValue) {
         const matchedIndex = slideItems.findIndex(
           (item) => item.dataset.alt === altValue
         );
@@ -6616,7 +6633,19 @@ class VariantGroupDetail extends VariantRadiosDetail {
     if (!galleryItems.length) return;
 
     let firstMediaItem = galleryItems[0];
-    if (altValue) {
+    if (currentVariantMediaId) {
+      const matchedVariantItem = galleryItems.find((item) => {
+        return item.dataset.mediaId === currentVariantMediaId;
+      });
+      if (matchedVariantItem) {
+        firstMediaItem = matchedVariantItem;
+      } else if (altValue) {
+        const matchedItem = galleryItems.find((item) => item.dataset.alt === altValue);
+        if (matchedItem) {
+          firstMediaItem = matchedItem;
+        }
+      }
+    } else if (altValue) {
       const matchedItem = galleryItems.find((item) => item.dataset.alt === altValue);
       if (matchedItem) {
         firstMediaItem = matchedItem;

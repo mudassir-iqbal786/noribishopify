@@ -90,9 +90,6 @@
         {% comment %} logic check ratio of image{% endcomment %}
         {%- liquid
           assign default_position = 0
-          unless product.has_only_default_variant
-            assign default_position = product.selected_or_first_available_variant.featured_image.position | minus: 1
-          endunless
         -%}
         {% liquid
           assign position = 1
