@@ -1,0 +1,493 @@
+{% doc %}
+  @prompt
+    Design the mobile product page top section exactly like Etsy's mobile layout, from image to title. Here are the exact requirements:
+    
+    1. Image Section: Full width product image, 4:5 aspect ratio (portrait), swipe carousel with dots indicator, overlay icons (wishlist heart + share button top right), images centered and not cropped incorrectly.
+    
+    2. Urgency Text: Dynamic text like "In 20+ carts" using Shopify metafields or product data, small red text above price.
+    
+    3. Price Section (fully dynamic from Shopify): Large main price, original compare-at price with strikethrough, discount percentage and sale text, all values from Shopify product data - no hardcoding.
+    
+    4. Sale Line: Show "[X]% off • Limited time sale" in green color, dynamic based on compare-at price vs actual price.
+    
+    5. Tax Text: Small grey text: "Local taxes included (where applicable)".
+    
+    6. Title: Placed below price section, clean lightweight font, max 2-3 lines, no truncation.
+    
+    Layout clean, minimal, Etsy mobile hierarchy. Optimized for mobile view.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-etsy-product-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-etsy-product__gallery-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+
+  .ai-etsy-product__carousel-{{ ai_gen_id }} {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .ai-etsy-product__carousel-{{ ai_gen_id }}::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ai-etsy-product__slide-{{ ai_gen_id }} {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    position: relative;
+  }
+
+  .ai-etsy-product__slide-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .ai-etsy-product__placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-etsy-product__placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  .ai-etsy-product__overlay-actions-{{ ai_gen_id }} {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+
+  .ai-etsy-product__action-btn-{{ ai_gen_id }} {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: {{ block.settings.icon_background }};
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+  }
+
+  .ai-etsy-product__action-btn-{{ ai_gen_id }}:active {
+    transform: scale(0.95);
+  }
+
+  .ai-etsy-product__action-btn-{{ ai_gen_id }} svg {
+    width: 20px;
+    height: 20px;
+    stroke: {{ block.settings.icon_color }};
+  }
+
+  .ai-etsy-product__dots-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+  }
+
+  .ai-etsy-product__dot-{{ ai_gen_id }} {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s ease, width 0.3s ease;
+  }
+
+  .ai-etsy-product__dot-{{ ai_gen_id }}.active {
+    background-color: rgba(255, 255, 255, 1);
+    width: 20px;
+    border-radius: 3px;
+  }
+
+  .ai-etsy-product__info-{{ ai_gen_id }} {
+    padding: 16px;
+  }
+
+  .ai-etsy-product__urgency-{{ ai_gen_id }} {
+    font-size: 12px;
+    color: {{ block.settings.urgency_color }};
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+
+  .ai-etsy-product__price-section-{{ ai_gen_id }} {
+    margin-bottom: 12px;
+  }
+
+  .ai-etsy-product__price-row-{{ ai_gen_id }} {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .ai-etsy-product__current-price-{{ ai_gen_id }} {
+    font-size: 24px;
+    font-weight: 600;
+    color: {{ block.settings.price_color }};
+  }
+
+  .ai-etsy-product__compare-price-{{ ai_gen_id }} {
+    font-size: 16px;
+    color: {{ block.settings.compare_price_color }};
+    text-decoration: line-through;
+  }
+
+  .ai-etsy-product__sale-line-{{ ai_gen_id }} {
+    font-size: 13px;
+    color: {{ block.settings.sale_text_color }};
+    font-weight: 500;
+  }
+
+  .ai-etsy-product__tax-text-{{ ai_gen_id }} {
+    font-size: 12px;
+    color: {{ block.settings.tax_text_color }};
+    margin-top: 6px;
+  }
+
+  .ai-etsy-product__title-{{ ai_gen_id }} {
+    font-size: 16px;
+    font-weight: 400;
+    color: {{ block.settings.title_color }};
+    line-height: 1.4;
+    margin-top: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+{% endstyle %}
+
+<etsy-product-{{ ai_gen_id }}
+  class="ai-etsy-product-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-etsy-product__gallery-{{ ai_gen_id }}">
+    <div
+      class="ai-etsy-product__carousel-{{ ai_gen_id }}"
+      data-carousel
+    >
+      {% if product.images.size > 0 %}
+        {% for image in product.images limit: 5 %}
+          <div class="ai-etsy-product__slide-{{ ai_gen_id }}">
+            <img
+              src="{{ image | image_url: width: 800 }}"
+              alt="{{ image.alt | escape }}"
+              loading="lazy"
+              width="800"
+              height="1000"
+            >
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="ai-etsy-product__slide-{{ ai_gen_id }}">
+          <div class="ai-etsy-product__placeholder-{{ ai_gen_id }}">
+            {{ 'product-1' | placeholder_svg_tag }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ai-etsy-product__overlay-actions-{{ ai_gen_id }}">
+      <button
+        class="ai-etsy-product__action-btn-{{ ai_gen_id }}"
+        aria-label="Add to wishlist"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      </button>
+      <button
+        class="ai-etsy-product__action-btn-{{ ai_gen_id }}"
+        aria-label="Share"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="18" cy="5" r="3"></circle>
+          <circle cx="6" cy="12" r="3"></circle>
+          <circle cx="18" cy="19" r="3"></circle>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+        </svg>
+      </button>
+    </div>
+
+    {% if product.images.size > 1 %}
+      <div
+        class="ai-etsy-product__dots-{{ ai_gen_id }}"
+        data-dots
+      >
+        {% for image in product.images limit: 5 %}
+          <div
+            class="ai-etsy-product__dot-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
+            data-dot-index="{{ forloop.index0 }}"
+          ></div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="ai-etsy-product__info-{{ ai_gen_id }}">
+    {% if block.settings.show_urgency and block.settings.urgency_metafield != blank %}
+      {% assign urgency_value = product.metafields[block.settings.urgency_metafield] %}
+      {% if urgency_value != blank %}
+        <div class="ai-etsy-product__urgency-{{ ai_gen_id }}">
+          {{ urgency_value }}
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <div class="ai-etsy-product__price-section-{{ ai_gen_id }}">
+      <div class="ai-etsy-product__price-row-{{ ai_gen_id }}">
+        <div class="ai-etsy-product__current-price-{{ ai_gen_id }}">
+          {{ product.selected_or_first_available_variant.price | money }}
+        </div>
+        {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+          <div class="ai-etsy-product__compare-price-{{ ai_gen_id }}">
+            {{ product.selected_or_first_available_variant.compare_at_price | money }}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+        {% assign discount_amount = product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price %}
+        {% assign discount_percent = discount_amount | times: 100.0 | divided_by: product.selected_or_first_available_variant.compare_at_price | round %}
+        <div class="ai-etsy-product__sale-line-{{ ai_gen_id }}">
+          {{ discount_percent }}% off • {{ block.settings.sale_text }}
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_tax_text %}
+        <div class="ai-etsy-product__tax-text-{{ ai_gen_id }}">
+          {{ block.settings.tax_text }}
+        </div>
+      {% endif %}
+    </div>
+
+    <h1 class="ai-etsy-product__title-{{ ai_gen_id }}">
+      {{ product.title }}
+    </h1>
+  </div>
+</etsy-product-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class EtsyProduct{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.carousel = this.querySelector('[data-carousel]');
+        this.dotsContainer = this.querySelector('[data-dots]');
+        
+        if (!this.carousel) return;
+
+        this.setupCarousel();
+      }
+
+      setupCarousel() {
+        this.carousel.addEventListener('scroll', () => {
+          this.updateDots();
+        });
+
+        if (this.dotsContainer) {
+          const dots = this.dotsContainer.querySelectorAll('[data-dot-index]');
+          dots.forEach((dot) => {
+            dot.addEventListener('click', () => {
+              const index = parseInt(dot.getAttribute('data-dot-index'));
+              this.scrollToSlide(index);
+            });
+          });
+        }
+      }
+
+      scrollToSlide(index) {
+        const slideWidth = this.carousel.offsetWidth;
+        this.carousel.scrollTo({
+          left: slideWidth * index,
+          behavior: 'smooth'
+        });
+      }
+
+      updateDots() {
+        if (!this.dotsContainer) return;
+
+        const slideWidth = this.carousel.offsetWidth;
+        const scrollLeft = this.carousel.scrollLeft;
+        const currentIndex = Math.round(scrollLeft / slideWidth);
+
+        const dots = this.dotsContainer.querySelectorAll('[data-dot-index]');
+        dots.forEach((dot, index) => {
+          if (index === currentIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+    }
+
+    customElements.define('etsy-product-{{ ai_gen_id }}', EtsyProduct{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Etsy mobile product",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Urgency text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_urgency",
+      "label": "Show urgency text",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "urgency_metafield",
+      "label": "Urgency metafield",
+      "info": "Enter metafield namespace and key (e.g., custom.urgency_text)"
+    },
+    {
+      "type": "color",
+      "id": "urgency_color",
+      "label": "Urgency text color",
+      "default": "#d0473e"
+    },
+    {
+      "type": "header",
+      "content": "Sale settings"
+    },
+    {
+      "type": "text",
+      "id": "sale_text",
+      "label": "Sale text",
+      "default": "Limited time sale"
+    },
+    {
+      "type": "color",
+      "id": "sale_text_color",
+      "label": "Sale text color",
+      "default": "#14854e"
+    },
+    {
+      "type": "header",
+      "content": "Tax text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tax_text",
+      "label": "Show tax text",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "tax_text",
+      "label": "Tax text",
+      "default": "Local taxes included (where applicable)"
+    },
+    {
+      "type": "color",
+      "id": "tax_text_color",
+      "label": "Tax text color",
+      "default": "#999999"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "compare_price_color",
+      "label": "Compare at price",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "icon_background",
+      "label": "Icon background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#111111"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Etsy mobile product"
+    }
+  ]
+}
+{% endschema %}
