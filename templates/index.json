@@ -11,38 +11,6 @@
   "sections": {
     "slideshow_RykJMi": {
       "type": "slideshow",
-      "blocks": {
-        "slider_item_zUbHYH": {
-          "type": "slider_item",
-          "settings": {
-            "image": "shopify://shop_images/fs_new_s2.webp",
-            "overlay_opacity": 20,
-            "slider_effect": "effect_fadeindown",
-            "subheading": "ELEVATE YOUR STYLE",
-            "heading": "Women's Fashion Collection",
-            "description": "",
-            "first_button_label": "Shop Collection",
-            "first_button_link": "shopify://collections/best-selling",
-            "first_button_style": false,
-            "second_button_label": "",
-            "second_button_link": "",
-            "second_button_style": false,
-            "content_alignment": "left",
-            "content_position": "bottom-left",
-            "content_width": "fluid_container",
-            "content_max_width": 40,
-            "content_padding_block": 60,
-            "content_padding_inline": 15,
-            "show_content_background": false,
-            "content_background": "#ffffff",
-            "content_box_opacity": 100,
-            "content_alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "slider_item_zUbHYH"
-      ],
       "custom_css": [
         ".h-full_screen {--height-topbar: 40px;}"
       ],
