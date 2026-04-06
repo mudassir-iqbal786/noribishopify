@@ -27,7 +27,7 @@
         "title_G6tU8U": {
           "type": "title",
           "settings": {
-            "show_vendor": true
+            "show_vendor": false
           }
         },
         "price_VJ4N8m": {
@@ -37,7 +37,7 @@
         "short_description_9BGxVm": {
           "type": "short_description",
           "settings": {
-            "excerpt_length": 200
+            "excerpt_length": 150
           }
         },
         "countdown_timer_QB4Ydn": {
@@ -74,7 +74,7 @@
         "buy_buttons_LcQGtR": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true,
             "show_wishlist": true,
             "show_compare": true
@@ -114,9 +114,9 @@
             "show_barcode": false,
             "show_sku": true,
             "show_available": true,
-            "show_tags": false,
-            "show_type": true,
-            "show_collections": true
+            "show_tags": true,
+            "show_type": false,
+            "show_collections": false
           }
         },
         "trust_badge_qKXhpg": {
@@ -169,7 +169,7 @@
           "type": "complementary_products",
           "settings": {
             "heading": "Pairs well with",
-            "product_list_limit": 10,
+            "product_list_limit": 6,
             "products_per_page": 3,
             "show_navigation": false,
             "show_pagination": true,
@@ -204,18 +204,18 @@
         "section_width": "fluid_container",
         "color_scheme": "",
         "enable_sticky_content_on_desktop": true,
-        "enable_skeleton_loading": false,
-        "desktop_media_width": 50,
+        "enable_skeleton_loading": true,
+        "desktop_media_width": 55,
         "desktop_layout": "thumbnail_left",
         "image_zoom": "open_lightbox",
         "enable_video_looping": true,
         "enable_video_autoplay": true,
-        "enable_frequently_bought_together": true,
+        "enable_frequently_bought_together": false,
         "enable_on_desktop": true,
         "enable_on_mobile": true,
         "mobile_options": "hidden_thumbnail",
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_top": 40,
+        "padding_bottom": 40,
         "reset_spacing": false
       }
     },

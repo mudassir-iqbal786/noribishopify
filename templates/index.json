@@ -472,6 +472,46 @@
         "padding_bottom": 60,
         "reset_spacing": false
       }
+    },
+    "177548138691391bec": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_5eaf5df_YCpPit": {
+          "type": "ai_gen_block_5eaf5df",
+          "settings": {
+            "desktop_width_percent": 100,
+            "info_spacing": 20,
+            "title_size": 20,
+            "title_weight": 400,
+            "title_color": "#111111",
+            "price_size": 24,
+            "price_weight": 600,
+            "price_color": "#111111",
+            "compare_price_color": "#999999",
+            "thumbnail_border_color": "#cccccc",
+            "thumbnail_active_border_color": "#111111",
+            "label_color": "#111111",
+            "input_background": "#ffffff",
+            "input_text_color": "#111111",
+            "input_border_color": "#cccccc",
+            "input_focus_color": "#111111",
+            "input_border_radius": 4,
+            "button_text": "Add to Cart",
+            "button_font_size": 16,
+            "button_padding": 16,
+            "button_text_color": "#ffffff",
+            "button_background": "#111111",
+            "button_hover_background": "#000000",
+            "button_border_radius": 24,
+            "description_color": "#666666"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_5eaf5df_YCpPit"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -482,6 +522,7 @@
     "multi_content_R7AW7W",
     "products_carousel_BrKFhr",
     "product_testimonials_DyerjT",
-    "icon_box_igFNYD"
+    "icon_box_igFNYD",
+    "177548138691391bec"
   ]
 }
