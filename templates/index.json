@@ -512,6 +512,34 @@
         "ai_gen_block_5eaf5df_YCpPit"
       ],
       "settings": {}
+    },
+    "17754834813fb2c239": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_10154a6_CkUVJb": {
+          "type": "ai_gen_block_10154a6",
+          "settings": {
+            "desktop_width_percent": 100,
+            "background_color": "#ffffff",
+            "show_wishlist": true,
+            "show_share": true,
+            "icon_background": "#ffffff",
+            "icon_color": "#111111",
+            "show_urgency": true,
+            "urgency_color": "#d0473e",
+            "price_color": "#111111",
+            "sale_text_color": "#008060",
+            "show_tax_text": true,
+            "tax_text": "Local taxes included (where applicable)",
+            "title_color": "#111111"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_10154a6_CkUVJb"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -523,6 +551,7 @@
     "products_carousel_BrKFhr",
     "product_testimonials_DyerjT",
     "icon_box_igFNYD",
-    "177548138691391bec"
+    "177548138691391bec",
+    "17754834813fb2c239"
   ]
 }
