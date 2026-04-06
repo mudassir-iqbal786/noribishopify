@@ -6978,9 +6978,9 @@ class VariantGroupDetail extends VariantRadiosDetail {
     ).forEach((btn) => {
       if (
         btn.classList.contains('product__color-swatches--js') &&
-        btn.dataset.value
+        (btn.dataset.colorValue || btn.dataset.value)
       ) {
-        buttonArray.push(btn.dataset.value);
+        buttonArray.push(btn.dataset.colorValue || btn.dataset.value);
       } else if (
         btn.classList.contains('product-sticky-js') &&
         btn.dataset.colorValue
