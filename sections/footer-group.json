@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{ 
+{
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
@@ -17,7 +17,6 @@
         "store_info_tUhcyD": {
           "type": "store_info",
           "settings": {
-            "image": "shopify://shop_images/logo.png",
             "image_width": 120,
             "store_heading": "",
             "store_description": "<p>We only carry designs we believe in ethically and <br/>aesthetically – original, authentic pieces that are made to last. <a href=\"/pages/about-us\" title=\"About us\"><span style=\"text-decoration:underline\"><strong>Learn more</strong></span></a></p>",
@@ -31,7 +30,7 @@
           "type": "link_list",
           "settings": {
             "heading": "",
-            "menu": "our-company",
+            "menu": "",
             "content_width": "16%"
           }
         },
@@ -39,7 +38,7 @@
           "type": "link_list",
           "settings": {
             "heading": "",
-            "menu": "customer-service",
+            "menu": "",
             "content_width": "16%"
           }
         },
@@ -48,7 +47,7 @@
           "disabled": true,
           "settings": {
             "heading": "Shop Categories",
-            "menu": "fashion-categories",
+            "menu": "",
             "content_width": "16%"
           }
         },
