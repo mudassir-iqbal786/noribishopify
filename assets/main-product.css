@@ -421,7 +421,7 @@ sticky-add-cart variant-group-sticky select {
     flex: 0 0 100%;
     width: calc(100% + (var(--bs-gutter-x, 1.5rem) * 2));
     max-width: calc(100% + (var(--bs-gutter-x, 1.5rem) * 2));
-    margin: 0 calc(var(--bs-gutter-x, 1.5rem) * -1) 1.4rem;
+    margin: 0 calc(var(--bs-gutter-x, 1.5rem) * -1) 1rem;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
@@ -451,7 +451,7 @@ sticky-add-cart variant-group-sticky select {
       .media-gallery__external-video,
       .media-gallery__model
     ) {
-    --aspect-ratio: 1 / 1 !important;
+    --aspect-ratio: 4 / 5 !important;
     background-color: #ffffff;
     border: none;
     border-radius: 0 !important;
@@ -466,8 +466,8 @@ sticky-add-cart variant-group-sticky select {
       .media-gallery__model
     )
     :is(img, picture > img) {
-    object-fit: contain;
-    object-position: center;
+    object-fit: cover;
+    object-position: center top;
     box-sizing: border-box;
     padding: 0;
     border-radius: 0 !important;
@@ -483,31 +483,31 @@ sticky-add-cart variant-group-sticky select {
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
     .product-gallery-pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
-    bottom: 1rem;
+    bottom: 1.6rem;
     left: 50%;
     right: auto;
     top: auto;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    gap: 0.7rem;
+    gap: 0.55rem;
     width: max-content;
     z-index: 3;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
     .product-gallery-pagination .swiper-pagination-bullet {
-    width: 0.7rem;
-    height: 0.7rem;
+    width: 0.8rem;
+    height: 0.8rem;
     margin: 0 !important;
-    background: rgba(var(--color-heading-rgb), 0.22);
+    background: rgba(255, 255, 255, 0.45);
     opacity: 1;
     flex: 0 0 auto;
   }
   .sec__featured-product[data-desktop-layout="thumbnail_left"]
     .product-detail__media
     .product-gallery-pagination .swiper-pagination-bullet-active {
-    background: rgb(var(--color-heading-rgb));
+    background: rgba(255, 255, 255, 0.95);
   }
   .thumbnail-slide .swiper-actions {
     display: none;

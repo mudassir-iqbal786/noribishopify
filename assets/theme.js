@@ -5745,8 +5745,16 @@ class SwatchFunctions extends SwatchInit {
     });
   }
   updateVariantStatuses() {
-    const firstSelectedValue = this.querySelector(':checked')?.value;
     const inputWrappers = [...this.querySelectorAll('.product-form__input')];
+    const getSelectedValue = (wrapper) => {
+      if (!wrapper) return null;
+      const select = wrapper.querySelector('select.product-form__option-select');
+      if (select) {
+        return select.value || null;
+      }
+      return wrapper.querySelector(':checked')?.value || null;
+    };
+    const firstSelectedValue = getSelectedValue(inputWrappers[0]);
 
     if (!firstSelectedValue) {
       inputWrappers.forEach((option, index) => {
@@ -5767,8 +5775,7 @@ class SwatchFunctions extends SwatchInit {
       const optionInputs = [
         ...option.querySelectorAll('input[type="radio"], option'),
       ];
-      const previousOptionSelected =
-        inputWrappers[index - 1].querySelector(':checked')?.value;
+      const previousOptionSelected = getSelectedValue(inputWrappers[index - 1]);
       if (!previousOptionSelected) {
         this.setInputAvailability(optionInputs, null);
         return;
