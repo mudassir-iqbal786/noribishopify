@@ -60,6 +60,7 @@
     "product_custom_ratio": "2:3",
     "product_hover_effect": "hover_right",
     "show_action_on_mobile": true,
+    "enable_color_swatches": false,
     "swatch_item_type": "variant_images",
     "search_type": "drawer",
     "search_result": "products",
@@ -330,26 +331,13 @@
           "delay_time": "5000",
           "display_time": "6000"
         }
+      },
+      "top-search": {
+        "type": "top-search",
+        "settings": {}
       }
     },
     "content_for_index": [],
-    "blocks": {
-      "14060646107696862457": {
-        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-        "disabled": false,
-        "settings": {}
-      },
-      "10436698916776057164": {
-        "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-helper/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
-        "disabled": false,
-        "settings": {}
-      },
-      "16555213172727936593": {
-        "type": "shopify://apps/ns-discount-in-cart/blocks/discount_block/0cbbbcdd-bf54-49df-885c-9ca3fd52a671",
-        "disabled": true,
-        "settings": {}
-      }
-    },
     "color_schemes": {
       "default": {
         "settings": {
