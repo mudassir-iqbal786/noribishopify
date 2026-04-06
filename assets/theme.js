@@ -5921,16 +5921,21 @@ class SwatchFunctions extends SwatchInit {
     });
   }
   updateShareUrl() {
+    const shareUrl = `${window.shopUrl}${this.dataset.url}?variant=${this.currentVariant.id}`;
+    const mobileShareButton = document.getElementById(
+      `MobileShare-${this.dataset.section}`
+    );
+    if (mobileShareButton && mobileShareButton.updateUrl) {
+      mobileShareButton.updateUrl(shareUrl);
+    }
     const copyButton = document.getElementById(`Share-${this.dataset.section}`);
     if (!copyButton || !copyButton.updateUrl) return;
-    copyButton.updateUrl(
-      `${window.shopUrl}${this.dataset.url}?variant=${this.currentVariant.id}`
-    );
+    copyButton.updateUrl(shareUrl);
     const copyParent = copyButton.closest('.share__content');
     if (!copyParent) return;
     const copySpan = copyParent.querySelector('.copy__url');
     if (!copySpan) return;
-    copySpan.innerHTML = `${window.shopUrl}${this.dataset.url}?variant=${this.currentVariant.id}`;
+    copySpan.innerHTML = shareUrl;
   }
   updatePickupAvailability() {
     const pickUpAvailability = document.querySelector('pickup-availability');

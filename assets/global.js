@@ -1129,3 +1129,43 @@ class CopyButton extends HTMLElement {
   }
 }
 customElements.define("copy-button", CopyButton);
+
+class MobileGalleryShare extends HTMLElement {
+  constructor() {
+    super();
+    this.button = this.querySelector("button");
+    this.resetStateTimeout = null;
+    this.init();
+  }
+  init() {
+    if (!this.button) return;
+    this.button.addEventListener("click", this.onClick.bind(this));
+  }
+  async onClick(event) {
+    event.preventDefault();
+    const shareUrl = this.dataset.url || window.location.href;
+    const shareTitle = this.dataset.title || document.title;
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: shareTitle,
+          url: shareUrl
+        });
+        return;
+      } catch (error) {
+        if (error && error.name === "AbortError") return;
+      }
+    }
+    if (!navigator.clipboard || !navigator.clipboard.writeText) return;
+    await navigator.clipboard.writeText(shareUrl);
+    this.classList.add("copied");
+    clearTimeout(this.resetStateTimeout);
+    this.resetStateTimeout = setTimeout(() => {
+      this.classList.remove("copied");
+    }, 1800);
+  }
+  updateUrl(newContent) {
+    this.dataset.url = newContent;
+  }
+}
+customElements.define("mobile-gallery-share", MobileGalleryShare);
