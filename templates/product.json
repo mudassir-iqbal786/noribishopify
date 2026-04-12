@@ -311,6 +311,7 @@
       "blocks": {
         "ai_gen_block_321655b_BAePjU": {
           "type": "ai_gen_block_321655b",
+          "disabled": true,
           "settings": {
             "background_color": "#f9f9f9",
             "show_wishlist": true,
