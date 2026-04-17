@@ -421,7 +421,7 @@
             "icon_svg": "free_shipping",
             "custom_svg": "",
             "heading": "Free Shipping",
-            "description": "<p>Enjoy free worldwide shipping and returns, with customs <br/>and duties taxes included.</p>"
+            "description": "<p>Free shipping across the US & Canada. Delivered in 3-4 business days (US) and 5-8 business days (Canada).</p>"
           }
         },
         "icon_box_dw6wxP": {
@@ -429,8 +429,8 @@
           "settings": {
             "icon_svg": "check_badge",
             "custom_svg": "",
-            "heading": "Free Returns",
-            "description": "<p>Free returns within 15 days, please make sure the items<br/>are in undamaged condition.</p>"
+            "heading": "Easy Returns",
+            "description": "<p>30 day return window on all eligible items. Simple and hassle free process.</p>"
           }
         },
         "icon_box_qRE6wr": {
@@ -438,8 +438,8 @@
           "settings": {
             "icon_svg": "message_communications",
             "custom_svg": "",
-            "heading": "Support Online",
-            "description": "<p>We support customers 24/7, send questions we will<br/>solve for you immediately.</p>"
+            "heading": "Customer Support",
+            "description": "<p>Here to assist you anytime</p>"
           }
         }
       },

@@ -58,7 +58,7 @@
             "description": "Subscribe for store updates and discounts.",
             "email_placeholder": "Enter your email...",
             "button_label": "Sign Up",
-            "note": "***By entering the e-mail you accept the<a href=\"/policies/terms-of-service\" target=\"_blank\" title=\"Terms of Service\"> <strong>terms and conditions</strong></a> and the <a href=\"/policies/privacy-policy\" target=\"_blank\" title=\"Privacy Policy\"><strong>privacy policy.</strong></a>",
+            "note": "By entering the e-mail you accept the<a href=\"/policies/terms-of-service\" target=\"_blank\" title=\"Terms of Service\"> <strong>terms and conditions</strong></a> and the <a href=\"/policies/privacy-policy\" target=\"_blank\" title=\"Privacy Policy\"><strong>privacy policy.</strong></a>",
             "design": "default",
             "newsletter_show_social": true,
             "content_width": "33.333%"
