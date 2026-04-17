@@ -353,6 +353,7 @@
           "type": "testimonials_items",
           "settings": {
             "author_image": "shopify://shop_images/Screenshot_2026-04-17-22-14-19-415_com.taobao.taobao-edit.jpg",
+            "local_video": "shopify://files/videos/20250903_e6c606e691103397_532749468686_323285804175414_published_mp4_264_hd_taobao.mp4",
             "author_rating": 5,
             "author_text": "<p><strong>Absolutely stunning pieces I’m genuinely so excited to wear these to an upcoming wedding with a garden fairy theme they fit the vibe perfectly. The design is elegant yet playful, and the quality feels amazing. The details are even more beautiful in person, and the fit is very flattering. I know I’m going to get so many compliments. Can’t wait to style them and wear them out</strong></p>",
             "select_product": "green-fairy-dress-with-wings-woodland-pixie-costume-tinker-style",
@@ -388,13 +389,24 @@
             "select_product": "gold-butterfly-evening-gown-sequin-mermaid-dress-formal-dress",
             "author_name": "Emily"
           }
+        },
+        "testimonials_items_8b7fN7": {
+          "type": "testimonials_items",
+          "settings": {
+            "author_image": "shopify://shop_images/Image_1776447432305.jpg",
+            "author_rating": 5,
+            "author_text": "<p>Honestly wasn’t sure what to expect, but it’s actually really cute. The fit is decent and the details look nice in person. It’s a bit delicate though so you have to be careful.</p>",
+            "select_product": "here-s-an-etsy-seo-optimized-title-70-characters-and-description-for-your-dress",
+            "author_name": "Denise"
+          }
         }
       },
       "block_order": [
         "testimonials_items_bKPBwX",
         "testimonials_items_3trnNN",
         "testimonials_items_xDzhkj",
-        "testimonials_items_ULXkkt"
+        "testimonials_items_ULXkkt",
+        "testimonials_items_8b7fN7"
       ],
       "settings": {
         "section_width": "fluid_container",
@@ -407,9 +419,9 @@
         "show_image": true,
         "show_verified_buyer": true,
         "img_position": "left",
-        "image_ratio": "portrait",
+        "image_ratio": "square",
         "custom_ratio": "",
-        "img_width": 38,
+        "img_width": 50,
         "framed": true,
         "rate_color": "#ff9c05",
         "items_per_row": 2,
