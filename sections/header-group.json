@@ -14,19 +14,12 @@
     "top_bar_CbXNYj": {
       "type": "top-bar",
       "blocks": {
-        "socials_mhewEF": {
-          "type": "socials",
-          "settings": {
-            "information_text": "Welcome Milano store!",
-            "hidden_on_mobile": true
-          }
-        },
         "text_slider_LFaC38": {
           "type": "text_slider",
           "settings": {
-            "text1": "Sign up for 10% off your first order. <a href=\"/account/\" title=\"/account/\"><span style=\"text-decoration:underline\"><strong>Sign Up</strong></span></a>",
-            "text2": "<a href=\"/collections/crop-top\" title=\"Crop-top\">Summer</a> sale discount off 50%. <a href=\"/collections/activewear\" title=\"Activewear\"><span style=\"text-decoration:underline\"><strong>Shop Sale</strong></span></a>",
-            "text3": "<a href=\"/collections/sweaters\" title=\"Sweaters\">Coats—every</a> friday 75% Off . <a href=\"/collections/blazers\" title=\"Blazers\"><span style=\"text-decoration:underline\"><strong>Shop Sale</strong></span></a>",
+            "text1": "<strong>DESIGNED & CRAFTED IN THE UNITED STATES</strong>",
+            "text2": "<strong>QUALITY YOU CAN FEEL</strong>",
+            "text3": "<strong>FREE SHIPPING ON ALL ORDERS</strong>",
             "change_every": 3,
             "hidden_on_mobile": false,
             "text_slider_center": true
@@ -35,16 +28,15 @@
         "cur_lang_aPwfT9": {
           "type": "cur_lang",
           "settings": {
-            "menu_link": "topbar-links-2",
+            "menu_link": "",
             "show_currency": true,
             "show_language": false,
             "show_our_store": false,
-            "hidden_on_mobile": true
+            "hidden_on_mobile": false
           }
         }
       },
       "block_order": [
-        "socials_mhewEF",
         "text_slider_LFaC38",
         "cur_lang_aPwfT9"
       ],
@@ -109,7 +101,6 @@
             "full_width": false,
             "promotion_position": "right",
             "promotion_image_width": 33,
-            "promotion_image_1": "shopify://shop_images/fs_bn_menu.jpg",
             "promotion_link_1": "shopify://collections/coats",
             "promotion_link_newtab_1": true,
             "promotion_link_2": "",
