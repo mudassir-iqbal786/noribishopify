@@ -399,6 +399,16 @@
             "select_product": "here-s-an-etsy-seo-optimized-title-70-characters-and-description-for-your-dress",
             "author_name": "Denise"
           }
+        },
+        "testimonials_items_R8fY4A": {
+          "type": "testimonials_items",
+          "settings": {
+            "author_image": "shopify://shop_images/Image_1776419493181.jpg",
+            "author_rating": 5,
+            "author_text": "<p>I am absolutely in love with this dress. The design is stunning and exactly as shown in the pictures. The quality of the fabric and the detailing is truly impressive, and you can tell a lot of care went into making it. The fit is very flattering and gives such an elegant, feminine look. What I really loved is how unique and premium it feels. It photographs beautifully and looks even better in person. I received so many compliments when wearing it, and it made me feel very confident and special. Overall, I am extremely happy with this purchase and would highly recommend it to anyone looking for something elegant, unique, and high quality.</p>",
+            "select_product": "white-lace-corset-wedding-dress-sheer-bridal-gown-fairy-style",
+            "author_name": "June"
+          }
         }
       },
       "block_order": [
@@ -406,30 +416,31 @@
         "testimonials_items_3trnNN",
         "testimonials_items_xDzhkj",
         "testimonials_items_ULXkkt",
-        "testimonials_items_8b7fN7"
+        "testimonials_items_8b7fN7",
+        "testimonials_items_R8fY4A"
       ],
       "settings": {
         "section_width": "fluid_container",
         "color_scheme": "scheme-2b5c6c91-201d-4fb1-aba3-e6d562656976",
-        "heading": "Happy Customers",
-        "description": "<p>Customers love our products and we always strive to please them all.</p>",
+        "heading": "What Our Customers Are Saying",
+        "description": "<p>Real experiences from those who have worn and loved Noribi.</p>",
         "header_alignment": "center",
         "header_size": "medium",
         "design": "default",
         "show_image": true,
         "show_verified_buyer": true,
-        "img_position": "left",
-        "image_ratio": "square",
+        "img_position": "bottom",
+        "image_ratio": "portrait",
         "custom_ratio": "",
         "img_width": 50,
         "framed": true,
         "rate_color": "#ff9c05",
-        "items_per_row": 2,
+        "items_per_row": 3,
         "column_gap": 30,
         "show_arrow": true,
         "carousel_pagination": "show_dots_on_mobile",
-        "infinite": false,
-        "autoplay": false,
+        "infinite": true,
+        "autoplay": true,
         "autorotate_speed": 5,
         "reveal": false,
         "items_per_row_mobile": 1,
