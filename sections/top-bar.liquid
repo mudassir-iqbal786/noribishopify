@@ -36,6 +36,20 @@
       }
     }
     @media (min-width: 1025px) {
+      #topbar .topbar-slider-currency {
+        display: grid;
+        grid-template-columns: 1fr minmax(0, auto) 1fr;
+        align-items: center;
+      }
+      #topbar .topbar-slider-currency .text-slide {
+        grid-column: 2;
+        width: 100%;
+        justify-self: center;
+      }
+      #topbar .topbar-slider-currency .lang__currency-desktop {
+        grid-column: 3;
+        justify-self: end;
+      }
       .topbar-block-3 {
         display: grid;
         grid-template-columns: 1fr auto 1fr;
@@ -56,13 +70,24 @@
   {%- endcapture -%}
   {%- liquid
     assign hidden_block = true
+    assign has_text_slider = false
+    assign has_cur_lang = false
     for block in section.blocks
       assign block_st = block.settings
       if block_st.hidden_on_mobile == false
         assign hidden_block = false
-        break
+      endif
+      if block.type == 'text_slider'
+        assign has_text_slider = true
+      endif
+      if block.type == 'cur_lang'
+        assign has_cur_lang = true
       endif
     endfor
+    assign topbar_slider_currency = false
+    if section.blocks.size == 2 and has_text_slider and has_cur_lang
+      assign topbar_slider_currency = true
+    endif
   -%}
   <div
     id="topbar"
@@ -71,7 +96,7 @@
   >
     <div class="{{ section_width }}">
       <div
-        class="flex flex-wrap flex-md-nowrap gap justify-center justify-between-1025 align-center topbar__section-inner gap-10 gap-lg-25 fs-custom {{ section_st.font_weight }} {% if section.blocks.size > 2 %}topbar-block-3{% endif %} "
+        class="flex flex-wrap flex-md-nowrap gap justify-center justify-between-1025 align-center topbar__section-inner gap-10 gap-lg-25 fs-custom {{ section_st.font_weight }} {% if section.blocks.size > 2 %}topbar-block-3{% endif %}{% if topbar_slider_currency %} topbar-slider-currency{% endif %}"
         style="--font-size: {{ section_st.font_size }};"
       >
         {%- for block in section.blocks -%}
