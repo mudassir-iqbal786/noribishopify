@@ -408,6 +408,8 @@
         "autorotate_speed": 5,
         "reveal": false,
         "items_per_row_mobile": 1,
+        "mobile_rows": "2",
+        "show_image_mobile": true,
         "padding_top": 60,
         "padding_bottom": 80,
         "reset_spacing": false
