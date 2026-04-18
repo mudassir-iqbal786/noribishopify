@@ -9,6 +9,7 @@
   assign column_gap = section_st.column_gap
   assign items_per_row = section_st.items_per_row
   assign items_per_row_mobile = section_st.items_per_row_mobile
+  assign mobile_rows = section_st.mobile_rows | default: 1
   assign heading = section_st.heading
   assign description = section_st.description
   assign header_size = ''
@@ -29,6 +30,7 @@
   assign show_verified_buyer = section_st.show_verified_buyer
   assign image_ratio = section_st.image_ratio
   assign custom_ratio = section_st.custom_ratio
+  assign show_image_mobile = section_st.show_image_mobile
   if section_st.items_per_row_mobile > 1 and section_st.items_per_row_mobile < 2
     assign data_free_scroll = 'true'
   endif
@@ -52,6 +54,17 @@
     align-items: center;
     --product-item__price-top: 5px;
     --col-width: 6rem;
+  }
+  @media (max-width: 767px) {
+    .sec__products-carousel .mobile-image-stack {
+      flex-direction: column;
+    }
+    .sec__products-carousel .mobile-image-stack-reverse {
+      flex-direction: column-reverse;
+    }
+    .sec__products-carousel .testimonials-author-image.mobile-image-visible {
+      width: 100%;
+    }
   }
 {%- endstyle -%}
 {%- capture style_ratio -%}
@@ -132,6 +145,8 @@
       data-autoplay-speed="{{ autorotate_speed }}"
       data-spacing="{{ column_gap }}"
       data-mobile="{{ items_per_row_mobile }}"
+      data-row="1"
+      data-row-mobile="{{ mobile_rows }}"
       data-desktop="{{ items_per_row }}"
       data-tablet="{% if items_per_row > 2 %}{% if img_position == 'left'  and section_st.show_image %}{% if design == 'classic' %}2{% else %}1{% endif %}{% elsif img_position == 'right'  and section_st.show_image %}{% if design == 'classic' %}2{% else %}1{% endif %}{% else %}2{% endif %}{% else %}1{% endif %}"
       data-pagination-progressbar="{% if carousel_pagination == 'show_progress_bar' %}true{% else %}false{% endif %}"
@@ -151,7 +166,7 @@
             class="swiper-slide "
           >
             <div
-              class="testimonial_wraper {{ rounded }} flex {% if design == "classic" %} flex-wrap {% if section_st.framed %} p-30{% endif %}{% endif %}  bg-white{% if section_st.framed %} rounded border{% endif %} overflow-hidden {% if design != "classic" %}{% if img_position == 'right' %} flex-row-reverse{% elsif img_position == 'top' %} flex-column{% elsif img_position == 'bottom' %} flex-column-reverse{% endif %}{% if img_position == 'top' or img_position == 'bottom' %} flex-wrap{% endif %}{% endif %} {{ settings.hover_effect }} {% if scroll_animation != 'none' %} scroll-trigger {{ scroll_animation }}{% endif %}"
+              class="testimonial_wraper {{ rounded }} flex {% if design == "classic" %} flex-wrap {% if section_st.framed %} p-30{% endif %}{% endif %}  bg-white{% if section_st.framed %} rounded border{% endif %} overflow-hidden {% if design != "classic" %}{% if img_position == 'right' %} flex-row-reverse{% elsif img_position == 'top' %} flex-column{% elsif img_position == 'bottom' %} flex-column-reverse{% endif %}{% if img_position == 'top' or img_position == 'bottom' %} flex-wrap{% endif %}{% endif %}{% if show_image_mobile and img_position == 'left' and design != "classic" %} mobile-image-stack{% elsif show_image_mobile and img_position == 'right' and design != "classic" %} mobile-image-stack-reverse{% endif %} {{ settings.hover_effect }} {% if scroll_animation != 'none' %} scroll-trigger {{ scroll_animation }}{% endif %}"
               style="
                 --col-gap: 0px;
                 {%- if scroll_animation != 'none' -%}
@@ -161,12 +176,12 @@
             >
               {% if design == 'classic' %}
                 <div
-                  class="flex gap-30 w-full align-center {% if img_position == 'right' %} flex-row-reverse{% elsif img_position == 'top' %} flex-column{% elsif img_position == 'bottom' %} flex-column-reverse{% endif %}{% if img_position == 'top' or img_position == 'bottom' %} flex-wrap{% endif %}"
+                  class="flex gap-30 w-full align-center {% if img_position == 'right' %} flex-row-reverse{% elsif img_position == 'top' %} flex-column{% elsif img_position == 'bottom' %} flex-column-reverse{% endif %}{% if img_position == 'top' or img_position == 'bottom' %} flex-wrap{% endif %}{% if show_image_mobile and img_position == 'left' %} mobile-image-stack{% elsif show_image_mobile and img_position == 'right' %} mobile-image-stack-reverse{% endif %}"
                 >
               {% endif %}
               {% if section_st.show_image and design == 'default' or design == 'classic' -%}
                 <div
-                  class="testimonials-author-image hover-effect hidden block-md{% if img_position == 'left' or img_position == 'right' %} col-md-w-custom{% else %} w-full{% endif %} {{ rounded }}"
+                  class="testimonials-author-image hover-effect{% unless show_image_mobile %} hidden block-md{% else %} mobile-image-visible{% endunless %}{% if img_position == 'left' or img_position == 'right' %} w-full col-md-w-custom{% else %} w-full{% endif %} {{ rounded }}"
                   style="{{ style_ratio | strip | strip_newlines }}"
                 >
                   {% if local_video != blank %}
@@ -593,6 +608,28 @@
       "max": 2,
       "step": 0.5,
       "default": 1
+    },
+    {
+      "type": "select",
+      "id": "mobile_rows",
+      "label": "Rows on mobile",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 row"
+        },
+        {
+          "value": "2",
+          "label": "2 rows"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image_mobile",
+      "label": "Show image on mobile",
+      "default": true
     },
     {
       "type": "header",

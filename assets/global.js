@@ -468,7 +468,16 @@ class SlideSection extends HTMLElement {
       : 3000;
     var speed = _this?.dataset.speed ? _this?.dataset.speed : 400;
     const effect = _this?.dataset.effect ? _this?.dataset.effect : "slide";
-    const row = _this?.dataset.row ? _this?.dataset.row : 1;
+    const row = _this?.dataset.row ? Number(_this?.dataset.row) : 1;
+    const rowMobile = _this?.dataset.rowMobile
+      ? Number(_this?.dataset.rowMobile)
+      : row;
+    const rowTablet = _this?.dataset.rowTablet
+      ? Number(_this?.dataset.rowTablet)
+      : row;
+    const rowDesktop = _this?.dataset.rowDesktop
+      ? Number(_this?.dataset.rowDesktop)
+      : row;
     var spacing = _this?.dataset.spacing ? _this?.dataset.spacing : 30;
     const progressbar = _this?.dataset.paginationProgressbar === "true";
     const autoItem = _this?.dataset.itemMobile === "true";
@@ -516,7 +525,7 @@ class SlideSection extends HTMLElement {
       watchSlidesProgress: true,
       watchSlidesVisibility: true,
       grid: {
-        rows: row,
+        rows: rowMobile,
         fill: "row",
       },
       navigation: {
@@ -532,10 +541,18 @@ class SlideSection extends HTMLElement {
         768: {
           slidesPerView: itemTablet,
           spaceBetween: spacing >= 30 ? 30 : spacing,
+          grid: {
+            rows: rowTablet,
+            fill: "row",
+          },
         },
         1025: {
           slidesPerView: itemDesktop,
           spaceBetween: spacing,
+          grid: {
+            rows: rowDesktop,
+            fill: "row",
+          },
         },
       },
       thumbs: {
@@ -934,7 +951,16 @@ class SlideLazyLoad {
       : 3000;
     var speed = _this?.dataset.speed ? _this?.dataset.speed : 400;
     const effect = _this?.dataset.effect ? _this?.dataset.effect : "slide";
-    const row = _this?.dataset.row ? _this?.dataset.row : 1;
+    const row = _this?.dataset.row ? Number(_this?.dataset.row) : 1;
+    const rowMobile = _this?.dataset.rowMobile
+      ? Number(_this?.dataset.rowMobile)
+      : row;
+    const rowTablet = _this?.dataset.rowTablet
+      ? Number(_this?.dataset.rowTablet)
+      : row;
+    const rowDesktop = _this?.dataset.rowDesktop
+      ? Number(_this?.dataset.rowDesktop)
+      : row;
     var spacing = _this?.dataset.spacing ? _this?.dataset.spacing : 30;
     const progressbar = _this?.dataset.paginationProgressbar === "true";
     const autoItem = _this?.dataset.itemMobile === "true";
@@ -970,7 +996,7 @@ class SlideLazyLoad {
       watchSlidesProgress: true,
       watchSlidesVisibility: true,
       grid: {
-        rows: row,
+        rows: rowMobile,
         fill: "row",
       },
       navigation: {
@@ -986,10 +1012,18 @@ class SlideLazyLoad {
         768: {
           slidesPerView: itemTablet,
           spaceBetween: spacing >= 30 ? 30 : spacing,
+          grid: {
+            rows: rowTablet,
+            fill: "row",
+          },
         },
         1025: {
           slidesPerView: itemDesktop,
           spaceBetween: spacing,
+          grid: {
+            rows: rowDesktop,
+            fill: "row",
+          },
         },
       },
       thumbs: {
