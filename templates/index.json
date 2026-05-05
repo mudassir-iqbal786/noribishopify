@@ -58,6 +58,7 @@
           "type": "collection",
           "settings": {
             "collection": "fairy-dresses",
+            "collection_image": "shopify://shop_images/tb_image_share_1778023062689.png",
             "collection_title": ""
           }
         },
@@ -65,6 +66,7 @@
           "type": "collection",
           "settings": {
             "collection": "cosplay-dresses",
+            "collection_image": "shopify://shop_images/tb_image_share_1778022757773.png",
             "collection_title": ""
           }
         },
