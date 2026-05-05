@@ -58,11 +58,19 @@
           "type": "collection",
           "settings": {
             "collection": "fairy-dresses",
-            "collection_image": "shopify://shop_images/tb_image_share_1778023062689.png",
+            "collection_image": "shopify://shop_images/file_000000004890720896e0ffac8235e28a.png",
             "collection_title": ""
           }
         },
         "collection_r7aTxN": {
+          "type": "collection",
+          "settings": {
+            "collection": "fairy-wings",
+            "collection_image": "shopify://shop_images/file_00000000c70872088cd2d2f713b7f0d5.png",
+            "collection_title": ""
+          }
+        },
+        "collection_FUAzK4": {
           "type": "collection",
           "settings": {
             "collection": "cosplay-dresses",
@@ -70,24 +78,11 @@
             "collection_title": ""
           }
         },
-        "collection_fyfMEN": {
-          "type": "collection",
-          "settings": {
-            "collection": "summer-dresses",
-            "collection_title": ""
-          }
-        },
-        "collection_FUAzK4": {
-          "type": "collection",
-          "settings": {
-            "collection": "fairy-wings",
-            "collection_title": ""
-          }
-        },
         "collection_fh6aCV": {
           "type": "collection",
           "settings": {
             "collection": "cosplay-shoes",
+            "collection_image": "shopify://shop_images/file_0000000064e872088210d765c7adc5a1.png",
             "collection_title": ""
           }
         }
@@ -96,7 +91,6 @@
         "collection_kUA3MH",
         "collection_ctTBpd",
         "collection_r7aTxN",
-        "collection_fyfMEN",
         "collection_FUAzK4",
         "collection_fh6aCV"
       ],
