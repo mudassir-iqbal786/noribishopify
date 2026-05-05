@@ -49,35 +49,42 @@
         "collection_kUA3MH": {
           "type": "collection",
           "settings": {
-            "collection": "demin",
+            "collection": "bridal-dresses",
             "collection_title": ""
           }
         },
         "collection_ctTBpd": {
           "type": "collection",
           "settings": {
-            "collection": "blazers",
+            "collection": "fairy-dresses",
             "collection_title": ""
           }
         },
         "collection_r7aTxN": {
           "type": "collection",
           "settings": {
-            "collection": "crop-top",
+            "collection": "cosplay-dresses",
             "collection_title": ""
           }
         },
         "collection_fyfMEN": {
           "type": "collection",
           "settings": {
-            "collection": "sweaters",
+            "collection": "summer-dresses",
             "collection_title": ""
           }
         },
         "collection_FUAzK4": {
           "type": "collection",
           "settings": {
-            "collection": "t-shirts",
+            "collection": "fairy-wings",
+            "collection_title": ""
+          }
+        },
+        "collection_fh6aCV": {
+          "type": "collection",
+          "settings": {
+            "collection": "cosplay-shoes",
             "collection_title": ""
           }
         }
@@ -87,7 +94,8 @@
         "collection_ctTBpd",
         "collection_r7aTxN",
         "collection_fyfMEN",
-        "collection_FUAzK4"
+        "collection_FUAzK4",
+        "collection_fh6aCV"
       ],
       "settings": {
         "section_width": "fluid_container",
@@ -186,112 +194,6 @@
     },
     "multi_content_R7AW7W": {
       "type": "multi-content",
-      "blocks": {
-        "image_with_text_below_LrDA6n": {
-          "type": "image_with_text_below",
-          "settings": {
-            "color_scheme": "scheme-1",
-            "content_width": "33.3333%",
-            "vertical_align": "start",
-            "image_behavior": "none",
-            "image_link": "",
-            "subheading": "DAYTIME STAPLES",
-            "heading": "Cool & Confident",
-            "description": "<p>Crisp whites and sharp shades for your everyday power look.</p>",
-            "first_button_label": "Shop Collection",
-            "first_button_link": "shopify://collections/crop-top",
-            "first_button_type": "link",
-            "second_button_label": "",
-            "second_button_link": "",
-            "second_button_type": "primary",
-            "content_alignment": "center",
-            "spacing_top": 25,
-            "spacing_bottom": 0,
-            "content_padding_inline": 0,
-            "subheading_font_size": 12,
-            "subheading_font_weight": "subheading_weight",
-            "subheading_spacing_bottom": 5,
-            "heading_font_size": 28,
-            "heading_font_weight": "heading_weight",
-            "heading_uppercase": false,
-            "heading_spacing_bottom": 10,
-            "des_font_size": 15,
-            "des_font_weight": "body_weight",
-            "des_spacing_bottom": 20
-          }
-        },
-        "image_with_text_below_iLfgMn": {
-          "type": "image_with_text_below",
-          "settings": {
-            "color_scheme": "scheme-1",
-            "content_width": "33.3333%",
-            "vertical_align": "start",
-            "image_behavior": "none",
-            "image_link": "",
-            "subheading": "BOLD ESSENTIALS",
-            "heading": "Golden Layers",
-            "description": "<p>Soft knits in rich tones—effortlessly stylish, endlessly wearable.</p>",
-            "first_button_label": "Shop Collection",
-            "first_button_link": "shopify://collections/sweaters",
-            "first_button_type": "link",
-            "second_button_label": "",
-            "second_button_link": "",
-            "second_button_type": "primary",
-            "content_alignment": "center",
-            "spacing_top": 25,
-            "spacing_bottom": 0,
-            "content_padding_inline": 0,
-            "subheading_font_size": 12,
-            "subheading_font_weight": "subheading_weight",
-            "subheading_spacing_bottom": 5,
-            "heading_font_size": 28,
-            "heading_font_weight": "heading_weight",
-            "heading_uppercase": false,
-            "heading_spacing_bottom": 10,
-            "des_font_size": 15,
-            "des_font_weight": "body_weight",
-            "des_spacing_bottom": 20
-          }
-        },
-        "image_with_text_below_3gXGVV": {
-          "type": "image_with_text_below",
-          "settings": {
-            "color_scheme": "default",
-            "content_width": "33.3333%",
-            "vertical_align": "start",
-            "image_behavior": "none",
-            "image_link": "",
-            "subheading": "SAVE 10—30% ON STATEMENT PIECES",
-            "heading": "Modern Ease Unfolded",
-            "description": "<p>Effortless looks for every moment—from poolside to city strolls.</p>",
-            "first_button_label": "Shop Collection",
-            "first_button_link": "shopify://collections/blazers",
-            "first_button_type": "link",
-            "second_button_label": "",
-            "second_button_link": "",
-            "second_button_type": "primary",
-            "content_alignment": "center",
-            "spacing_top": 25,
-            "spacing_bottom": 0,
-            "content_padding_inline": 0,
-            "subheading_font_size": 12,
-            "subheading_font_weight": "subheading_weight",
-            "subheading_spacing_bottom": 5,
-            "heading_font_size": 28,
-            "heading_font_weight": "heading_weight",
-            "heading_uppercase": false,
-            "heading_spacing_bottom": 10,
-            "des_font_size": 15,
-            "des_font_weight": "body_weight",
-            "des_spacing_bottom": 20
-          }
-        }
-      },
-      "block_order": [
-        "image_with_text_below_LrDA6n",
-        "image_with_text_below_iLfgMn",
-        "image_with_text_below_3gXGVV"
-      ],
       "settings": {
         "section_width": "fluid_container",
         "heading": "",
