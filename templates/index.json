@@ -50,6 +50,7 @@
           "type": "collection",
           "settings": {
             "collection": "bridal-dresses",
+            "collection_image": "shopify://shop_images/file_00000000b614720886d2022d96eaa5d0.png",
             "collection_title": ""
           }
         },
@@ -106,7 +107,7 @@
         "header_size": "medium",
         "header_alignment": "center",
         "display_mode": "carousel",
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "custom_ratio": "2:3",
         "items_per_row": 5,
         "column_gap": 30,
@@ -120,7 +121,7 @@
         "information_spacing": 12,
         "rounded_image": false,
         "image_custom_width": false,
-        "image_width": 185,
+        "image_width": 250,
         "show_arrow": true,
         "carousel_pagination": "disable",
         "infinite": false,
