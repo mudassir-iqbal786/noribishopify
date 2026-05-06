@@ -140,16 +140,8 @@
         "label_color_sale": "#ffffff",
         "label_background_sale": "#d0473e",
         "redirect_to_link": false,
-        "menu_tab": "custom-collections",
-        "collection_list": [
-          "hot-deals",
-          "best-selling",
-          "crop-top",
-          "dress",
-          "blazers",
-          "t-shirts",
-          "sweaters"
-        ],
+        "menu_tab": "unset",
+        "collection_list": [],
         "menu_mobile_color": "#ffffff",
         "menu_mobile_background": "#000000",
         "show_search": true,
