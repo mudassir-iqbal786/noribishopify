@@ -96,6 +96,8 @@
     "show_on_cart_page": true,
     "product_recommendations_type": "auto",
     "select_product_recommendations": [],
+    "show_estimate_shipping_rates": false,
+    "show_delivery_day": false,
     "facebook": "https://facebook.com/shopify",
     "instagram": "https://nstagram.com/shopify",
     "twitter": "",
@@ -342,12 +344,7 @@
         "settings": {
           "show_fake_order": false,
           "disable_mobile": false,
-          "fake_product": [
-            "anime-t-shirt-printed-short-sleeve",
-            "balloon-sleeve-blouse-square-neck",
-            "basic-bright-green-rib-extreme-crop",
-            "braid-detailed-sleeveless-flow-top"
-          ],
+          "fake_product": [],
           "fake_user": "Jonson (California) | Tony (Texas) | Bruno (New York) | Eren (Ohio) | Lauren (Washington) | Flortino (California) | Blue (Ohio)",
           "text_verify": "Verify",
           "delay_time": "5000",
