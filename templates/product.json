@@ -52,17 +52,9 @@
           "type": "variant_picker",
           "settings": {
             "variant_type": "dropdown",
-            "show_size_guide": true,
+            "show_size_guide": false,
             "size_guide_label": "Size guide",
             "size_guide_page": "size-guide"
-          }
-        },
-        "product_addons_YRaprz": {
-          "type": "product_addons",
-          "settings": {
-            "show_compare_color": true,
-            "show_ask_question": true,
-            "show_share": true
           }
         },
         "stock_countdown_JNK9zi": {
@@ -75,10 +67,10 @@
         "buy_buttons_LcQGtR": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": false,
+            "show_dynamic_checkout": true,
             "show_gift_card_recipient": true,
             "show_wishlist": true,
-            "show_compare": true
+            "show_compare": false
           }
         },
         "model_size_XM7z6E": {
@@ -107,24 +99,6 @@
           "settings": {
             "heading": "",
             "content": ""
-          }
-        },
-        "product_meta_kiKPhW": {
-          "type": "product_meta",
-          "settings": {
-            "show_barcode": false,
-            "show_sku": true,
-            "show_available": true,
-            "show_tags": true,
-            "show_type": false,
-            "show_collections": false
-          }
-        },
-        "trust_badge_qKXhpg": {
-          "type": "trust_badge",
-          "settings": {
-            "message": "Guarantee Safe Checkout:",
-            "image_width": 340
           }
         },
         "delivery_return_iJHeMD": {
@@ -185,7 +159,6 @@
         "short_description_9BGxVm",
         "countdown_timer_QB4Ydn",
         "variant_picker_tcCihG",
-        "product_addons_YRaprz",
         "stock_countdown_JNK9zi",
         "buy_buttons_LcQGtR",
         "model_size_XM7z6E",
@@ -193,8 +166,6 @@
         "product_grouped_6epkNf",
         "more_colors_3zmxGq",
         "text_CzxwUn",
-        "product_meta_kiKPhW",
-        "trust_badge_qKXhpg",
         "delivery_return_iJHeMD",
         "collapsible_row_m3g6f8",
         "collapsible_row_eLaQpR",
@@ -203,7 +174,7 @@
       ],
       "settings": {
         "section_width": "fluid_container",
-        "color_scheme": "",
+        "color_scheme": "default",
         "enable_sticky_content_on_desktop": true,
         "enable_skeleton_loading": true,
         "desktop_media_width": 55,
