@@ -85,35 +85,17 @@
           "type": "categories",
           "settings": {
             "title": "Products Category",
-            "menu": "collection-top"
+            "menu": ""
           }
         },
         "filter_giBtHK": {
           "type": "filter",
           "settings": {}
-        },
-        "popular_product_Xwjqcf": {
-          "type": "popular_product",
-          "settings": {
-            "title": "Featured product",
-            "collection": "t-shirts",
-            "items_to_show": 3
-          }
-        },
-        "image_banner_UUJxtT": {
-          "type": "image_banner",
-          "settings": {
-            "image": "shopify://shop_images/fs_category.jpg",
-            "url": "shopify://collections",
-            "open_link": true
-          }
         }
       },
       "block_order": [
         "categories_LYDr6p",
-        "filter_giBtHK",
-        "popular_product_Xwjqcf",
-        "image_banner_UUJxtT"
+        "filter_giBtHK"
       ],
       "settings": {
         "section_width": "fluid_container",
@@ -124,13 +106,13 @@
         "vertical_posion": "left",
         "number_products_per_page": true,
         "sorting": true,
-        "grid_list": true,
-        "items_to_show": 12,
+        "grid_list": false,
+        "items_to_show": 24,
         "items_per_row": 3,
-        "column_gap": 30,
+        "column_gap": 15,
         "pagination": "default",
         "button_show_more": "Load more",
-        "promotion_link": "shopify://collections/best-seller",
+        "promotion_link": "",
         "promotion_postion": 6,
         "items_per_row_mobile": "2",
         "padding_top": 0,
