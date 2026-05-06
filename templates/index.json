@@ -77,22 +77,13 @@
             "collection_image": "shopify://shop_images/tb_image_share_1778022757773.png",
             "collection_title": ""
           }
-        },
-        "collection_fh6aCV": {
-          "type": "collection",
-          "settings": {
-            "collection": "cosplay-shoes",
-            "collection_image": "shopify://shop_images/file_0000000064e872088210d765c7adc5a1.png",
-            "collection_title": ""
-          }
         }
       },
       "block_order": [
         "collection_kUA3MH",
         "collection_ctTBpd",
         "collection_r7aTxN",
-        "collection_FUAzK4",
-        "collection_fh6aCV"
+        "collection_FUAzK4"
       ],
       "settings": {
         "section_width": "fluid_container",
@@ -102,17 +93,17 @@
         "show_view_all_button": false,
         "header_size": "small",
         "header_alignment": "center",
-        "display_mode": "scroll",
+        "display_mode": "grid",
         "image_ratio": "portrait",
         "custom_ratio": "2:3",
         "items_per_row": 5,
-        "column_gap": 30,
+        "column_gap": 50,
         "collection_information_position": "below_image",
         "design": "morden",
         "text_alignment": "center",
         "show_product_count": false,
         "show_description": false,
-        "font_size": 18,
+        "font_size": 20,
         "font_weight": "heading_weight",
         "information_spacing": 12,
         "rounded_image": false,
@@ -158,10 +149,10 @@
       "settings": {
         "section_width": "fluid_container",
         "color_scheme": "default",
-        "heading": "Most Loved",
-        "description": "Customer favorites known for their design, quality, and effortless wear.",
+        "heading": "Signature Fairy Dresses",
+        "description": "Ethereal fairy inspired dresses designed with flowing silhouettes, premium craftsmanship, and magical charm.",
         "show_view_all_button": false,
-        "header_size": "medium",
+        "header_size": "small",
         "header_alignment": "center",
         "collection": "fairy-dresses",
         "items_to_show": 6,
