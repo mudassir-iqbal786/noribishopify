@@ -106,11 +106,11 @@
           "settings": {
             "delivery_design": "vertical",
             "delivery_content_icon": "truck",
-            "delivery_content": "<p>Estimate delivery times:<strong> 3-5 days International.</strong></p>",
-            "discount_content_icon": "discount",
-            "discount_content": "<p>Use code \"<strong>WELCOME15</strong>\" for discount 15% on your first order.</p>",
-            "return_content_icon": "free_shipping",
-            "return_content": "<p>Free shipping & returns: <strong>On all orders over $150.</strong></p>"
+            "delivery_content": "<p>Free shipping on all orders. Estimated delivery within 5-8 business days. Please review our <a href=\"/policies/shipping-policy\" title=\"Shipping Policy\">Shipping Policy</a> for complete details.</p>",
+            "discount_content_icon": "none",
+            "discount_content": "",
+            "return_content_icon": "check_badge",
+            "return_content": "<p>Returns accepted within 30 days. Please review our <a href=\"/policies/refund-policy\" title=\"Refund Policy\">Return Policy</a> for complete details.</p>"
           }
         },
         "collapsible_row_m3g6f8": {
@@ -188,7 +188,7 @@
         "mobile_options": "hidden_thumbnail",
         "padding_top": 0,
         "padding_bottom": 40,
-        "reset_spacing": false
+        "reset_spacing": true
       }
     },
     "product-set": {

@@ -150,7 +150,7 @@
         "show_shopping_cart": true,
         "show_currency": false,
         "show_language": false,
-        "show_recently_viewed": false,
+        "show_recently_viewed": true,
         "padding_top": 10,
         "padding_bottom": 10
       }
