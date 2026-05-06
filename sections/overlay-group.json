@@ -16,7 +16,7 @@
       "settings": {
         "eb_mobile_navbar": true,
         "show_homepage": true,
-        "show_shop": true,
+        "show_shop": false,
         "show_account": true,
         "show_cart": true,
         "show_wishlist": true
