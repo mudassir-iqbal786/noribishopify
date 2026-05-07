@@ -37,8 +37,8 @@
         "link_list_x4zwRH": {
           "type": "link_list",
           "settings": {
-            "heading": "",
-            "menu": "",
+            "heading": "Collections",
+            "menu": "main-menu",
             "content_width": "16%"
           }
         },
