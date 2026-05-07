@@ -15,6 +15,10 @@
     assign wishlist = pages.wishlist
     assign compare = pages.compare
     assign action_when_click_added_wishlist = theme_st.action_when_click_added_wishlist
+    assign show_payment_methods = true
+    if block != blank and block.settings.show_payment_methods == false
+      assign show_payment_methods = false
+    endif
   -%}
   {% if settings.enable_catalog_mode == false %}
     <div class="product__submit-form buy-btn-js d-flex flex-wrap btn-large">
@@ -224,6 +228,41 @@
               <div class="btn-checkout-dynamic w-full  {% if settings.show_check_box_in_quick_view and type == 'quickview' %} disabled {% elsif  settings.show_checkbox_in_product_page  and type == 'single' or type == 'main_product' %}    disabled{% endif %}">
                 {{ form | payment_button }}
               </div>
+            {%- endif -%}
+            {%- if show_payment_methods and type != 'quickview' and type != 'sticky' -%}
+              {%- assign payment_heading = block.settings.payment_heading | default: 'Payment support' -%}
+              {%- assign payment_image = block.settings.payment_image -%}
+              {%- assign payment_width = block.settings.payment_width | default: 335 -%}
+              {%- if payment_image != blank or shop.enabled_payment_types != empty -%}
+                <div class="product-payment-methods w-full">
+                  {%- if payment_heading != blank -%}
+                    <p class="product-payment-methods__heading heading-color mb-10 mt-12">
+                      {{ payment_heading }}
+                    </p>
+                  {%- endif -%}
+                  <div class="product-payment-methods__content max-w-100" style="--payment-width: {{ payment_width }}px;">
+                    {%- if payment_image != blank -%}
+                      {%- assign sizes = payment_width | append: 'px' -%}
+                      {%- assign image_alt = payment_image.alt | default: 'payment' -%}
+                      {% render 'responsive-image',
+                        type: 'other',
+                        image: payment_image,
+                        image_alt: image_alt,
+                        sizes: sizes,
+                        no_animate: true
+                      %}
+                    {%- else -%}
+                      <ul class="list-unstyled flex flex-wrap gap-5">
+                        {%- for type in shop.enabled_payment_types -%}
+                          <li class="lh-normal inline-flex align-center">
+                            {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endif -%}
             {%- endif -%}
           </div>
         {%- endform -%}

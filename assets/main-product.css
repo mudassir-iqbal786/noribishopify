@@ -337,6 +337,17 @@ body .pswp__counter {
 .trust-badge {
   margin-bottom: 3.6rem;
 }
+.product-payment-methods__heading {
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+.product-payment-methods__content {
+  width: min(100%, var(--payment-width));
+}
+.product-payment-methods__content .icon {
+  width: auto;
+  height: 2.2rem;
+}
 .product_description :is(p, ul) {
   margin-block-start: 1rem;
   margin-block-end: 1rem;
