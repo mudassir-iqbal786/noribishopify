@@ -49,35 +49,32 @@
         "collection_kUA3MH": {
           "type": "collection",
           "settings": {
-            "collection": "demin",
+            "collection": "bridal-dresses",
+            "collection_image": "shopify://shop_images/file_00000000b614720886d2022d96eaa5d0.png",
             "collection_title": ""
           }
         },
         "collection_ctTBpd": {
           "type": "collection",
           "settings": {
-            "collection": "blazers",
+            "collection": "fairy-dresses",
+            "collection_image": "shopify://shop_images/file_000000004890720896e0ffac8235e28a.png",
             "collection_title": ""
           }
         },
         "collection_r7aTxN": {
           "type": "collection",
           "settings": {
-            "collection": "crop-top",
-            "collection_title": ""
-          }
-        },
-        "collection_fyfMEN": {
-          "type": "collection",
-          "settings": {
-            "collection": "sweaters",
+            "collection": "fairy-wings",
+            "collection_image": "shopify://shop_images/file_00000000c70872088cd2d2f713b7f0d5.png",
             "collection_title": ""
           }
         },
         "collection_FUAzK4": {
           "type": "collection",
           "settings": {
-            "collection": "t-shirts",
+            "collection": "cosplay-dresses",
+            "collection_image": "shopify://shop_images/tb_image_share_1778022757773.png",
             "collection_title": ""
           }
         }
@@ -86,33 +83,32 @@
         "collection_kUA3MH",
         "collection_ctTBpd",
         "collection_r7aTxN",
-        "collection_fyfMEN",
         "collection_FUAzK4"
       ],
       "settings": {
         "section_width": "fluid_container",
         "color_scheme": "default",
-        "heading": "Shop By Category",
-        "description": "<p>Express your style with our standout collection—fashion meets sophistication.</p>",
+        "heading": "Discover Noribi Collections",
+        "description": "<p>Explore handcrafted fairy dresses, bridal elegance, cosplay creations, and signature accessories designed to bring fantasy, beauty, and timeless style to every moment.</p>",
         "show_view_all_button": false,
-        "header_size": "medium",
+        "header_size": "small",
         "header_alignment": "center",
-        "display_mode": "carousel",
-        "image_ratio": "square",
+        "display_mode": "grid",
+        "image_ratio": "portrait",
         "custom_ratio": "2:3",
-        "items_per_row": 5,
-        "column_gap": 30,
+        "items_per_row": 4,
+        "column_gap": 50,
         "collection_information_position": "below_image",
         "design": "morden",
         "text_alignment": "center",
         "show_product_count": false,
         "show_description": false,
-        "font_size": 18,
+        "font_size": 20,
         "font_weight": "heading_weight",
         "information_spacing": 12,
         "rounded_image": false,
         "image_custom_width": false,
-        "image_width": 185,
+        "image_width": 250,
         "show_arrow": true,
         "carousel_pagination": "disable",
         "infinite": false,
@@ -153,12 +149,12 @@
       "settings": {
         "section_width": "fluid_container",
         "color_scheme": "default",
-        "heading": "Most Loved",
-        "description": "Customer favorites known for their design, quality, and effortless wear.",
+        "heading": "Signature Fairy Dresses",
+        "description": "Ethereal fairy inspired dresses designed with flowing silhouettes, premium craftsmanship, and magical charm.",
         "show_view_all_button": false,
-        "header_size": "medium",
+        "header_size": "small",
         "header_alignment": "center",
-        "collection": "t-shirts",
+        "collection": "fairy-dresses",
         "items_to_show": 6,
         "items_per_row": 4,
         "column_gap": 30,
@@ -184,114 +180,119 @@
         "reset_spacing": false
       }
     },
+    "products_carousel_jG9HBF": {
+      "type": "products-carousel",
+      "name": "t:sections.products-carousel.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "Fantasy Cosplay Collection",
+        "description": "Iconic cosplay designs created for conventions, performances, photoshoots, and unforgettable moments.",
+        "show_view_all_button": false,
+        "header_size": "small",
+        "header_alignment": "center",
+        "collection": "cosplay-dresses",
+        "items_to_show": 8,
+        "items_per_row": 4,
+        "column_gap": 30,
+        "equal_height_adjustment": false,
+        "show_banner": false,
+        "title_inside": false,
+        "sticky_banner": false,
+        "banner_width": 30,
+        "position": "left",
+        "banner_link": "",
+        "banner_type": "image",
+        "video_url": "",
+        "video_autoplay": true,
+        "show_arrow": false,
+        "carousel_pagination": "disable",
+        "infinite": false,
+        "autoplay": false,
+        "autorotate_speed": 5,
+        "reveal": false,
+        "items_per_row_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    },
+    "products_carousel_xm3VQJ": {
+      "type": "products-carousel",
+      "name": "t:sections.products-carousel.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "Bridal Elegance",
+        "description": "Timeless bridal gowns crafted with luxurious fabrics, delicate details, and unforgettable beauty.",
+        "show_view_all_button": false,
+        "header_size": "small",
+        "header_alignment": "center",
+        "collection": "bridal-dresses",
+        "items_to_show": 8,
+        "items_per_row": 4,
+        "column_gap": 30,
+        "equal_height_adjustment": false,
+        "show_banner": false,
+        "title_inside": false,
+        "sticky_banner": false,
+        "banner_width": 30,
+        "position": "left",
+        "banner_link": "",
+        "banner_type": "image",
+        "video_url": "",
+        "video_autoplay": true,
+        "show_arrow": false,
+        "carousel_pagination": "disable",
+        "infinite": false,
+        "autoplay": false,
+        "autorotate_speed": 5,
+        "reveal": false,
+        "items_per_row_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    },
+    "products_carousel_Gk7zxj": {
+      "type": "products-carousel",
+      "name": "t:sections.products-carousel.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "Enchanting Fairy Wings",
+        "description": "Handcrafted statement wings designed to bring fantasy, elegance, and magical detail to every look.",
+        "show_view_all_button": false,
+        "header_size": "small",
+        "header_alignment": "center",
+        "collection": "fairy-wings",
+        "items_to_show": 8,
+        "items_per_row": 4,
+        "column_gap": 30,
+        "equal_height_adjustment": false,
+        "show_banner": false,
+        "title_inside": false,
+        "sticky_banner": false,
+        "banner_width": 30,
+        "position": "left",
+        "banner_link": "",
+        "banner_type": "image",
+        "video_url": "",
+        "video_autoplay": true,
+        "show_arrow": false,
+        "carousel_pagination": "disable",
+        "infinite": false,
+        "autoplay": false,
+        "autorotate_speed": 5,
+        "reveal": false,
+        "items_per_row_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    },
     "multi_content_R7AW7W": {
       "type": "multi-content",
-      "blocks": {
-        "image_with_text_below_LrDA6n": {
-          "type": "image_with_text_below",
-          "settings": {
-            "color_scheme": "scheme-1",
-            "content_width": "33.3333%",
-            "vertical_align": "start",
-            "image_behavior": "none",
-            "image_link": "",
-            "subheading": "DAYTIME STAPLES",
-            "heading": "Cool & Confident",
-            "description": "<p>Crisp whites and sharp shades for your everyday power look.</p>",
-            "first_button_label": "Shop Collection",
-            "first_button_link": "shopify://collections/crop-top",
-            "first_button_type": "link",
-            "second_button_label": "",
-            "second_button_link": "",
-            "second_button_type": "primary",
-            "content_alignment": "center",
-            "spacing_top": 25,
-            "spacing_bottom": 0,
-            "content_padding_inline": 0,
-            "subheading_font_size": 12,
-            "subheading_font_weight": "subheading_weight",
-            "subheading_spacing_bottom": 5,
-            "heading_font_size": 28,
-            "heading_font_weight": "heading_weight",
-            "heading_uppercase": false,
-            "heading_spacing_bottom": 10,
-            "des_font_size": 15,
-            "des_font_weight": "body_weight",
-            "des_spacing_bottom": 20
-          }
-        },
-        "image_with_text_below_iLfgMn": {
-          "type": "image_with_text_below",
-          "settings": {
-            "color_scheme": "scheme-1",
-            "content_width": "33.3333%",
-            "vertical_align": "start",
-            "image_behavior": "none",
-            "image_link": "",
-            "subheading": "BOLD ESSENTIALS",
-            "heading": "Golden Layers",
-            "description": "<p>Soft knits in rich tones—effortlessly stylish, endlessly wearable.</p>",
-            "first_button_label": "Shop Collection",
-            "first_button_link": "shopify://collections/sweaters",
-            "first_button_type": "link",
-            "second_button_label": "",
-            "second_button_link": "",
-            "second_button_type": "primary",
-            "content_alignment": "center",
-            "spacing_top": 25,
-            "spacing_bottom": 0,
-            "content_padding_inline": 0,
-            "subheading_font_size": 12,
-            "subheading_font_weight": "subheading_weight",
-            "subheading_spacing_bottom": 5,
-            "heading_font_size": 28,
-            "heading_font_weight": "heading_weight",
-            "heading_uppercase": false,
-            "heading_spacing_bottom": 10,
-            "des_font_size": 15,
-            "des_font_weight": "body_weight",
-            "des_spacing_bottom": 20
-          }
-        },
-        "image_with_text_below_3gXGVV": {
-          "type": "image_with_text_below",
-          "settings": {
-            "color_scheme": "default",
-            "content_width": "33.3333%",
-            "vertical_align": "start",
-            "image_behavior": "none",
-            "image_link": "",
-            "subheading": "SAVE 10—30% ON STATEMENT PIECES",
-            "heading": "Modern Ease Unfolded",
-            "description": "<p>Effortless looks for every moment—from poolside to city strolls.</p>",
-            "first_button_label": "Shop Collection",
-            "first_button_link": "shopify://collections/blazers",
-            "first_button_type": "link",
-            "second_button_label": "",
-            "second_button_link": "",
-            "second_button_type": "primary",
-            "content_alignment": "center",
-            "spacing_top": 25,
-            "spacing_bottom": 0,
-            "content_padding_inline": 0,
-            "subheading_font_size": 12,
-            "subheading_font_weight": "subheading_weight",
-            "subheading_spacing_bottom": 5,
-            "heading_font_size": 28,
-            "heading_font_weight": "heading_weight",
-            "heading_uppercase": false,
-            "heading_spacing_bottom": 10,
-            "des_font_size": 15,
-            "des_font_weight": "body_weight",
-            "des_spacing_bottom": 20
-          }
-        }
-      },
-      "block_order": [
-        "image_with_text_below_LrDA6n",
-        "image_with_text_below_iLfgMn",
-        "image_with_text_below_3gXGVV"
-      ],
       "settings": {
         "section_width": "fluid_container",
         "heading": "",
@@ -320,7 +321,7 @@
             "local_video": "shopify://files/videos/20250903_e6c606e691103397_532749468686_323285804175414_published_mp4_264_hd_taobao.mp4",
             "author_rating": 5,
             "author_text": "<p><strong>Absolutely stunning pieces I’m genuinely so excited to wear these to an upcoming wedding with a garden fairy theme they fit the vibe perfectly. The design is elegant yet playful, and the quality feels amazing. The details are even more beautiful in person, and the fit is very flattering. I know I’m going to get so many compliments. Can’t wait to style them and wear them out</strong></p>",
-            "select_product": "green-fairy-dress-with-wings-woodland-pixie-costume-tinker-style",
+            "select_product": "green-fairy-dress-with-wings",
             "author_name": "Candice"
           }
         },
@@ -398,7 +399,7 @@
         "custom_ratio": "",
         "img_width": 50,
         "framed": true,
-        "rate_color": "#ff9c05",
+        "rate_color": "#ffca00",
         "items_per_row": 3,
         "column_gap": 30,
         "show_arrow": true,
@@ -408,6 +409,8 @@
         "autorotate_speed": 5,
         "reveal": false,
         "items_per_row_mobile": 1,
+        "mobile_rows": "1",
+        "show_image_mobile": true,
         "padding_top": 60,
         "padding_bottom": 80,
         "reset_spacing": false
@@ -422,7 +425,7 @@
             "icon_svg": "free_shipping",
             "custom_svg": "",
             "heading": "Free Shipping",
-            "description": "<p>Free shipping across the US & Canada. Delivered in 3-4 business days (US) and 5-8 business days (Canada).</p>"
+            "description": "<p>Complimentary shipping on all orders. Estimated delivery within 5-8 business days.</p>"
           }
         },
         "icon_box_dw6wxP": {
@@ -431,7 +434,7 @@
             "icon_svg": "check_badge",
             "custom_svg": "",
             "heading": "Easy Returns",
-            "description": "<p>30 day return window on all eligible items. Simple and hassle free process.</p>"
+            "description": "<p>30 days <a href=\"/policies/refund-policy\" title=\"Refund Policy\">return policy</a> on eligible items. Please review our Return Policy for full details.</p>"
           }
         },
         "icon_box_qRE6wr": {
@@ -440,7 +443,7 @@
             "icon_svg": "message_communications",
             "custom_svg": "",
             "heading": "Customer Support",
-            "description": "<p>Here to assist you anytime</p>"
+            "description": "<p>Live chat support available. Our team is here to assist you every step of the way.</p>"
           }
         }
       },
@@ -468,7 +471,7 @@
         "show_content_background": false,
         "content_background": "#ffffff",
         "carousel_on_mobile": true,
-        "items_per_row_mobile": "1",
+        "items_per_row_mobile": "2",
         "padding_top": 60,
         "padding_bottom": 60,
         "reset_spacing": false
@@ -489,6 +492,10 @@
     "1775484846891f51cf": {
       "type": "_blocks",
       "settings": {}
+    },
+    "17781029425100f937": {
+      "type": "_blocks",
+      "settings": {}
     }
   },
   "order": [
@@ -496,12 +503,16 @@
     "collection_list_VmEYkJ",
     "multi_content_XwA9Ut",
     "products_carousel_AdKeFt",
+    "products_carousel_jG9HBF",
+    "products_carousel_xm3VQJ",
+    "products_carousel_Gk7zxj",
     "multi_content_R7AW7W",
     "product_testimonials_DyerjT",
     "icon_box_igFNYD",
     "177548365409648259",
     "1775484221fad32c6a",
     "1775484502fe3e7674",
-    "1775484846891f51cf"
+    "1775484846891f51cf",
+    "17781029425100f937"
   ]
 }

@@ -18,8 +18,8 @@
           "type": "store_info",
           "settings": {
             "image_width": 120,
-            "store_heading": "",
-            "store_description": "<p>We only carry designs we believe in ethically and <br/>aesthetically – original, authentic pieces that are made to last. <a href=\"/pages/about-us\" title=\"About us\"><span style=\"text-decoration:underline\"><strong>Learn more</strong></span></a></p>",
+            "store_heading": "Noribi",
+            "store_description": "<p>Proudly based in New Jersey, USA, Noribi creates luxury fairy dresses, bridal couture, cosplay creations, and statement accessories crafted with elegance, artistry, and exceptional attention to detail for unforgettable moments.</p>",
             "store_address": true,
             "store_phone": true,
             "store_email": true,
@@ -29,16 +29,16 @@
         "link_list_JTq77M": {
           "type": "link_list",
           "settings": {
-            "heading": "",
-            "menu": "",
+            "heading": "ABOUT NORIBI",
+            "menu": "about-noribi",
             "content_width": "16%"
           }
         },
         "link_list_x4zwRH": {
           "type": "link_list",
           "settings": {
-            "heading": "",
-            "menu": "",
+            "heading": "Collections",
+            "menu": "main-menu",
             "content_width": "16%"
           }
         },
@@ -54,12 +54,12 @@
         "newsletter_Rk8BD6": {
           "type": "newsletter",
           "settings": {
-            "heading": "Sign Up to Newsletter",
-            "description": "Subscribe for store updates and discounts.",
-            "email_placeholder": "Enter your email...",
-            "button_label": "Sign Up",
-            "note": "By entering the e-mail you accept the<a href=\"/policies/terms-of-service\" target=\"_blank\" title=\"Terms of Service\"> <strong>terms and conditions</strong></a> and the <a href=\"/policies/privacy-policy\" target=\"_blank\" title=\"Privacy Policy\"><strong>privacy policy.</strong></a>",
-            "design": "default",
+            "heading": "Join the Noribi Circle",
+            "description": "Be the first to discover new arrivals, exclusive collections, private offers, and luxury fashion inspiration from Noribi.",
+            "email_placeholder": "Enter your email",
+            "button_label": "Join Now",
+            "note": "By subscribing, you agree to receive marketing communications from Noribi and accept our <a href=\"/policies/terms-of-service\" title=\"Terms of Service\">Terms & Conditions</a> and <a href=\"/policies/privacy-policy\" title=\"Privacy Policy\">Privacy Policy</a>.",
+            "design": "morden",
             "newsletter_show_social": true,
             "content_width": "33.333%"
           }
@@ -75,18 +75,18 @@
       "settings": {
         "section_width": "fluid_container",
         "color_scheme": "scheme-5af42e36-ad1c-4052-a1c7-25170695ca08",
-        "enable_back_top": true,
+        "enable_back_top": false,
         "separator_line": "unset",
         "enable_country_selector": true,
-        "enable_language_selector": false,
+        "enable_language_selector": true,
         "enable_follow_on_shop": true,
         "show_social": false,
         "payment_enable": true,
         "payment_width": 340,
-        "copyright_text": "© 2026 Noribi LLC",
-        "footer_heading_size": 18,
-        "padding_top": 60,
-        "padding_bottom": 45,
+        "copyright_text": "© Noribi",
+        "footer_heading_size": 20,
+        "padding_top": 0,
+        "padding_bottom": 0,
         "reset_spacing_on_homepage": true
       }
     }
