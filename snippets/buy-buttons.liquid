@@ -229,10 +229,8 @@
                 {{ form | payment_button }}
               </div>
             {%- endif -%}
-            {%- if show_payment_methods and type != 'quickview' and type != 'sticky' -%}
-              {%- assign payment_heading = block.settings.payment_heading | default: 'Payment support' -%}
-              {%- assign payment_image = block.settings.payment_image -%}
-              {%- assign payment_width = block.settings.payment_width | default: 335 -%}
+            {%- if show_dynamic_checkout and show_payment_methods and type != 'quickview' and type != 'sticky' -%}
+              {%- assign payment_heading = block.settings.payment_heading -%}
               {%- assign selected_payment_count = 0 -%}
               {%- for enabled_type in shop.enabled_payment_types -%}
                 {%- case enabled_type -%}
@@ -240,52 +238,50 @@
                     {%- assign selected_payment_count = selected_payment_count | plus: 1 -%}
                 {%- endcase -%}
               {%- endfor -%}
-              {%- if payment_image != blank or selected_payment_count > 0 -%}
+              {%- if selected_payment_count > 0 -%}
                 <div class="product-payment-methods w-full">
                   {%- if payment_heading != blank -%}
                     <p class="product-payment-methods__heading heading-color mb-10 mt-12">
                       {{ payment_heading }}
                     </p>
                   {%- endif -%}
-                  <div class="product-payment-methods__content max-w-100" style="--payment-width: {{ payment_width }}px;">
-                    {%- if payment_image != blank -%}
-                      {%- assign sizes = payment_width | append: 'px' -%}
-                      {%- assign image_alt = payment_image.alt | default: 'payment' -%}
-                      {% render 'responsive-image',
-                        type: 'other',
-                        image: payment_image,
-                        image_alt: image_alt,
-                        sizes: sizes,
-                        no_animate: true
-                      %}
-                    {%- else -%}
-                      <ul class="list-unstyled flex flex-wrap gap-10 product-payment-methods__list">
-                        {%- for type in shop.enabled_payment_types -%}
-                          {%- case type -%}
-                            {%- when 'shopify_pay' -%}
-                              <li class="product-payment-methods__item product-payment-methods__item--shop-pay">
+                  <div class="product-payment-methods__content max-w-100">
+                    <ul class="list-unstyled flex flex-wrap gap-10 product-payment-methods__list">
+                      {%- for type in shop.enabled_payment_types -%}
+                        {%- case type -%}
+                          {%- when 'shopify_pay' -%}
+                            <li class="product-payment-methods__item product-payment-methods__item--shop-pay">
+                              <a href="/checkout" class="product-payment-methods__link js-payment-method-link" data-payment-type="shopify_pay">
                                 <span class="product-payment-methods__label">shop pay</span>
-                              </li>
-                            {%- when 'paypal' -%}
-                              <li class="product-payment-methods__item product-payment-methods__item--paypal">
+                              </a>
+                            </li>
+                          {%- when 'paypal' -%}
+                            <li class="product-payment-methods__item product-payment-methods__item--paypal">
+                              <a href="/checkout" class="product-payment-methods__link js-payment-method-link" data-payment-type="paypal">
                                 <span class="product-payment-methods__label">PayPal</span>
-                              </li>
-                            {%- when 'amazon_payments', 'amazon_pay' -%}
-                              <li class="product-payment-methods__item product-payment-methods__item--amazon-pay">
+                              </a>
+                            </li>
+                          {%- when 'amazon_payments', 'amazon_pay' -%}
+                            <li class="product-payment-methods__item product-payment-methods__item--amazon-pay">
+                              <a href="/checkout" class="product-payment-methods__link js-payment-method-link" data-payment-type="amazon_pay">
                                 <span class="product-payment-methods__label">amazon pay</span>
-                              </li>
-                            {%- when 'venmo' -%}
-                              <li class="product-payment-methods__item product-payment-methods__item--venmo">
+                              </a>
+                            </li>
+                          {%- when 'venmo' -%}
+                            <li class="product-payment-methods__item product-payment-methods__item--venmo">
+                              <a href="/checkout" class="product-payment-methods__link js-payment-method-link" data-payment-type="venmo">
                                 <span class="product-payment-methods__label">venmo</span>
-                              </li>
-                            {%- when 'google_pay' -%}
-                              <li class="product-payment-methods__item product-payment-methods__item--google-pay">
+                              </a>
+                            </li>
+                          {%- when 'google_pay' -%}
+                            <li class="product-payment-methods__item product-payment-methods__item--google-pay">
+                              <a href="/checkout" class="product-payment-methods__link js-payment-method-link" data-payment-type="google_pay">
                                 <span class="product-payment-methods__label">G Pay</span>
-                              </li>
-                          {%- endcase -%}
-                        {%- endfor -%}
-                      </ul>
-                    {%- endif -%}
+                              </a>
+                            </li>
+                        {%- endcase -%}
+                      {%- endfor -%}
+                    </ul>
                   </div>
                 </div>
               {%- endif -%}
@@ -294,6 +290,41 @@
         {%- endform -%}
       </product-form>
     </div>
+    <script>
+      if (!window.blsPaymentMethodLinksInit) {
+        window.blsPaymentMethodLinksInit = true;
+        document.addEventListener('click', function (event) {
+          var trigger = event.target.closest('.js-payment-method-link');
+          if (!trigger) return;
+          event.preventDefault();
+
+          var formWrap = trigger.closest('.product__submit-form');
+          if (!formWrap) {
+            window.location.href = '/checkout';
+            return;
+          }
+
+          var variantInput = formWrap.querySelector('.product-variant-id');
+          var quantityInput = formWrap.querySelector('input[name="quantity"]');
+          var variantId = variantInput && variantInput.value ? variantInput.value : '';
+          var quantity = quantityInput && quantityInput.value ? parseInt(quantityInput.value, 10) : 1;
+          var paymentType = trigger.dataset.paymentType || '';
+
+          if (!quantity || quantity < 1) quantity = 1;
+          if (!variantId) {
+            window.location.href = '/checkout';
+            return;
+          }
+
+          var checkoutUrl = '/cart/' + variantId + ':' + quantity + '?checkout';
+          if (paymentType) {
+            checkoutUrl += '&payment=' + encodeURIComponent(paymentType);
+            checkoutUrl += '&payment_gateway=' + encodeURIComponent(paymentType);
+          }
+          window.location.href = checkoutUrl;
+        });
+      }
+    </script>
   {% endif %}
 
 {%- else -%}
