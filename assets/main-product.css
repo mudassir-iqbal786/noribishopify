@@ -338,7 +338,8 @@ body .pswp__counter {
   margin-bottom: 3.6rem;
 }
 .product-payment-methods__heading {
-  font-size: 1.4rem;
+  font-size: 2.6rem;
+  font-weight: 500;
   line-height: 1.4;
 }
 .product-payment-methods__content {
@@ -352,12 +353,13 @@ body .pswp__counter {
   display: none !important;
 }
 .product-payment-methods__list {
+  justify-content: center;
   row-gap: 1rem;
 }
 .product-payment-methods__item {
-  min-width: 14rem;
-  min-height: 4.8rem;
-  border-radius: 0.8rem;
+  min-width: 16rem;
+  min-height: 5.2rem;
+  border-radius: 1rem;
   padding: 0;
   display: inline-flex;
   align-items: center;
@@ -368,16 +370,16 @@ body .pswp__counter {
 .product-payment-methods__link {
   display: inline-flex;
   width: 100%;
-  min-height: 4.8rem;
+  min-height: 5.2rem;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   color: inherit;
-  padding: 0.8rem 1.4rem;
+  padding: 0.8rem 1.8rem;
 }
 .product-payment-methods__label {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 3.4rem;
   line-height: 1;
   letter-spacing: 0;
   text-transform: none;
@@ -399,14 +401,8 @@ body .pswp__counter {
 }
 .product-payment-methods__item--amazon-pay .product-payment-methods__label {
   color: #111111;
-  font-size: 1.7rem;
+  font-size: 3rem;
   font-weight: 600;
-}
-.product-payment-methods__item--venmo {
-  background-color: #2196f3;
-}
-.product-payment-methods__item--venmo .product-payment-methods__label {
-  color: #ffffff;
 }
 .product-payment-methods__item--google-pay {
   background-color: #121212;
@@ -414,12 +410,26 @@ body .pswp__counter {
 .product-payment-methods__item--google-pay .product-payment-methods__label {
   color: #ffffff;
 }
+.product-payment-methods__item--google-pay .gpay-g {
+  background: linear-gradient(45deg, #4285f4 0%, #34a853 35%, #fbbc05 65%, #ea4335 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.product-payment-methods--express .product-payment-methods__content {
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 @media (max-width: 575.98px) {
   .product-payment-methods__item {
-    min-width: calc(50% - 0.6rem);
+    min-width: 100%;
   }
   .product-payment-methods__label {
-    font-size: 1.8rem;
+    font-size: 2.8rem;
+  }
+  .product-payment-methods__item--amazon-pay .product-payment-methods__label {
+    font-size: 2.4rem;
   }
 }
 .product_description :is(p, ul) {
