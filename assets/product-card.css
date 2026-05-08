@@ -291,9 +291,10 @@ body .shopify-payment-button__button--hidden {
 }
 .product-express-checkout__button {
   appearance: none;
+  background: var(--express-button-bg);
   border: 0;
   border-radius: min(var(--btn-radius), 8px);
-  color: #fff;
+  color: var(--express-button-color);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -307,6 +308,13 @@ body .shopify-payment-button__button--hidden {
   line-height: 1;
   text-align: center;
   transition: filter 0.2s ease, transform 0.2s ease;
+}
+.product-express-checkout__image {
+  display: block;
+  width: auto;
+  max-width: 10rem;
+  max-height: 2.6rem;
+  object-fit: contain;
 }
 .product-express-checkout__button:hover:not([disabled]) {
   filter: brightness(0.96);
@@ -322,32 +330,35 @@ body .shopify-payment-button__button--hidden {
   pointer-events: none;
 }
 .product-express-checkout__button--shop {
-  background: #5433eb;
+  --express-button-bg: #5433eb;
+  --express-button-color: #fff;
   text-transform: lowercase;
 }
 .product-express-checkout__button--paypal {
-  background: #ffc439;
-  color: #003087;
+  --express-button-bg: #ffc439;
+  --express-button-color: #003087;
   font-style: italic;
 }
 .product-express-checkout__button--amazon {
-  background: #f6c343;
-  color: #111;
+  --express-button-bg: #f6c343;
+  --express-button-color: #111;
   font-size: 1.45rem;
   text-transform: lowercase;
 }
 .product-express-checkout__button--venmo {
-  background: #179bd7;
+  --express-button-bg: #179bd7;
+  --express-button-color: #fff;
   font-style: italic;
   text-transform: lowercase;
 }
 .product-express-checkout__button--gpay {
-  background: #202124;
+  --express-button-bg: #202124;
+  --express-button-color: #fff;
   gap: 0.45rem;
   font-size: 1.55rem;
 }
 .product-express-checkout__google {
-  color: #4285f4;
+  color: inherit;
   font-weight: 700;
 }
 @media (max-width: 575.98px) {

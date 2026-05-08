@@ -232,12 +232,17 @@
                     formmethod="post"
                     data-direct-checkout-button
                     class="product-express-checkout__button product-express-checkout__button--shop"
+                    style="--express-button-bg: {{ block.settings.express_shop_bg | default: '#5433eb' }}; --express-button-color: {{ block.settings.express_shop_color | default: '#ffffff' }};"
                     aria-label="Checkout with Shop Pay"
                     {% if product.selected_or_first_available_variant.available == false %}
                       disabled
                     {% endif %}
                   >
-                    shop
+                    {%- if block.settings.express_shop_image != blank -%}
+                      {{ block.settings.express_shop_image | image_url: width: 180 | image_tag: loading: 'lazy', class: 'product-express-checkout__image', alt: 'Shop Pay' }}
+                    {%- else -%}
+                      shop
+                    {%- endif -%}
                   </button>
                   <button
                     type="submit"
@@ -247,12 +252,17 @@
                     formmethod="post"
                     data-direct-checkout-button
                     class="product-express-checkout__button product-express-checkout__button--paypal"
+                    style="--express-button-bg: {{ block.settings.express_paypal_bg | default: '#ffc439' }}; --express-button-color: {{ block.settings.express_paypal_color | default: '#003087' }};"
                     aria-label="Checkout with PayPal"
                     {% if product.selected_or_first_available_variant.available == false %}
                       disabled
                     {% endif %}
                   >
-                    PayPal
+                    {%- if block.settings.express_paypal_image != blank -%}
+                      {{ block.settings.express_paypal_image | image_url: width: 180 | image_tag: loading: 'lazy', class: 'product-express-checkout__image', alt: 'PayPal' }}
+                    {%- else -%}
+                      PayPal
+                    {%- endif -%}
                   </button>
                   <button
                     type="submit"
@@ -262,12 +272,17 @@
                     formmethod="post"
                     data-direct-checkout-button
                     class="product-express-checkout__button product-express-checkout__button--amazon"
+                    style="--express-button-bg: {{ block.settings.express_amazon_bg | default: '#f6c343' }}; --express-button-color: {{ block.settings.express_amazon_color | default: '#111111' }};"
                     aria-label="Checkout with Amazon Pay"
                     {% if product.selected_or_first_available_variant.available == false %}
                       disabled
                     {% endif %}
                   >
-                    amazon pay
+                    {%- if block.settings.express_amazon_image != blank -%}
+                      {{ block.settings.express_amazon_image | image_url: width: 180 | image_tag: loading: 'lazy', class: 'product-express-checkout__image', alt: 'Amazon Pay' }}
+                    {%- else -%}
+                      amazon pay
+                    {%- endif -%}
                   </button>
                   <button
                     type="submit"
@@ -277,12 +292,17 @@
                     formmethod="post"
                     data-direct-checkout-button
                     class="product-express-checkout__button product-express-checkout__button--venmo"
+                    style="--express-button-bg: {{ block.settings.express_venmo_bg | default: '#179bd7' }}; --express-button-color: {{ block.settings.express_venmo_color | default: '#ffffff' }};"
                     aria-label="Checkout with Venmo"
                     {% if product.selected_or_first_available_variant.available == false %}
                       disabled
                     {% endif %}
                   >
-                    venmo
+                    {%- if block.settings.express_venmo_image != blank -%}
+                      {{ block.settings.express_venmo_image | image_url: width: 180 | image_tag: loading: 'lazy', class: 'product-express-checkout__image', alt: 'Venmo' }}
+                    {%- else -%}
+                      venmo
+                    {%- endif -%}
                   </button>
                   <button
                     type="submit"
@@ -292,12 +312,17 @@
                     formmethod="post"
                     data-direct-checkout-button
                     class="product-express-checkout__button product-express-checkout__button--gpay"
+                    style="--express-button-bg: {{ block.settings.express_gpay_bg | default: '#202124' }}; --express-button-color: {{ block.settings.express_gpay_color | default: '#ffffff' }};"
                     aria-label="Checkout with Google Pay"
                     {% if product.selected_or_first_available_variant.available == false %}
                       disabled
                     {% endif %}
                   >
-                    <span class="product-express-checkout__google">G</span> Pay
+                    {%- if block.settings.express_gpay_image != blank -%}
+                      {{ block.settings.express_gpay_image | image_url: width: 180 | image_tag: loading: 'lazy', class: 'product-express-checkout__image', alt: 'Google Pay' }}
+                    {%- else -%}
+                      <span class="product-express-checkout__google">G</span> Pay
+                    {%- endif -%}
                   </button>
                 </div>
               </div>
