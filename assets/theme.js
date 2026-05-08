@@ -4001,22 +4001,13 @@ class VariantRadiosQuickEdit extends SwatchInit {
     const buttonPayment = productForm.querySelector(
       '.product-dynamic-checkout'
     );
-    const directCheckoutButtons = productForm.querySelectorAll(
-      '[data-direct-checkout-button]'
-    );
     if (!addButton) return;
 
     if (disable) {
       addButton.setAttribute('disabled', 'disabled');
-      directCheckoutButtons.forEach((button) => {
-        button.setAttribute('disabled', 'disabled');
-      });
       if (text) addButtonText.textContent = text;
     } else {
       addButton.removeAttribute('disabled');
-      directCheckoutButtons.forEach((button) => {
-        button.removeAttribute('disabled');
-      });
       addButtonText.textContent = window.variantStrings?.addToCart;
     }
 
@@ -5310,22 +5301,13 @@ class SwatchFunctions extends SwatchInit {
     if (!productForm) return;
     const addButton = productForm.querySelector('[name="add"]');
     const addButtonText = productForm.querySelector('[name="add"] > span');
-    const directCheckoutButtons = productForm.querySelectorAll(
-      '[data-direct-checkout-button]'
-    );
     if (!addButton) return;
 
     if (disable) {
       addButton.setAttribute('disabled', 'disabled');
-      directCheckoutButtons.forEach((button) => {
-        button.setAttribute('disabled', 'disabled');
-      });
       if (text) addButtonText.textContent = text;
     } else {
       addButton.removeAttribute('disabled');
-      directCheckoutButtons.forEach((button) => {
-        button.removeAttribute('disabled');
-      });
       addButtonText.textContent = window.variantStrings.addToCart;
     }
 
@@ -5736,43 +5718,27 @@ class SwatchFunctions extends SwatchInit {
     let btns_add_cart = productTarget.querySelectorAll(
       '.product_submit_button'
     );
-    let directCheckoutButtons = productTarget.querySelectorAll(
-      '[data-direct-checkout-button]'
-    );
-    const setDirectCheckoutDisabled = (disabled) => {
-      directCheckoutButtons.forEach((button) => {
-        if (disabled) {
-          button.setAttribute('disabled', 'disabled');
-        } else {
-          button.removeAttribute('disabled');
-        }
-      });
-    };
     btns_add_cart.forEach((btn_add_cart) => {
       if (btn_add_cart.querySelector('.btn-label')) {
         if (im === null) {
           btn_add_cart.querySelector('.btn-label').innerHTML =
             window.variantStrings.addToCart;
           btn_add_cart.disabled = false;
-          setDirectCheckoutDisabled(false);
         } else {
           if (av) {
             if (qty < 1) {
               btn_add_cart.querySelector('.btn-label').innerHTML =
                 window.variantStrings.preOrder;
               btn_add_cart.disabled = false;
-              setDirectCheckoutDisabled(false);
             } else {
               btn_add_cart.querySelector('.btn-label').innerHTML =
                 window.variantStrings.addToCart;
               btn_add_cart.disabled = false;
-              setDirectCheckoutDisabled(false);
             }
           } else {
             btn_add_cart.querySelector('.btn-label').innerHTML =
               window.variantStrings.soldOut;
             btn_add_cart.disabled = true;
-            setDirectCheckoutDisabled(true);
           }
         }
       }
@@ -7243,27 +7209,6 @@ if (!customElements.get('product-form')) {
       }
 
       onSubmitHandler(evt) {
-        const submitter = evt.submitter || document.activeElement;
-        if (submitter?.matches('[data-direct-checkout-button]')) {
-          if (
-            submitter
-              .closest('.btn-checkout-dynamic')
-              ?.classList.contains('disabled')
-          ) {
-            evt.preventDefault();
-            return;
-          }
-          if (submitter.getAttribute('aria-disabled') === 'true') {
-            evt.preventDefault();
-            return;
-          }
-          if (!this.validateVariantSelections()) {
-            evt.preventDefault();
-            return;
-          }
-          this.syncVariantIdBeforeSubmit();
-          return;
-        }
         evt.preventDefault();
         if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
         if (!this.validateVariantSelections()) return;
