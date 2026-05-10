@@ -221,8 +221,67 @@
                   </label>
                 </terms-conditions>
               {%- endif -%}
-              <div class="btn-checkout-dynamic w-full  {% if settings.show_check_box_in_quick_view and type == 'quickview' %} disabled {% elsif  settings.show_checkbox_in_product_page  and type == 'single' or type == 'main_product' %}    disabled{% endif %}">
-                {{ form | payment_button }}
+              <div class="btn-checkout-dynamic product-express-checkout w-full {% if settings.show_check_box_in_quick_view and type == 'quickview' %} disabled {% elsif  settings.show_checkbox_in_product_page  and type == 'single' or type == 'main_product' %} disabled{% endif %}">
+                <button
+                  type="submit"
+                  name="return_to"
+                  value="/checkout"
+                  formaction="{{ routes.cart_add_url }}"
+                  formmethod="post"
+                  data-direct-checkout-button
+                  class="product-express-checkout__button product-express-checkout__button--shop"
+                  aria-label="Checkout with Shop Pay"
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  shop
+                </button>
+                <button
+                  type="submit"
+                  name="return_to"
+                  value="/checkout"
+                  formaction="{{ routes.cart_add_url }}"
+                  formmethod="post"
+                  data-direct-checkout-button
+                  class="product-express-checkout__button product-express-checkout__button--apple"
+                  aria-label="Checkout with Apple Pay"
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  Apple Pay
+                </button>
+                <button
+                  type="submit"
+                  name="return_to"
+                  value="/checkout"
+                  formaction="{{ routes.cart_add_url }}"
+                  formmethod="post"
+                  data-direct-checkout-button
+                  class="product-express-checkout__button product-express-checkout__button--paypal"
+                  aria-label="Checkout with PayPal"
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  PayPal
+                </button>
+                <button
+                  type="submit"
+                  name="return_to"
+                  value="/checkout"
+                  formaction="{{ routes.cart_add_url }}"
+                  formmethod="post"
+                  data-direct-checkout-button
+                  class="product-express-checkout__button product-express-checkout__button--gpay"
+                  aria-label="Checkout with Google Pay"
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  <span class="product-express-checkout__google">G</span> Pay
+                </button>
               </div>
             {%- endif -%}
           </div>

@@ -275,6 +275,65 @@ body .shopify-payment-button__button--unbranded:hover:not([disabled]) {
 body .shopify-payment-button__button--hidden {
   display: none;
 }
+.product-express-checkout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.product-express-checkout__button {
+  appearance: none;
+  border: 0;
+  border-radius: min(var(--btn-radius), 6px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5.2rem;
+  width: 100%;
+  padding: 1.2rem 2rem;
+  font-family: var(--heading-font-family);
+  font-size: 2rem;
+  font-weight: var(--heading-weight);
+  line-height: 1;
+  text-align: center;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+.product-express-checkout__button:hover:not([disabled]) {
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+}
+.product-express-checkout__button:active:not([disabled]) {
+  transform: translateY(0);
+}
+.product-express-checkout__button[disabled],
+.btn-checkout-dynamic.disabled .product-express-checkout__button {
+  cursor: not-allowed;
+  opacity: 0.45;
+  pointer-events: none;
+}
+.product-express-checkout__button--shop {
+  background: #5433eb;
+  color: #fff;
+  text-transform: lowercase;
+}
+.product-express-checkout__button--apple,
+.product-express-checkout__button--gpay {
+  background: #111;
+  color: #fff;
+}
+.product-express-checkout__button--paypal {
+  background: #ffc439;
+  color: #003087;
+  font-style: italic;
+}
+.product-express-checkout__button--gpay {
+  gap: 0.45rem;
+  font-size: 1.8rem;
+}
+.product-express-checkout__google {
+  color: #4285f4;
+  font-weight: 700;
+}
 /* Variant picker */
 .product-form__input
   input[type="radio"]:not(.option-disabled):checked
