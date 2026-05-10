@@ -311,7 +311,11 @@
       </product-form>
     </div>
   {% endif %}
-
+        {%- if additional_checkout_buttons -%}
+                  <div class="cart__dynamic-checkout-buttons mt-10 additional-checkout-buttons">
+                    {{ content_for_additional_checkout_buttons }}
+                  </div>
+                {% endif %}
 {%- else -%}
   {% if settings.enable_catalog_mode == false %}
     <div class="product-form">
