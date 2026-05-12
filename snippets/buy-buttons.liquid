@@ -60,6 +60,9 @@
           {%- endif -%}
           <div class="product-form__buttons btn-large flex flex-wrap gap-10">
             <div class="product__submit-form-cart flex flex-wrap gap-10 gap-lg-20 align-center grow-1">
+              <input type="hidden" name="quantity" value="1" form="{{ product_form_id }}">
+              {% comment %}
+                Quantity selector hidden per request. Keep this code available for future use.
               <label class="btn-text-transform heading-color mb-0 visually-hidden" for="Quantity-{{ section.id }}">
                 {{- 'products.product.quantity.label' | t -}}
               </label>
@@ -108,6 +111,7 @@
                   </quantity-input>
                 </div>
               {% endif %}
+              {% endcomment %}
               <div class="button_buy-now grow-1 skeleton-loading">
                 <button
                   type="submit"
