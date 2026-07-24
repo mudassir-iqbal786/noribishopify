@@ -477,6 +477,73 @@
         "reset_spacing": false
       }
     },
+    "faq_RWViN4": {
+      "type": "faq",
+      "blocks": {
+        "faq_items_UXaphK": {
+          "type": "faq-items",
+          "settings": {
+            "faq_title": "Where do you ship?",
+            "faq_content": "We currently ship to customers in the United Statesand Canada. Orders are processed within 1–3 business days, and standarddelivery usually takes 5–8 business days after shipment."
+          }
+        },
+        "faq_items_Gn8WAM": {
+          "type": "faq-items",
+          "settings": {
+            "faq_title": "How can I track my order?",
+            "faq_content": "Once your order has been shipped, you will receive aconfirmation email with your tracking number. Tracking information may take upto 24–48 hours to become available."
+          }
+        },
+        "faq_items_3z7rej": {
+          "type": "faq-items",
+          "settings": {
+            "faq_title": "What payment methods do you accept?",
+            "faq_content": "We accept secure payments through Visa, Mastercard,American Express, Discover, PayPal, Shop Pay, Apple Pay, Google Pay, AmazonPay, and other payment methods available at checkout."
+          }
+        },
+        "faq_items_MUJx4T": {
+          "type": "faq-items",
+          "settings": {
+            "faq_title": "Can I cancel or change my order?",
+            "faq_content": "You may request to cancel your order before it hasbeen shipped. Once an order has been shipped, it cannot be canceled. If youneed to make changes, please contact us as soon as possible."
+          }
+        },
+        "faq_items_y4JpMH": {
+          "type": "faq-items",
+          "settings": {
+            "faq_title": "How can I contact customer support?",
+            "faq_content": "You can contact our customer support team by:<strong>Email:</strong> care@noribi.com<strong>Phone:</strong> +1 848 301 2135<strong>Business Hours:</strong>Monday–Friday9:00 AM–5:00 PM ESTWe aim to respond to all inquiries within one businessday."
+          }
+        },
+        "faq_items_pqzxEJ": {
+          "type": "faq-items",
+          "settings": {
+            "faq_title": "Do you charge shipping fees?",
+            "faq_content": "We currently offer <strong>Free Standard Shipping</strong> onall orders shipped within the United States and Canada. Please note thatcustomers in Canada may be responsible for any applicable customs duties,import taxes, or other government fees."
+          }
+        }
+      },
+      "block_order": [
+        "faq_items_UXaphK",
+        "faq_items_Gn8WAM",
+        "faq_items_3z7rej",
+        "faq_items_MUJx4T",
+        "faq_items_y4JpMH",
+        "faq_items_pqzxEJ"
+      ],
+      "name": "t:sections.faq.presets.name",
+      "settings": {
+        "section_width": "container",
+        "color_scheme": "",
+        "heading": "Frequently Asked Questions (FAQ)",
+        "description": "",
+        "header_size": "medium",
+        "header_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    },
     "177548365409648259": {
       "type": "_blocks",
       "settings": {}
@@ -509,6 +576,7 @@
     "multi_content_R7AW7W",
     "product_testimonials_DyerjT",
     "icon_box_igFNYD",
+    "faq_RWViN4",
     "177548365409648259",
     "1775484221fad32c6a",
     "1775484502fe3e7674",
