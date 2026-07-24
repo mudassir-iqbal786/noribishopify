@@ -14,6 +14,13 @@
     "top_bar_CbXNYj": {
       "type": "top-bar",
       "blocks": {
+        "text_yFC6nh": {
+          "type": "text",
+          "settings": {
+            "text": "Phone: +1 848 301 2135  Email: care@noribi.com",
+            "hidden_on_mobile": true
+          }
+        },
         "text_slider_LFaC38": {
           "type": "text_slider",
           "settings": {
@@ -37,6 +44,7 @@
         }
       },
       "block_order": [
+        "text_yFC6nh",
         "text_slider_LFaC38",
         "cur_lang_aPwfT9"
       ],
@@ -71,6 +79,22 @@
             "promotion_link_newtab_1": true,
             "promotion_link_2": "",
             "promotion_link_newtab_2": true
+          }
+        },
+        "menu_product_f7U7ak": {
+          "type": "menu_product",
+          "settings": {
+            "text": "",
+            "open-link-newtab": true,
+            "item_label": "unset",
+            "product_menu_column": 4,
+            "mega_custom_width": 1030,
+            "center_submenu": true,
+            "full_width": true,
+            "product_width": 50,
+            "product_1": "",
+            "product_2": "",
+            "product_3": ""
           }
         },
         "menu_collection_EkdGyG": {
@@ -110,6 +134,7 @@
       },
       "block_order": [
         "menu_promotion_HwTaHB",
+        "menu_product_f7U7ak",
         "menu_collection_EkdGyG",
         "menu_promotion_rWzQL6"
       ],
