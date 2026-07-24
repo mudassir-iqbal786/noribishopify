@@ -114,7 +114,7 @@
     "store_phone": "+1 848 301 2135",
     "store_email": "care@noribi.com",
     "store_address": "26 Wild Hedge Lane Holmdel, NJ 07733 United States",
-    "store_page": "about-noribi",
+    "store_page": "about-us",
     "show_currency_code": true,
     "enable_cookies": false,
     "heading_cookies": "",
@@ -367,14 +367,14 @@
         "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
         "disabled": false,
         "settings": {
+          "greeting_message": "",
           "button_color": "#000000",
           "secondary_color": "#ffffff",
           "ternary_color": "#6a6a6a",
           "button_icon": "chat_bubble",
           "button_text": "live_chat",
           "button_horizontal_position": "bottom_right",
-          "button_vertical_position": "higher",
-          "greeting_message": ""
+          "button_vertical_position": "higher"
         }
       },
       "6159598353363395418": {
