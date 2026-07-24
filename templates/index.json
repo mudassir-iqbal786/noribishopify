@@ -180,117 +180,6 @@
         "reset_spacing": false
       }
     },
-    "products_carousel_jG9HBF": {
-      "type": "products-carousel",
-      "name": "t:sections.products-carousel.name",
-      "settings": {
-        "section_width": "fluid_container",
-        "color_scheme": "",
-        "heading": "Fantasy Cosplay Collection",
-        "description": "Iconic cosplay designs created for conventions, performances, photoshoots, and unforgettable moments.",
-        "show_view_all_button": false,
-        "header_size": "small",
-        "header_alignment": "center",
-        "collection": "cosplay-dresses",
-        "items_to_show": 8,
-        "items_per_row": 4,
-        "column_gap": 30,
-        "equal_height_adjustment": false,
-        "show_banner": false,
-        "title_inside": false,
-        "sticky_banner": false,
-        "banner_width": 30,
-        "position": "left",
-        "banner_link": "",
-        "banner_type": "image",
-        "video_url": "",
-        "video_autoplay": true,
-        "show_arrow": false,
-        "carousel_pagination": "disable",
-        "infinite": false,
-        "autoplay": false,
-        "autorotate_speed": 5,
-        "reveal": false,
-        "items_per_row_mobile": 2,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "reset_spacing": false
-      }
-    },
-    "products_carousel_xm3VQJ": {
-      "type": "products-carousel",
-      "name": "t:sections.products-carousel.name",
-      "settings": {
-        "section_width": "fluid_container",
-        "color_scheme": "",
-        "heading": "Bridal Elegance",
-        "description": "Timeless bridal gowns crafted with luxurious fabrics, delicate details, and unforgettable beauty.",
-        "show_view_all_button": false,
-        "header_size": "small",
-        "header_alignment": "center",
-        "collection": "bridal-dresses",
-        "items_to_show": 8,
-        "items_per_row": 4,
-        "column_gap": 30,
-        "equal_height_adjustment": false,
-        "show_banner": false,
-        "title_inside": false,
-        "sticky_banner": false,
-        "banner_width": 30,
-        "position": "left",
-        "banner_link": "",
-        "banner_type": "image",
-        "video_url": "",
-        "video_autoplay": true,
-        "show_arrow": false,
-        "carousel_pagination": "disable",
-        "infinite": false,
-        "autoplay": false,
-        "autorotate_speed": 5,
-        "reveal": false,
-        "items_per_row_mobile": 2,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "reset_spacing": false
-      }
-    },
-    "products_carousel_Gk7zxj": {
-      "type": "products-carousel",
-      "name": "t:sections.products-carousel.name",
-      "settings": {
-        "section_width": "fluid_container",
-        "color_scheme": "",
-        "heading": "Enchanting Fairy Wings",
-        "description": "Handcrafted statement wings designed to bring fantasy, elegance, and magical detail to every look.",
-        "show_view_all_button": false,
-        "header_size": "small",
-        "header_alignment": "center",
-        "collection": "fairy-wings",
-        "items_to_show": 8,
-        "items_per_row": 4,
-        "column_gap": 30,
-        "equal_height_adjustment": false,
-        "show_banner": false,
-        "title_inside": false,
-        "sticky_banner": false,
-        "banner_width": 30,
-        "position": "left",
-        "banner_link": "",
-        "banner_type": "image",
-        "video_url": "",
-        "video_autoplay": true,
-        "show_arrow": false,
-        "carousel_pagination": "disable",
-        "infinite": false,
-        "autoplay": false,
-        "autorotate_speed": 5,
-        "reveal": false,
-        "items_per_row_mobile": 2,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "reset_spacing": false
-      }
-    },
     "multi_content_R7AW7W": {
       "type": "multi-content",
       "settings": {
@@ -484,7 +373,7 @@
           "type": "faq-items",
           "settings": {
             "faq_title": "Where do you ship?",
-            "faq_content": "We currently ship to customers in the United Statesand Canada. Orders are processed within 1–3 business days, and standarddelivery usually takes 5–8 business days after shipment."
+            "faq_content": "We currently ship to customers in the United States and Canada. Orders are processed within 1–3 business days, and standard delivery usually takes 5–8 business days after shipment."
           }
         },
         "faq_items_Gn8WAM": {
@@ -505,21 +394,21 @@
           "type": "faq-items",
           "settings": {
             "faq_title": "Can I cancel or change my order?",
-            "faq_content": "You may request to cancel your order before it hasbeen shipped. Once an order has been shipped, it cannot be canceled. If youneed to make changes, please contact us as soon as possible."
+            "faq_content": "You may request to cancel your order before it has been shipped. Once an order has been shipped, it cannot be canceled. If youneed to make changes, please contact us as soon as possible."
           }
         },
         "faq_items_y4JpMH": {
           "type": "faq-items",
           "settings": {
             "faq_title": "How can I contact customer support?",
-            "faq_content": "You can contact our customer support team by:<strong>Email:</strong> care@noribi.com<strong>Phone:</strong> +1 848 301 2135<strong>Business Hours:</strong>Monday–Friday9:00 AM–5:00 PM ESTWe aim to respond to all inquiries within one businessday."
+            "faq_content": "You can contact our customer support team by <strong>Email:</strong> care@noribi.com <strong>Phone:</strong> +1 848 301 2135 <strong>Business Hours: </strong>Monday–Friday 9:00 AM–5:00 PM EST We aim to respond to all inquiries within one business day."
           }
         },
         "faq_items_pqzxEJ": {
           "type": "faq-items",
           "settings": {
             "faq_title": "Do you charge shipping fees?",
-            "faq_content": "We currently offer <strong>Free Standard Shipping</strong> onall orders shipped within the United States and Canada. Please note thatcustomers in Canada may be responsible for any applicable customs duties,import taxes, or other government fees."
+            "faq_content": "We currently offer <strong>Free Standard Shipping</strong> onall orders shipped within the United States and Canada. Please note that customers in Canada may be responsible for any applicable customs duties, import taxes, or other government fees."
           }
         }
       },
@@ -570,9 +459,6 @@
     "collection_list_VmEYkJ",
     "multi_content_XwA9Ut",
     "products_carousel_AdKeFt",
-    "products_carousel_jG9HBF",
-    "products_carousel_xm3VQJ",
-    "products_carousel_Gk7zxj",
     "multi_content_R7AW7W",
     "product_testimonials_DyerjT",
     "icon_box_igFNYD",
