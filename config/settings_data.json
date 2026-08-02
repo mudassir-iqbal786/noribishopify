@@ -387,6 +387,11 @@
           "mobile_side_margin": 16,
           "mobile_bottom_margin": 46
         }
+      },
+      "11879641663917679130": {
+        "type": "shopify://apps/fav-schema-json-ld/blocks/fav-rich-snippets/0f4af051-833d-495d-a7e0-249ff5f90778",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
