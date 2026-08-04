@@ -200,111 +200,6 @@
         "reset_spacing": false
       }
     },
-    "product_testimonials_DyerjT": {
-      "type": "product-testimonials",
-      "blocks": {
-        "testimonials_items_bKPBwX": {
-          "type": "testimonials_items",
-          "settings": {
-            "author_image": "shopify://shop_images/Screenshot_2026-04-17-22-14-19-415_com.taobao.taobao-edit.jpg",
-            "local_video": "shopify://files/videos/20250903_e6c606e691103397_532749468686_323285804175414_published_mp4_264_hd_taobao.mp4",
-            "author_rating": 5,
-            "author_text": "<p><strong>Absolutely stunning pieces I’m genuinely so excited to wear these to an upcoming wedding with a garden fairy theme they fit the vibe perfectly. The design is elegant yet playful, and the quality feels amazing. The details are even more beautiful in person, and the fit is very flattering. I know I’m going to get so many compliments. Can’t wait to style them and wear them out</strong></p>",
-            "select_product": "green-fairy-dress-with-wings",
-            "author_name": "Candice"
-          }
-        },
-        "testimonials_items_3trnNN": {
-          "type": "testimonials_items",
-          "settings": {
-            "author_image": "shopify://shop_images/Screenshot_2026-04-17-22-19-18-172_com.taobao.taobao-edit.jpg",
-            "author_rating": 5,
-            "author_text": "<p><strong>Really happy with this skirt. I got it for a garden party and it worked perfectly for that kind of vibe. The fit was true to the size chart, which I was a bit worried about at first, but it ended up fitting really well. The fabric is lightweight and flows nicely when you walk. Only thing is it’s a little delicate, so you have to be careful with it, but overall I love it and would definitely wear it again.</strong></p>",
-            "select_product": "green-fairy-dress-off-shoulder-pixie-gown-woodland-costume",
-            "author_name": "Morgane"
-          }
-        },
-        "testimonials_items_xDzhkj": {
-          "type": "testimonials_items",
-          "settings": {
-            "author_image": "shopify://shop_images/Image_1776446622808.jpg",
-            "author_rating": 5,
-            "author_text": "<p><strong>The dress and wings are amazing. It’s absolutely beautiful and looks even better in person. The details are really nice and it feels well made. I wore it for a themed event and it was perfect for the look I wanted  got so many compliments</strong></p>",
-            "select_product": "lavender-fairy-dress-with-wings-ethereal-tulle-fairycore-outfit",
-            "author_name": "Amber"
-          }
-        },
-        "testimonials_items_ULXkkt": {
-          "type": "testimonials_items",
-          "settings": {
-            "author_image": "shopify://shop_images/IMG_20260417_222917.jpg",
-            "author_rating": 5,
-            "author_text": "<p><strong>This dress is stunning. The detailing looks even better in person and the fit was really nice. It’s such an elegant piece  I got so many compliments wearing it.</strong></p>",
-            "select_product": "gold-butterfly-evening-gown-sequin-mermaid-dress-formal-dress",
-            "author_name": "Emily"
-          }
-        },
-        "testimonials_items_8b7fN7": {
-          "type": "testimonials_items",
-          "settings": {
-            "author_image": "shopify://shop_images/Image_1776447432305.jpg",
-            "author_rating": 5,
-            "author_text": "<p>Honestly wasn’t sure what to expect, but it’s actually really cute. The fit is decent and the details look nice in person. It’s a bit delicate though so you have to be careful.</p>",
-            "select_product": "here-s-an-etsy-seo-optimized-title-70-characters-and-description-for-your-dress",
-            "author_name": "Denise"
-          }
-        },
-        "testimonials_items_R8fY4A": {
-          "type": "testimonials_items",
-          "settings": {
-            "author_image": "shopify://shop_images/Image_1776419493181.jpg",
-            "author_rating": 5,
-            "author_text": "<p>I am absolutely in love with this dress. The design is stunning and exactly as shown in the pictures. The quality of the fabric and the detailing is truly impressive, and you can tell a lot of care went into making it. The fit is very flattering and gives such an elegant, feminine look. What I really loved is how unique and premium it feels. It photographs beautifully and looks even better in person. I received so many compliments when wearing it, and it made me feel very confident and special. Overall, I am extremely happy with this purchase and would highly recommend it to anyone looking for something elegant, unique, and high quality.</p>",
-            "select_product": "white-lace-corset-wedding-dress-sheer-bridal-gown-fairy-style",
-            "author_name": "June"
-          }
-        }
-      },
-      "block_order": [
-        "testimonials_items_bKPBwX",
-        "testimonials_items_3trnNN",
-        "testimonials_items_xDzhkj",
-        "testimonials_items_ULXkkt",
-        "testimonials_items_8b7fN7",
-        "testimonials_items_R8fY4A"
-      ],
-      "settings": {
-        "section_width": "fluid_container",
-        "color_scheme": "scheme-2b5c6c91-201d-4fb1-aba3-e6d562656976",
-        "heading": "What Our Customers Are Saying",
-        "description": "<p>Real experiences from those who have worn and loved Noribi.</p>",
-        "header_alignment": "center",
-        "header_size": "medium",
-        "design": "default",
-        "show_image": true,
-        "show_verified_buyer": true,
-        "img_position": "bottom",
-        "image_ratio": "portrait",
-        "custom_ratio": "",
-        "img_width": 50,
-        "framed": true,
-        "rate_color": "#ffca00",
-        "items_per_row": 3,
-        "column_gap": 30,
-        "show_arrow": true,
-        "carousel_pagination": "show_dots_on_mobile",
-        "infinite": true,
-        "autoplay": true,
-        "autorotate_speed": 5,
-        "reveal": false,
-        "items_per_row_mobile": 1,
-        "mobile_rows": "1",
-        "show_image_mobile": true,
-        "padding_top": 60,
-        "padding_bottom": 80,
-        "reset_spacing": false
-      }
-    },
     "icon_box_igFNYD": {
       "type": "icon-box",
       "blocks": {
@@ -464,7 +359,6 @@
     "multi_content_XwA9Ut",
     "products_carousel_AdKeFt",
     "multi_content_R7AW7W",
-    "product_testimonials_DyerjT",
     "icon_box_igFNYD",
     "faq_RWViN4",
     "177548365409648259",
