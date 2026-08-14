@@ -566,17 +566,19 @@
   }
 {% endstyle %}
 
-<!-- SEO Schema.org JSON-LD Structured Data for Google Rich Snippets -->
-<script type="application/ld+json" id="gbr-schema-{{ section_id }}">
+<!-- 1. SEO Shop / Store Schema (OnlineStore / Organization) -->
+<script type="application/ld+json" id="gbr-shop-schema-{{ section_id }}">
 {
   "@context": "https://schema.org",
-  "@type": "Store",
-  "name": {{ section_st.business_name | json }},
+  "@type": "OnlineStore",
+  "@id": {{ shop.url | append: "#store" | json }},
+  "name": {{ section_st.business_name | default: shop.name | json }},
   "url": {{ shop.url | json }},
   "description": {{ shop.description | default: section_st.business_name | json }},
   {% if section_st.business_image != blank %}
     "image": {{ section_st.business_image | image_url: width: 600 | prepend: "https:" | json }},
   {% endif %}
+  "priceRange": "$$",
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "{{ section_st.overall_rating | default: '5.0' }}",
@@ -602,6 +604,37 @@
       }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ]
+}
+</script>
+
+<!-- 2. SEO Product Schema (Product + AggregateRating) -->
+<script type="application/ld+json" id="gbr-product-schema-{{ section_id }}">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": {% if product %}{{ shop.url | append: product.url | append: "#product" | json }}{% else %}{{ shop.url | append: "#product-catalog" | json }}{% endif %},
+  "name": {% if product %}{{ product.title | json }}{% else %}{{ shop.name | append: " - Ethereal Fairy & Cosplay Collection" | json }}{% endif %},
+  "description": {% if product %}{{ product.description | strip_html | truncatewords: 40 | json }}{% else %}{{ shop.description | default: "Luxury custom cosplay and statement apparel" | json }}{% endif %},
+  "brand": {
+    "@type": "Brand",
+    "name": {{ shop.name | json }}
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ section_st.overall_rating | default: '5.0' }}",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "{{ section.blocks.size | default: 4 }}"
+  }
+  {% if product %},
+  "offers": {
+    "@type": "Offer",
+    "url": {{ shop.url | append: product.url | json }},
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "price": "{{ product.price | divided_by: 100.0 }}",
+    "availability": "{% if product.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}"
+  }
+  {% endif %}
 }
 </script>
 
@@ -919,41 +952,49 @@
     }
 
     function updateSchemaJsonLd(data) {
-      const schemaElem = document.getElementById('gbr-schema-{{ section_id }}');
-      if (!schemaElem || !data) return;
+      const shopSchemaElem = document.getElementById('gbr-shop-schema-{{ section_id }}');
+      const prodSchemaElem = document.getElementById('gbr-product-schema-{{ section_id }}');
+      if (!data) return;
 
       try {
-        const schemaData = JSON.parse(schemaElem.textContent);
-        if (data.displayName && data.displayName.text) {
-          schemaData.name = data.displayName.text;
-        }
-        if (data.rating && data.userRatingCount) {
-          schemaData.aggregateRating = {
-            "@type": "AggregateRating",
-            "ratingValue": Number(data.rating).toFixed(1),
-            "bestRating": "5",
-            "worstRating": "1",
-            "ratingCount": String(data.userRatingCount)
-          };
-        }
-        if (data.reviews && data.reviews.length > 0) {
-          schemaData.review = data.reviews.map(r => ({
-            "@type": "Review",
-            "author": {
-              "@type": "Person",
-              "name": (r.authorAttribution && r.authorAttribution.displayName) ? r.authorAttribution.displayName : "Google Customer"
-            },
-            "reviewRating": {
-              "@type": "Rating",
-              "ratingValue": String(r.rating || 5),
+        if (shopSchemaElem) {
+          const shopSchema = JSON.parse(shopSchemaElem.textContent);
+          if (data.displayName && data.displayName.text) shopSchema.name = data.displayName.text;
+          if (data.rating && data.userRatingCount) {
+            shopSchema.aggregateRating = {
+              "@type": "AggregateRating",
+              "ratingValue": Number(data.rating).toFixed(1),
               "bestRating": "5",
-              "worstRating": "1"
-            },
-            "reviewBody": (r.text && r.text.text) ? r.text.text : ""
-          }));
+              "worstRating": "1",
+              "ratingCount": String(data.userRatingCount)
+            };
+          }
+          if (data.reviews && data.reviews.length > 0) {
+            shopSchema.review = data.reviews.map(r => ({
+              "@type": "Review",
+              "author": { "@type": "Person", "name": (r.authorAttribution && r.authorAttribution.displayName) ? r.authorAttribution.displayName : "Google Customer" },
+              "reviewRating": { "@type": "Rating", "ratingValue": String(r.rating || 5), "bestRating": "5", "worstRating": "1" },
+              "reviewBody": (r.text && r.text.text) ? r.text.text : ""
+            }));
+          }
+          shopSchemaElem.textContent = JSON.stringify(shopSchema);
         }
-        schemaElem.textContent = JSON.stringify(schemaData);
-        logDebug('Updated Schema.org JSON-LD structured data with live Google reviews.');
+
+        if (prodSchemaElem) {
+          const prodSchema = JSON.parse(prodSchemaElem.textContent);
+          if (data.rating && data.userRatingCount) {
+            prodSchema.aggregateRating = {
+              "@type": "AggregateRating",
+              "ratingValue": Number(data.rating).toFixed(1),
+              "bestRating": "5",
+              "worstRating": "1",
+              "ratingCount": String(data.userRatingCount)
+            };
+          }
+          prodSchemaElem.textContent = JSON.stringify(prodSchema);
+        }
+
+        logDebug('Updated both Shop Schema & Product Schema JSON-LD with live Google review ratings.');
       } catch (e) {
         console.error('Schema JSON-LD update error:', e);
       }
