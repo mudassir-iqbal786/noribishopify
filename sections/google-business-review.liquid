@@ -1,6 +1,11 @@
 {%- liquid
   assign section_st = section.settings
   assign section_id = section.id | replace: '_', '' | downcase
+
+  assign review_url = section_st.button_link
+  if review_url == blank and section_st.place_id != blank
+    assign review_url = 'https://search.google.com/local/writereview?placeid=' | append: section_st.place_id
+  endif
 -%}
 
 {% style %}
@@ -517,7 +522,7 @@
           <span class="gbr-google-text-g">G</span><span class="gbr-google-text-o1">o</span><span class="gbr-google-text-o2">o</span><span class="gbr-google-text-g2">g</span><span class="gbr-google-text-l">l</span><span class="gbr-google-text-e">e</span>
         </div>
 
-        <a href="{{ section_st.button_link | default: '#' }}" class="gbr-google-btn-{{ section_id }}" id="gbr-btn-link-{{ section_id }}" target="_blank" rel="noopener noreferrer">
+        <a href="{{ review_url | default: '#' }}" class="gbr-google-btn-{{ section_id }}" id="gbr-btn-link-{{ section_id }}" target="_blank" rel="noopener noreferrer">
           <span id="gbr-btn-text-{{ section_id }}">{{ section_st.button_text }}</span>
           <span class="gbr-btn-g-icon">
             <svg viewBox="0 0 24 24" width="14" height="14">
@@ -713,6 +718,15 @@
       const apiKey = "{{ section_st.api_key | strip }}";
       const placeId = "{{ section_st.place_id | strip }}";
 
+      // Set direct Google Write-Review popup link if placeId is configured
+      if (placeId) {
+        const btnElem = document.getElementById('gbr-btn-link-{{ section_id }}');
+        const customUrl = "{{ section_st.button_link | strip }}";
+        if (btnElem && !customUrl) {
+          btnElem.href = `https://search.google.com/local/writereview?placeid=${placeId}`;
+        }
+      }
+
       logDebug(`Live API Sync Enabled: ${isEnabled}`);
       logDebug(`API Key Configured: ${apiKey ? 'YES (' + apiKey.substring(0, 6) + '...)' : 'NO (Empty)'}`);
       logDebug(`Place ID Configured: ${placeId ? 'YES (' + placeId + ')' : 'NO (Empty)'}`);
@@ -750,7 +764,7 @@
       })
       .then(data => {
         logDebug(`Successfully received Google Places data for: "${data.displayName ? data.displayName.text : 'Business'}"`);
-        renderGoogleDataNew(data);
+        renderGoogleDataNew(data, placeId);
       })
       .catch(err => {
         logDebug(`Places API (New) fetch error: ${err.message}. Trying Maps SDK fallback...`, true);
@@ -758,7 +772,7 @@
       });
     }
 
-    function renderGoogleDataNew(data) {
+    function renderGoogleDataNew(data, placeId) {
       if (data.displayName && data.displayName.text) {
         const titleElem = document.getElementById('gbr-title-{{ section_id }}');
         if (titleElem) titleElem.textContent = data.displayName.text;
@@ -774,9 +788,11 @@
         if (countElem) countElem.textContent = `Based on ${data.userRatingCount} reviews`;
       }
 
-      if (data.googleMapsUri) {
-        const btnElem = document.getElementById('gbr-btn-link-{{ section_id }}');
-        if (btnElem) btnElem.href = data.googleMapsUri;
+      // Always direct user to Google's official Write-Review Modal
+      const btnElem = document.getElementById('gbr-btn-link-{{ section_id }}');
+      if (btnElem) {
+        const customUrl = "{{ section_st.button_link | strip }}";
+        btnElem.href = customUrl || `https://search.google.com/local/writereview?placeid=${placeId}`;
       }
 
       if (data.reviews && data.reviews.length > 0) {
@@ -796,7 +812,6 @@
             const reviewText = (review.text && review.text.text) ? review.text.text : '';
             const initial = authorName.charAt(0).toLowerCase();
 
-            // Check if review has photos
             let photosHtml = '';
             if (review.photos && review.photos.length > 0) {
               photosHtml = `<div class="gbr-review-photos-{{ section_id }}">` +
@@ -905,9 +920,10 @@
             const countElem = document.getElementById('gbr-count-text-{{ section_id }}');
             if (countElem) countElem.textContent = `Based on ${place.user_ratings_total} reviews`;
           }
-          if (place.url) {
-            const btnElem = document.getElementById('gbr-btn-link-{{ section_id }}');
-            if (btnElem) btnElem.href = place.url;
+          const btnElem = document.getElementById('gbr-btn-link-{{ section_id }}');
+          if (btnElem) {
+            const customUrl = "{{ section_st.button_link | strip }}";
+            btnElem.href = customUrl || `https://search.google.com/local/writereview?placeid=${placeId}`;
           }
         } else {
           logDebug(`Google Places SDK Error: Status "${status}". Enable Places API (New) in Google Cloud.`, true);
@@ -1006,7 +1022,7 @@
     {
       "type": "url",
       "id": "button_link",
-      "label": "Google Review Link"
+      "label": "Google Review Link (Optional Override)"
     },
     {
       "type": "header",
