@@ -16,6 +16,29 @@
     padding: 0 20px;
   }
 
+  /* Debug Banner */
+  .gbr-debug-box-{{ section_id }} {
+    background-color: #fff9db;
+    border: 1.5px solid #f59e0b;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-family: monospace;
+    font-size: 13px;
+    color: #92400e;
+    line-height: 1.5;
+  }
+
+  .gbr-debug-title-{{ section_id }} {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #b45309;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
   .gbr-content-grid-{{ section_id }} {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -343,6 +366,18 @@
 
 <div class="gbr-section-{{ section_id }}">
   <div class="gbr-container-{{ section_id }}">
+
+    {%- if section_st.show_debug_info -%}
+      <div class="gbr-debug-box-{{ section_id }}" id="gbr-debug-box-{{ section_id }}">
+        <div class="gbr-debug-title-{{ section_id }}">
+          🔍 Google Places API Debug Console
+        </div>
+        <div id="gbr-debug-log-{{ section_id }}">
+          Initializing status check...
+        </div>
+      </div>
+    {%- endif -%}
+
     <div class="gbr-content-grid-{{ section_id }}">
       
       <!-- Left Column: Business Summary Card -->
@@ -477,6 +512,17 @@
 
 <script>
   (function() {
+    function logDebug(msg, isError) {
+      const debugElem = document.getElementById('gbr-debug-log-{{ section_id }}');
+      if (debugElem) {
+        const time = new Date().toLocaleTimeString();
+        const prefix = isError ? '❌ [ERROR]' : 'ℹ️ [INFO]';
+        debugElem.innerHTML += `<br>${prefix} ${time}: ${msg}`;
+      }
+      if (isError) console.error('[Google Review Debug]', msg);
+      else console.log('[Google Review Debug]', msg);
+    }
+
     function initGBRSlider() {
       const wrapper = document.getElementById('gbr-carousel-{{ section_id }}');
       if (!wrapper) return;
@@ -547,132 +593,198 @@
       }, { passive: true });
     }
 
-    {% if section_st.enable_live_api and section_st.api_key != blank and section_st.place_id != blank %}
-      function fetchGooglePlacesData() {
-        const apiKey = "{{ section_st.api_key | strip }}";
-        const placeId = "{{ section_st.place_id | strip }}";
+    function checkApiConfig() {
+      const isEnabled = {{ section_st.enable_live_api | json }};
+      const apiKey = "{{ section_st.api_key | strip }}";
+      const placeId = "{{ section_st.place_id | strip }}";
 
-        if (!apiKey || !placeId) return;
+      logDebug(`Live API Sync Enabled: ${isEnabled}`);
+      logDebug(`API Key Configured: ${apiKey ? 'YES (' + apiKey.substring(0, 6) + '...)' : 'NO (Empty)'}`);
+      logDebug(`Place ID Configured: ${placeId ? 'YES (' + placeId + ')' : 'NO (Empty)'}`);
 
-        if (typeof google === 'undefined' || !google.maps || !google.maps.places) {
-          const script = document.createElement('script');
-          script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=gbrGoogleApiLoaded_{{ section_id }}`;
-          script.async = true;
-          script.defer = true;
-          window['gbrGoogleApiLoaded_{{ section_id }}'] = function() {
-            queryGooglePlaces(placeId);
-          };
-          script.onerror = function() {
-            console.error('Google Maps JS API failed to load. Please check your API key.');
-          };
-          document.head.appendChild(script);
-        } else {
-          queryGooglePlaces(placeId);
-        }
+      if (!isEnabled) {
+        logDebug('Live API Sync is UNCHECKED in section settings. Showing manual fallback blocks.');
+        return;
       }
 
-      function queryGooglePlaces(placeId) {
-        const dummyElem = document.createElement('div');
-        const service = new google.maps.places.PlacesService(dummyElem);
+      if (!apiKey || !placeId) {
+        logDebug('API Key or Place ID is missing! Please paste both values in Theme Customizer.', true);
+        return;
+      }
 
-        service.getDetails({
-          placeId: placeId,
-          fields: ['name', 'rating', 'user_ratings_total', 'reviews', 'url', 'photos']
-        }, function(place, status) {
-          if (status === google.maps.places.PlacesServiceStatus.OK && place) {
-            
-            // Update left business summary
-            if (place.name) {
-              const titleElem = document.getElementById('gbr-title-{{ section_id }}');
-              if (titleElem) titleElem.textContent = place.name;
-            }
+      // Try Google Places API (New) REST endpoint first
+      fetchPlacesNewApi(apiKey, placeId);
+    }
 
-            if (place.rating) {
-              const ratingElem = document.getElementById('gbr-overall-rating-{{ section_id }}');
-              if (ratingElem) ratingElem.textContent = place.rating.toFixed(1);
-            }
+    function fetchPlacesNewApi(apiKey, placeId) {
+      logDebug('Fetching live reviews from Google Places API (New)...');
+      
+      const endpoint = `https://places.googleapis.com/v1/places/${placeId}?fields=displayName,rating,userRatingCount,reviews,googleMapsUri&key=${apiKey}`;
 
-            if (place.user_ratings_total) {
-              const countElem = document.getElementById('gbr-count-text-{{ section_id }}');
-              if (countElem) countElem.textContent = `Based on ${place.user_ratings_total} reviews`;
-            }
+      fetch(endpoint, {
+        headers: {
+          'X-Goog-FieldMask': 'displayName,rating,userRatingCount,reviews,googleMapsUri'
+        }
+      })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(errData => {
+            throw new Error(errData.error ? `${errData.error.status}: ${errData.error.message}` : `HTTP ${res.status}`);
+          });
+        }
+        return res.json();
+      })
+      .then(data => {
+        logDebug(`Successfully received Google Places data for: "${data.displayName ? data.displayName.text : 'Business'}"`);
+        renderGoogleDataNew(data);
+      })
+      .catch(err => {
+        logDebug(`Places API (New) fetch error: ${err.message}. Trying Maps SDK fallback...`, true);
+        fetchGooglePlacesSdk(apiKey, placeId);
+      });
+    }
 
-            if (place.url) {
-              const btnElem = document.getElementById('gbr-btn-link-{{ section_id }}');
-              if (btnElem) btnElem.href = place.url;
-            }
+    function renderGoogleDataNew(data) {
+      if (data.displayName && data.displayName.text) {
+        const titleElem = document.getElementById('gbr-title-{{ section_id }}');
+        if (titleElem) titleElem.textContent = data.displayName.text;
+      }
 
-            // Update review carousel slides if Google returned reviews
-            if (place.reviews && place.reviews.length > 0) {
-              const track = document.getElementById('gbr-track-{{ section_id }}');
-              const dotsContainer = document.getElementById('gbr-dots-{{ section_id }}');
-              
-              if (track) {
-                track.innerHTML = '';
-                if (dotsContainer) dotsContainer.innerHTML = '';
+      if (data.rating) {
+        const ratingElem = document.getElementById('gbr-overall-rating-{{ section_id }}');
+        if (ratingElem) ratingElem.textContent = Number(data.rating).toFixed(1);
+      }
 
-                place.reviews.forEach((review, idx) => {
-                  const authorName = review.author_name || 'Google Customer';
-                  const authorDate = review.relative_time_description || '';
-                  const photoUrl = review.profile_photo_url || '';
-                  const rating = review.rating || 5;
-                  const reviewText = review.text || '';
-                  const initial = authorName.charAt(0).toLowerCase();
+      if (data.userRatingCount) {
+        const countElem = document.getElementById('gbr-count-text-{{ section_id }}');
+        if (countElem) countElem.textContent = `Based on ${data.userRatingCount} reviews`;
+      }
 
-                  const slideHtml = `
-                    <div class="gbr-slide-{{ section_id }}">
-                      <div class="gbr-card-{{ section_id }}">
-                        <div>
-                          <div class="gbr-card-header-{{ section_id }}">
-                            <div class="gbr-author-info-{{ section_id }}">
-                              ${photoUrl ? `<img src="${photoUrl}" class="gbr-author-avatar-{{ section_id }}" alt="${authorName}">` : `<div class="gbr-author-initial-{{ section_id }}">${initial}</div>`}
-                              <div class="gbr-author-details-{{ section_id }}">
-                                <span class="gbr-author-name-{{ section_id }}">${authorName}</span>
-                                <span class="gbr-author-date-{{ section_id }}">${authorDate}</span>
-                              </div>
-                            </div>
-                            <svg class="gbr-google-card-logo" viewBox="0 0 24 24">
-                              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-                            </svg>
-                          </div>
-                          <div class="gbr-card-rating-{{ section_id }}">
-                            ${[1,2,3,4,5].map(star => `<svg class="gbr-star-icon-{{ section_id }}" viewBox="0 0 24 24" style="${star > rating ? 'fill:#e2e8f0;' : ''}"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`).join('')}
-                          </div>
-                          <p class="gbr-card-text-{{ section_id }}">${reviewText}</p>
+      if (data.googleMapsUri) {
+        const btnElem = document.getElementById('gbr-btn-link-{{ section_id }}');
+        if (btnElem) btnElem.href = data.googleMapsUri;
+      }
+
+      if (data.reviews && data.reviews.length > 0) {
+        const track = document.getElementById('gbr-track-{{ section_id }}');
+        const dotsContainer = document.getElementById('gbr-dots-{{ section_id }}');
+        
+        if (track) {
+          track.innerHTML = '';
+          if (dotsContainer) dotsContainer.innerHTML = '';
+
+          data.reviews.forEach((review, idx) => {
+            const authorAttr = review.authorAttribution || {};
+            const authorName = authorAttr.displayName || 'Google Customer';
+            const authorDate = review.relativePublishTimeDescription || '';
+            const photoUrl = authorAttr.photoUri || '';
+            const rating = review.rating || 5;
+            const reviewText = (review.text && review.text.text) ? review.text.text : '';
+            const initial = authorName.charAt(0).toLowerCase();
+
+            const slideHtml = `
+              <div class="gbr-slide-{{ section_id }}">
+                <div class="gbr-card-{{ section_id }}">
+                  <div>
+                    <div class="gbr-card-header-{{ section_id }}">
+                      <div class="gbr-author-info-{{ section_id }}">
+                        ${photoUrl ? `<img src="${photoUrl}" class="gbr-author-avatar-{{ section_id }}" alt="${authorName}">` : `<div class="gbr-author-initial-{{ section_id }}">${initial}</div>`}
+                        <div class="gbr-author-details-{{ section_id }}">
+                          <span class="gbr-author-name-{{ section_id }}">${authorName}</span>
+                          <span class="gbr-author-date-{{ section_id }}">${authorDate}</span>
                         </div>
                       </div>
+                      <svg class="gbr-google-card-logo" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                      </svg>
                     </div>
-                  `;
-                  track.insertAdjacentHTML('beforeend', slideHtml);
+                    <div class="gbr-card-rating-{{ section_id }}">
+                      ${[1,2,3,4,5].map(star => `<svg class="gbr-star-icon-{{ section_id }}" viewBox="0 0 24 24" style="${star > rating ? 'fill:#e2e8f0;' : ''}"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`).join('')}
+                    </div>
+                    <p class="gbr-card-text-{{ section_id }}">${reviewText}</p>
+                  </div>
+                </div>
+              </div>
+            `;
+            track.insertAdjacentHTML('beforeend', slideHtml);
 
-                  if (dotsContainer) {
-                    const dotBtn = document.createElement('button');
-                    dotBtn.type = 'button';
-                    dotBtn.className = `gbr-dot-{{ section_id }} ${idx === 0 ? 'active' : ''}`;
-                    dotBtn.setAttribute('data-index', idx);
-                    dotBtn.setAttribute('aria-label', `Go to review ${idx + 1}`);
-                    dotsContainer.appendChild(dotBtn);
-                  }
-                });
-
-                initGBRSlider();
-              }
+            if (dotsContainer) {
+              const dotBtn = document.createElement('button');
+              dotBtn.type = 'button';
+              dotBtn.className = `gbr-dot-{{ section_id }} ${idx === 0 ? 'active' : ''}`;
+              dotBtn.setAttribute('data-index', idx);
+              dotBtn.setAttribute('aria-label', `Go to review ${idx + 1}`);
+              dotsContainer.appendChild(dotBtn);
             }
-          } else {
-            console.warn('Google Places API returned status:', status, 'Please check your API key, Places API activation, and Place ID.');
-          }
-        });
+          });
+
+          initGBRSlider();
+        }
       }
-    {% endif %}
+    }
+
+    function fetchGooglePlacesSdk(apiKey, placeId) {
+      logDebug('Attempting Google Maps SDK fallback...');
+      if (typeof google === 'undefined' || !google.maps || !google.maps.places) {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=gbrGoogleApiLoaded_{{ section_id }}`;
+        script.async = true;
+        script.defer = true;
+
+        window['gbrGoogleApiLoaded_{{ section_id }}'] = function() {
+          queryGooglePlacesSdk(placeId);
+        };
+
+        script.onerror = function() {
+          logDebug('Google Maps SDK script failed to load.', true);
+        };
+
+        document.head.appendChild(script);
+      } else {
+        queryGooglePlacesSdk(placeId);
+      }
+    }
+
+    function queryGooglePlacesSdk(placeId) {
+      const dummyElem = document.createElement('div');
+      const service = new google.maps.places.PlacesService(dummyElem);
+
+      service.getDetails({
+        placeId: placeId,
+        fields: ['name', 'rating', 'user_ratings_total', 'reviews', 'url', 'photos']
+      }, function(place, status) {
+        logDebug(`Google Places SDK returned status: ${status}`);
+
+        if (status === google.maps.places.PlacesServiceStatus.OK && place) {
+          logDebug(`Successfully fetched Place details for: "${place.name}"`);
+          if (place.name) {
+            const titleElem = document.getElementById('gbr-title-{{ section_id }}');
+            if (titleElem) titleElem.textContent = place.name;
+          }
+          if (place.rating) {
+            const ratingElem = document.getElementById('gbr-overall-rating-{{ section_id }}');
+            if (ratingElem) ratingElem.textContent = place.rating.toFixed(1);
+          }
+          if (place.user_ratings_total) {
+            const countElem = document.getElementById('gbr-count-text-{{ section_id }}');
+            if (countElem) countElem.textContent = `Based on ${place.user_ratings_total} reviews`;
+          }
+          if (place.url) {
+            const btnElem = document.getElementById('gbr-btn-link-{{ section_id }}');
+            if (btnElem) btnElem.href = place.url;
+          }
+        } else {
+          logDebug(`Google Places SDK Error: Status "${status}". Enable Places API (New) in Google Cloud.`, true);
+        }
+      });
+    }
 
     function initSection() {
       initGBRSlider();
-      {% if section_st.enable_live_api and section_st.api_key != blank and section_st.place_id != blank %}
-        fetchGooglePlacesData();
-      {% endif %}
+      checkApiConfig();
     }
 
     if (document.readyState === 'loading') {
@@ -705,6 +817,13 @@
       "label": "Enable Live Google API Sync",
       "default": false,
       "info": "Automatically fetches your latest business reviews directly from Google."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_debug_info",
+      "label": "Show On-Screen API Debug Console",
+      "default": true,
+      "info": "Shows live diagnostic status and error logs right on your screen to help troubleshoot."
     },
     {
       "type": "text",
