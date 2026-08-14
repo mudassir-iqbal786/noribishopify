@@ -453,29 +453,35 @@
   /* Attached Review Images Gallery */
   .gbr-review-photos-{{ section_id }} {
     display: flex;
-    gap: 10px;
-    margin-top: 14px;
+    gap: 12px;
+    margin-top: 16px;
     overflow-x: auto;
     padding-bottom: 4px;
   }
 
   .gbr-review-photo-thumb-{{ section_id }} {
-    width: 70px;
-    height: 70px;
-    border-radius: 12px;
+    width: 85px;
+    height: 85px;
+    border-radius: 14px;
     object-fit: cover;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #cbd5e1;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
 
   @media (max-width: 767px) {
     .gbr-review-photo-thumb-{{ section_id }} {
-      width: 55px;
-      height: 55px;
-      border-radius: 8px;
+      width: 70px;
+      height: 70px;
+      border-radius: 10px;
     }
+  }
+
+  .gbr-review-photo-thumb-{{ section_id }}:hover {
+    transform: scale(1.06);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
   }
 
   /* Controls Row Below Card on Mobile */
@@ -692,9 +698,9 @@
                       <p class="gbr-card-text-{{ section_id }}">{{ block_st.review_text }}</p>
                     {%- endif -%}
 
-                    {%- if block_st.review_photo != blank -%}
+                    {%- if section_st.show_review_photos and block_st.review_photo != blank -%}
                       <div class="gbr-review-photos-{{ section_id }}">
-                        {{ block_st.review_photo | image_url: width: 240 | image_tag: class: 'gbr-review-photo-thumb', alt: 'Customer Review Photo' }}
+                        {{ block_st.review_photo | image_url: width: 300 | image_tag: class: 'gbr-review-photo-thumb', alt: 'Customer Review Photo' }}
                       </div>
                     {%- endif -%}
                   </div>
@@ -865,7 +871,7 @@
       })
       .then(data => {
         logDebug(`Successfully received Google Places data for: "${data.displayName ? data.displayName.text : 'Business'}"`);
-        renderGoogleDataNew(data, placeId);
+        renderGoogleDataNew(data, placeId, apiKey);
       })
       .catch(err => {
         logDebug(`Places API (New) fetch error: ${err.message}. Trying Maps SDK fallback...`, true);
@@ -873,7 +879,7 @@
       });
     }
 
-    function renderGoogleDataNew(data, placeId) {
+    function renderGoogleDataNew(data, placeId, apiKey) {
       if (data.displayName && data.displayName.text) {
         const titleElem = document.getElementById('gbr-title-{{ section_id }}');
         if (titleElem) titleElem.textContent = data.displayName.text;
@@ -898,6 +904,7 @@
       if (data.reviews && data.reviews.length > 0) {
         const track = document.getElementById('gbr-track-{{ section_id }}');
         const dotsContainer = document.getElementById('gbr-dots-{{ section_id }}');
+        const showReviewPhotos = {{ section_st.show_review_photos | json }};
         
         if (track) {
           track.innerHTML = '';
@@ -913,12 +920,20 @@
             const initial = authorName.charAt(0).toLowerCase();
 
             let photosHtml = '';
-            if (review.photos && review.photos.length > 0) {
-              photosHtml = `<div class="gbr-review-photos-{{ section_id }}">` +
-                review.photos.map(p => {
-                  const pUrl = p.authorAttribution ? p.authorAttribution.photoUri : '';
-                  return pUrl ? `<img src="${pUrl}" class="gbr-review-photo-thumb-{{ section_id }}" alt="Review Photo">` : '';
-                }).join('') + `</div>`;
+            if (showReviewPhotos && review.photos && review.photos.length > 0) {
+              const photoImgs = review.photos.map(p => {
+                let imgUrl = '';
+                if (p.name) {
+                  imgUrl = `https://places.googleapis.com/v1/${p.name}/media?maxWidthPx=600&key=${apiKey}`;
+                } else if (p.photoUri) {
+                  imgUrl = p.photoUri;
+                }
+                return imgUrl ? `<img src="${imgUrl}" class="gbr-review-photo-thumb-{{ section_id }}" alt="Google Review Photo" loading="lazy">` : '';
+              }).join('');
+              
+              if (photoImgs) {
+                photosHtml = `<div class="gbr-review-photos-{{ section_id }}">${photoImgs}</div>`;
+              }
             }
 
             const slideHtml = `
@@ -1066,6 +1081,13 @@
       "label": "Enable Live Google API Sync",
       "default": false,
       "info": "Automatically fetches your latest business reviews directly from Google."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_review_photos",
+      "label": "Show Customer Review Images",
+      "default": true,
+      "info": "Toggle to display or hide customer photos attached to reviews."
     },
     {
       "type": "checkbox",
