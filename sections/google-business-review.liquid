@@ -20,6 +20,7 @@
     max-width: {{ section_st.max_width }}px;
     margin: 0 auto;
     padding: 0 20px;
+    box-sizing: border-box;
   }
 
   /* Debug Banner */
@@ -45,6 +46,7 @@
     gap: 6px;
   }
 
+  /* Desktop Grid (1025px+) */
   .gbr-content-grid-{{ section_id }} {
     display: grid;
     grid-template-columns: 320px 1fr;
@@ -52,10 +54,28 @@
     align-items: center;
   }
 
-  @media (max-width: 989px) {
+  /* Tablet Grid (768px - 1024px) */
+  @media (max-width: 1024px) and (min-width: 768px) {
+    .gbr-content-grid-{{ section_id }} {
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+    }
+  }
+
+  /* Mobile Layout (< 767px) */
+  @media (max-width: 767px) {
+    .gbr-section-{{ section_id }} {
+      padding-top: {{ section_st.padding_top | divided_by: 1.5 | round }}px;
+      padding-bottom: {{ section_st.padding_bottom | divided_by: 1.5 | round }}px;
+    }
+
+    .gbr-container-{{ section_id }} {
+      padding: 0 16px;
+    }
+
     .gbr-content-grid-{{ section_id }} {
       grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 24px;
     }
   }
 
@@ -84,10 +104,11 @@
     background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853);
   }
 
-  @media (max-width: 989px) {
+  @media (max-width: 767px) {
     .gbr-badge-card-{{ section_id }} {
       align-items: center;
       text-align: center;
+      padding: 22px 18px;
     }
   }
 
@@ -95,6 +116,13 @@
     display: flex;
     align-items: center;
     gap: 14px;
+  }
+
+  @media (max-width: 767px) {
+    .gbr-badge-header-{{ section_id }} {
+      flex-direction: column;
+      gap: 8px;
+    }
   }
 
   .gbr-business-avatar-{{ section_id }} {
@@ -127,6 +155,12 @@
     margin: 0;
     line-height: 1.25;
     letter-spacing: -0.01em;
+  }
+
+  @media (max-width: 767px) {
+    .gbr-business-title-{{ section_id }} {
+      font-size: 18px;
+    }
   }
 
   .gbr-verified-tag-{{ section_id }} {
@@ -207,6 +241,7 @@
     width: 100%;
     box-sizing: border-box;
     margin-top: 4px;
+    cursor: pointer;
   }
 
   .gbr-google-btn-{{ section_id }}:hover {
@@ -251,7 +286,7 @@
     padding: 0 6px;
   }
 
-  /* Modern Card Design */
+  /* Card Design */
   .gbr-card-{{ section_id }} {
     background-color: {{ section_st.card_bg_color }};
     border-radius: 20px;
@@ -263,6 +298,13 @@
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  @media (max-width: 767px) {
+    .gbr-card-{{ section_id }} {
+      padding: 20px 16px;
+      border-radius: 16px;
+    }
   }
 
   .gbr-card-{{ section_id }}:hover {
@@ -338,6 +380,12 @@
     letter-spacing: -0.01em;
   }
 
+  @media (max-width: 767px) {
+    .gbr-author-name-{{ section_id }} {
+      font-size: 15.5px;
+    }
+  }
+
   .gbr-author-date-{{ section_id }} {
     font-size: 13px;
     color: #94a3b8;
@@ -364,6 +412,13 @@
     font-weight: 400;
   }
 
+  @media (max-width: 767px) {
+    .gbr-card-text-{{ section_id }} {
+      font-size: 14.5px;
+      line-height: 1.55;
+    }
+  }
+
   /* Attached Review Images Gallery */
   .gbr-review-photos-{{ section_id }} {
     display: flex;
@@ -382,6 +437,14 @@
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     flex-shrink: 0;
+  }
+
+  @media (max-width: 767px) {
+    .gbr-review-photo-thumb-{{ section_id }} {
+      width: 65px;
+      height: 65px;
+      border-radius: 10px;
+    }
   }
 
   .gbr-review-photo-thumb-{{ section_id }}:hover {
@@ -426,12 +489,16 @@
     right: -21px;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 767px) {
+    .gbr-nav-btn-{{ section_id }} {
+      width: 34px;
+      height: 34px;
+    }
     .gbr-nav-btn-prev-{{ section_id }} {
-      left: -12px;
+      left: 0px;
     }
     .gbr-nav-btn-next-{{ section_id }} {
-      right: -12px;
+      right: 0px;
     }
   }
 
@@ -718,7 +785,6 @@
       const apiKey = "{{ section_st.api_key | strip }}";
       const placeId = "{{ section_st.place_id | strip }}";
 
-      // Set direct Google Write-Review popup link if placeId is configured
       if (placeId) {
         const btnElem = document.getElementById('gbr-btn-link-{{ section_id }}');
         const customUrl = "{{ section_st.button_link | strip }}";
@@ -788,7 +854,6 @@
         if (countElem) countElem.textContent = `Based on ${data.userRatingCount} reviews`;
       }
 
-      // Always direct user to Google's official Write-Review Modal
       const btnElem = document.getElementById('gbr-btn-link-{{ section_id }}');
       if (btnElem) {
         const customUrl = "{{ section_st.button_link | strip }}";
