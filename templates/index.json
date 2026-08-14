@@ -390,7 +390,7 @@
       ],
       "name": "Google Business Review",
       "settings": {
-        "enable_live_api": false,
+        "enable_live_api": true,
         "api_key": "AIzaSyAn2-if4WOlbIrpX-u3vqJToze6Fpie7qA",
         "place_id": "ChIJgapin3MzwokRFgCP5jnKIiM",
         "business_name": "Pixelrigz",
