@@ -8,6 +8,7 @@
     padding-top: {{ section_st.padding_top }}px;
     padding-bottom: {{ section_st.padding_bottom }}px;
     background-color: {{ section_st.bg_color }};
+    font-family: inherit;
   }
 
   .gbr-container-{{ section_id }} {
@@ -20,7 +21,7 @@
   .gbr-debug-box-{{ section_id }} {
     background-color: #fff9db;
     border: 1.5px solid #f59e0b;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 14px 18px;
     margin-bottom: 24px;
     font-family: monospace;
@@ -41,8 +42,8 @@
 
   .gbr-content-grid-{{ section_id }} {
     display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 48px;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
     align-items: center;
   }
 
@@ -53,12 +54,29 @@
     }
   }
 
-  /* Left Business Card */
+  /* Left Business Summary Box */
   .gbr-badge-card-{{ section_id }} {
+    background: #ffffff;
+    border: 1px solid #edf2f7;
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gbr-badge-card-{{ section_id }}::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #4285F4, #EA4335, #FBBC05, #34A853);
   }
 
   @media (max-width: 989px) {
@@ -79,7 +97,8 @@
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border: 2px solid #ffffff;
   }
 
   .gbr-business-avatar-placeholder-{{ section_id }} {
@@ -92,8 +111,8 @@
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 22px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    font-size: 24px;
+    box-shadow: 0 3px 10px rgba(26,115,232,0.3);
   }
 
   .gbr-business-title-{{ section_id }} {
@@ -101,19 +120,33 @@
     font-weight: 700;
     color: {{ section_st.text_color }};
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .gbr-verified-tag-{{ section_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #16a34a;
+    background-color: #f0fdf4;
+    padding: 3px 8px;
+    border-radius: 12px;
+    border: 1px solid #bbf7d0;
   }
 
   .gbr-rating-row-{{ section_id }} {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     margin-top: 2px;
   }
 
   .gbr-rating-score-{{ section_id }} {
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 800;
     color: {{ section_st.star_color }};
     line-height: 1;
   }
@@ -124,15 +157,17 @@
   }
 
   .gbr-star-icon-{{ section_id }} {
-    width: 19px;
-    height: 19px;
+    width: 20px;
+    height: 20px;
     fill: {{ section_st.star_color }};
+    filter: drop-shadow(0 1px 2px rgba(245,158,11,0.25));
   }
 
   .gbr-reviews-count-{{ section_id }} {
     font-size: 14px;
     color: #64748b;
-    margin: 2px 0 0 0;
+    margin: 0;
+    font-weight: 500;
   }
 
   .gbr-powered-by-{{ section_id }} {
@@ -141,7 +176,6 @@
     gap: 4px;
     font-size: 14px;
     color: #64748b;
-    margin-top: 2px;
   }
 
   .gbr-google-text-g { color: #4285F4; font-weight: 700; }
@@ -154,105 +188,135 @@
   .gbr-google-btn-{{ section_id }} {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     background-color: {{ section_st.btn_bg_color }};
     color: {{ section_st.btn_text_color }};
-    padding: 9px 18px;
+    padding: 11px 22px;
     border-radius: 50px;
     font-weight: 600;
     font-size: 14px;
     text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 3px 10px rgba(26, 115, 232, 0.3);
-    margin-top: 6px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 14px rgba(26, 115, 232, 0.35);
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 4px;
   }
 
   .gbr-google-btn-{{ section_id }}:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 14px rgba(26, 115, 232, 0.45);
+    box-shadow: 0 6px 20px rgba(26, 115, 232, 0.48);
     color: {{ section_st.btn_text_color }};
   }
 
   .gbr-btn-g-icon {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     background: #ffffff;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 2px;
+    padding: 3px;
     box-sizing: border-box;
   }
 
-  /* Right Review Carousel */
+  /* Right Review Carousel Container */
   .gbr-carousel-wrapper-{{ section_id }} {
     position: relative;
-    max-width: 480px;
+    max-width: 580px;
     margin: 0 auto;
     width: 100%;
   }
 
   .gbr-card-container-{{ section_id }} {
     overflow: hidden;
-    padding: 10px 4px;
+    padding: 12px 6px;
   }
 
   .gbr-track-{{ section_id }} {
     display: flex;
-    transition: transform 0.4s ease;
+    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   .gbr-slide-{{ section_id }} {
     min-width: 100%;
     box-sizing: border-box;
-    padding: 0 4px;
+    padding: 0 6px;
   }
 
+  /* Modern Card Design */
   .gbr-card-{{ section_id }} {
     background-color: {{ section_st.card_bg_color }};
-    border-radius: 16px;
-    padding: 24px;
+    border-radius: 20px;
+    padding: 28px;
     position: relative;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.03);
-    min-height: 180px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(226, 232, 240, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gbr-card-{{ section_id }}:hover {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
   }
 
   .gbr-card-header-{{ section_id }} {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
   .gbr-author-info-{{ section_id }} {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
+  }
+
+  .gbr-avatar-wrapper-{{ section_id }} {
+    position: relative;
   }
 
   .gbr-author-avatar-{{ section_id }} {
-    width: 44px;
-    height: 44px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
 
   .gbr-author-initial-{{ section_id }} {
-    width: 44px;
-    height: 44px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: #044e42;
+    background: linear-gradient(135deg, #0f5132, #044e42);
     color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 22px;
     text-transform: lowercase;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .gbr-verified-check-{{ section_id }} {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 18px;
+    height: 18px;
+    background: #16a34a;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
   }
 
   .gbr-author-details-{{ section_id }} {
@@ -262,54 +326,82 @@
 
   .gbr-author-name-{{ section_id }} {
     font-weight: 700;
-    font-size: 16px;
-    color: #1a365d;
+    font-size: 17px;
+    color: #0f172a;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
   }
 
   .gbr-author-date-{{ section_id }} {
     font-size: 13px;
-    color: #8898aa;
+    color: #94a3b8;
     margin-top: 3px;
+    font-weight: 500;
   }
 
   .gbr-google-card-logo {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 
   .gbr-card-rating-{{ section_id }} {
     display: flex;
-    gap: 3px;
-    margin-bottom: 12px;
+    gap: 4px;
+    margin-bottom: 14px;
   }
 
   .gbr-card-text-{{ section_id }} {
-    font-size: 15px;
-    line-height: 1.5;
+    font-size: 15.5px;
+    line-height: 1.6;
     color: #334155;
     margin: 0;
+    font-weight: 400;
+  }
+
+  /* Attached Review Images Gallery */
+  .gbr-review-photos-{{ section_id }} {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .gbr-review-photo-thumb-{{ section_id }} {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .gbr-review-photo-thumb-{{ section_id }}:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
 
   /* Nav Arrows */
   .gbr-nav-btn-{{ section_id }} {
     position: absolute;
-    top: 45%;
+    top: 50%;
     transform: translateY(-50%);
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     background-color: #ffffff;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     z-index: 5;
-    transition: all 0.2s ease;
-    color: #64748b;
+    transition: all 0.25s ease;
+    color: #475569;
     padding: 0;
     outline: none;
   }
@@ -317,24 +409,24 @@
   .gbr-nav-btn-{{ section_id }}:hover {
     background-color: #ffffff;
     color: #0f172a;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    transform: translateY(-50%) scale(1.08);
   }
 
   .gbr-nav-btn-prev-{{ section_id }} {
-    left: -18px;
+    left: -21px;
   }
 
   .gbr-nav-btn-next-{{ section_id }} {
-    right: -18px;
+    right: -21px;
   }
 
-  @media (max-width: 540px) {
+  @media (max-width: 640px) {
     .gbr-nav-btn-prev-{{ section_id }} {
-      left: -10px;
+      left: -12px;
     }
     .gbr-nav-btn-next-{{ section_id }} {
-      right: -10px;
+      right: -12px;
     }
   }
 
@@ -344,7 +436,7 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-    margin-top: 14px;
+    margin-top: 18px;
   }
 
   .gbr-dot-{{ section_id }} {
@@ -360,7 +452,8 @@
 
   .gbr-dot-{{ section_id }}.active {
     background-color: {{ section_st.star_color }};
-    transform: scale(1.2);
+    width: 24px;
+    border-radius: 12px;
   }
 {% endstyle %}
 
@@ -393,9 +486,17 @@
             {%- endif -%}
           </div>
 
-          <h3 class="gbr-business-title-{{ section_id }}" id="gbr-title-{{ section_id }}">
-            {{ section_st.business_name }}
-          </h3>
+          <div>
+            <h3 class="gbr-business-title-{{ section_id }}" id="gbr-title-{{ section_id }}">
+              {{ section_st.business_name }}
+            </h3>
+            <div class="gbr-verified-tag-{{ section_id }}">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Verified Business
+            </div>
+          </div>
         </div>
 
         <div class="gbr-rating-row-{{ section_id }}">
@@ -433,7 +534,7 @@
       <div class="gbr-carousel-wrapper-{{ section_id }}" id="gbr-carousel-{{ section_id }}">
         
         <button type="button" class="gbr-nav-btn-{{ section_id }} gbr-nav-btn-prev-{{ section_id }}" aria-label="Previous Review" data-nav="prev">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
         </button>
@@ -448,14 +549,22 @@
                   <div>
                     <div class="gbr-card-header-{{ section_id }}">
                       <div class="gbr-author-info-{{ section_id }}">
-                        {%- if block_st.author_image != blank -%}
-                          {{ block_st.author_image | image_url: width: 90 | image_tag: class: 'gbr-author-avatar', alt: block_st.author_name }}
-                        {%- else -%}
-                          {%- assign initial = block_st.author_name | slice: 0 | downcase -%}
-                          <div class="gbr-author-initial-{{ section_id }}">
-                            {{ initial | default: 'u' }}
+                        <div class="gbr-avatar-wrapper-{{ section_id }}">
+                          {%- if block_st.author_image != blank -%}
+                            {{ block_st.author_image | image_url: width: 100 | image_tag: class: 'gbr-author-avatar', alt: block_st.author_name }}
+                          {%- else -%}
+                            {%- assign initial = block_st.author_name | slice: 0 | downcase -%}
+                            <div class="gbr-author-initial-{{ section_id }}">
+                              {{ initial | default: 'u' }}
+                            </div>
+                          {%- endif -%}
+                          <div class="gbr-verified-check-{{ section_id }}" title="Verified Review">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                              <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
                           </div>
-                        {%- endif -%}
+                        </div>
+                        
                         <div class="gbr-author-details-{{ section_id }}">
                           <span class="gbr-author-name-{{ section_id }}">{{ block_st.author_name }}</span>
                           {%- if block_st.author_date != blank -%}
@@ -475,7 +584,7 @@
                     <div class="gbr-card-rating-{{ section_id }}">
                       {%- assign rating = block_st.rating | default: 5 -%}
                       {%- for i in (1..5) -%}
-                        <svg class="gbr-star-icon-{{ section_id }}" viewBox="0 0 24 24" style="{% if i > rating %}fill: #e2e8f0;{% endif %}">
+                        <svg class="gbr-star-icon-{{ section_id }}" viewBox="0 0 24 24" style="{% if i > rating %}fill: #e2e8f0;filter:none;{% endif %}">
                           <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                         </svg>
                       {%- endfor -%}
@@ -483,6 +592,12 @@
 
                     {%- if block_st.review_text != blank -%}
                       <p class="gbr-card-text-{{ section_id }}">{{ block_st.review_text }}</p>
+                    {%- endif -%}
+
+                    {%- if block_st.review_photo != blank -%}
+                      <div class="gbr-review-photos-{{ section_id }}">
+                        {{ block_st.review_photo | image_url: width: 240 | image_tag: class: 'gbr-review-photo-thumb', alt: 'Customer Review Photo' }}
+                      </div>
                     {%- endif -%}
                   </div>
 
@@ -493,7 +608,7 @@
         </div>
 
         <button type="button" class="gbr-nav-btn-{{ section_id }} gbr-nav-btn-next-{{ section_id }}" aria-label="Next Review" data-nav="next">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
         </button>
@@ -612,7 +727,6 @@
         return;
       }
 
-      // Try Google Places API (New) REST endpoint first
       fetchPlacesNewApi(apiKey, placeId);
     }
 
@@ -682,13 +796,31 @@
             const reviewText = (review.text && review.text.text) ? review.text.text : '';
             const initial = authorName.charAt(0).toLowerCase();
 
+            // Check if review has photos
+            let photosHtml = '';
+            if (review.photos && review.photos.length > 0) {
+              photosHtml = `<div class="gbr-review-photos-{{ section_id }}">` +
+                review.photos.map(p => {
+                  const pUrl = p.authorAttribution ? p.authorAttribution.photoUri : '';
+                  return pUrl ? `<img src="${pUrl}" class="gbr-review-photo-thumb-{{ section_id }}" alt="Review Photo">` : '';
+                }).join('') + `</div>`;
+            }
+
             const slideHtml = `
               <div class="gbr-slide-{{ section_id }}">
                 <div class="gbr-card-{{ section_id }}">
                   <div>
                     <div class="gbr-card-header-{{ section_id }}">
                       <div class="gbr-author-info-{{ section_id }}">
-                        ${photoUrl ? `<img src="${photoUrl}" class="gbr-author-avatar-{{ section_id }}" alt="${authorName}">` : `<div class="gbr-author-initial-{{ section_id }}">${initial}</div>`}
+                        <div class="gbr-avatar-wrapper-{{ section_id }}">
+                          ${photoUrl ? `<img src="${photoUrl}" class="gbr-author-avatar-{{ section_id }}" alt="${authorName}">` : `<div class="gbr-author-initial-{{ section_id }}">${initial}</div>`}
+                          <div class="gbr-verified-check-{{ section_id }}" title="Verified Google Review">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                              <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                          </div>
+                        </div>
+
                         <div class="gbr-author-details-{{ section_id }}">
                           <span class="gbr-author-name-{{ section_id }}">${authorName}</span>
                           <span class="gbr-author-date-{{ section_id }}">${authorDate}</span>
@@ -702,9 +834,10 @@
                       </svg>
                     </div>
                     <div class="gbr-card-rating-{{ section_id }}">
-                      ${[1,2,3,4,5].map(star => `<svg class="gbr-star-icon-{{ section_id }}" viewBox="0 0 24 24" style="${star > rating ? 'fill:#e2e8f0;' : ''}"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`).join('')}
+                      ${[1,2,3,4,5].map(star => `<svg class="gbr-star-icon-{{ section_id }}" viewBox="0 0 24 24" style="${star > rating ? 'fill:#e2e8f0;filter:none;' : ''}"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`).join('')}
                     </div>
                     <p class="gbr-card-text-{{ section_id }}">${reviewText}</p>
+                    ${photosHtml}
                   </div>
                 </div>
               </div>
@@ -907,13 +1040,13 @@
       "type": "color",
       "id": "card_bg_color",
       "label": "Review Card Background",
-      "default": "#f4f4f4"
+      "default": "#ffffff"
     },
     {
       "type": "color",
       "id": "bg_color",
       "label": "Section Background",
-      "default": "#ffffff"
+      "default": "#f8fafc"
     },
     {
       "type": "range",
@@ -982,6 +1115,11 @@
           "id": "review_text",
           "label": "Review Body",
           "default": "They made customize PC for me and it's best."
+        },
+        {
+          "type": "image_picker",
+          "id": "review_photo",
+          "label": "Review Photo (optional)"
         }
       ]
     }
