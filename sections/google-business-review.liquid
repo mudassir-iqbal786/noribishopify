@@ -1,0 +1,906 @@
+{%- liquid
+  assign section_st = section.settings
+  assign section_id = section.id | replace: '_', '' | downcase
+-%}
+
+{% style %}
+  .gbr-section-{{ section_id }} {
+    padding-top: {{ section_st.padding_top }}px;
+    padding-bottom: {{ section_st.padding_bottom }}px;
+    background-color: {{ section_st.bg_color }};
+  }
+
+  .gbr-container-{{ section_id }} {
+    max-width: {{ section_st.max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .gbr-content-grid-{{ section_id }} {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  @media (max-width: 989px) {
+    .gbr-content-grid-{{ section_id }} {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  /* Left Business Card */
+  .gbr-badge-card-{{ section_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  @media (max-width: 989px) {
+    .gbr-badge-card-{{ section_id }} {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .gbr-badge-header-{{ section_id }} {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .gbr-business-avatar-{{ section_id }} {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+
+  .gbr-business-avatar-placeholder-{{ section_id }} {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a73e8, #0d47a1);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 22px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+
+  .gbr-business-title-{{ section_id }} {
+    font-size: 20px;
+    font-weight: 700;
+    color: {{ section_st.text_color }};
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .gbr-rating-row-{{ section_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 2px;
+  }
+
+  .gbr-rating-score-{{ section_id }} {
+    font-size: 17px;
+    font-weight: 700;
+    color: {{ section_st.star_color }};
+    line-height: 1;
+  }
+
+  .gbr-stars-{{ section_id }} {
+    display: flex;
+    gap: 3px;
+  }
+
+  .gbr-star-icon-{{ section_id }} {
+    width: 19px;
+    height: 19px;
+    fill: {{ section_st.star_color }};
+  }
+
+  .gbr-reviews-count-{{ section_id }} {
+    font-size: 14px;
+    color: #64748b;
+    margin: 2px 0 0 0;
+  }
+
+  .gbr-powered-by-{{ section_id }} {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  .gbr-google-text-g { color: #4285F4; font-weight: 700; }
+  .gbr-google-text-o1 { color: #EA4335; font-weight: 700; }
+  .gbr-google-text-o2 { color: #FBBC05; font-weight: 700; }
+  .gbr-google-text-g2 { color: #4285F4; font-weight: 700; }
+  .gbr-google-text-l { color: #34A853; font-weight: 700; }
+  .gbr-google-text-e { color: #EA4335; font-weight: 700; }
+
+  .gbr-google-btn-{{ section_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: {{ section_st.btn_bg_color }};
+    color: {{ section_st.btn_text_color }};
+    padding: 9px 18px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 10px rgba(26, 115, 232, 0.3);
+    margin-top: 6px;
+  }
+
+  .gbr-google-btn-{{ section_id }}:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(26, 115, 232, 0.45);
+    color: {{ section_st.btn_text_color }};
+  }
+
+  .gbr-btn-g-icon {
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    box-sizing: border-box;
+  }
+
+  /* Right Review Carousel */
+  .gbr-carousel-wrapper-{{ section_id }} {
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .gbr-card-container-{{ section_id }} {
+    overflow: hidden;
+    padding: 10px 4px;
+  }
+
+  .gbr-track-{{ section_id }} {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .gbr-slide-{{ section_id }} {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 0 4px;
+  }
+
+  .gbr-card-{{ section_id }} {
+    background-color: {{ section_st.card_bg_color }};
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .gbr-card-header-{{ section_id }} {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .gbr-author-info-{{ section_id }} {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .gbr-author-avatar-{{ section_id }} {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .gbr-author-initial-{{ section_id }} {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #044e42;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: lowercase;
+  }
+
+  .gbr-author-details-{{ section_id }} {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gbr-author-name-{{ section_id }} {
+    font-weight: 700;
+    font-size: 16px;
+    color: #1a365d;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .gbr-author-date-{{ section_id }} {
+    font-size: 13px;
+    color: #8898aa;
+    margin-top: 3px;
+  }
+
+  .gbr-google-card-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .gbr-card-rating-{{ section_id }} {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 12px;
+  }
+
+  .gbr-card-text-{{ section_id }} {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #334155;
+    margin: 0;
+  }
+
+  /* Nav Arrows */
+  .gbr-nav-btn-{{ section_id }} {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.2s ease;
+    color: #64748b;
+    padding: 0;
+    outline: none;
+  }
+
+  .gbr-nav-btn-{{ section_id }}:hover {
+    background-color: #ffffff;
+    color: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .gbr-nav-btn-prev-{{ section_id }} {
+    left: -18px;
+  }
+
+  .gbr-nav-btn-next-{{ section_id }} {
+    right: -18px;
+  }
+
+  @media (max-width: 540px) {
+    .gbr-nav-btn-prev-{{ section_id }} {
+      left: -10px;
+    }
+    .gbr-nav-btn-next-{{ section_id }} {
+      right: -10px;
+    }
+  }
+
+  /* Dots */
+  .gbr-dots-{{ section_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .gbr-dot-{{ section_id }} {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .gbr-dot-{{ section_id }}.active {
+    background-color: {{ section_st.star_color }};
+    transform: scale(1.2);
+  }
+{% endstyle %}
+
+<div class="gbr-section-{{ section_id }}">
+  <div class="gbr-container-{{ section_id }}">
+    <div class="gbr-content-grid-{{ section_id }}">
+      
+      <!-- Left Column: Business Summary Card -->
+      <div class="gbr-badge-card-{{ section_id }}">
+        <div class="gbr-badge-header-{{ section_id }}">
+          <div id="gbr-business-avatar-container-{{ section_id }}">
+            {%- if section_st.business_image != blank -%}
+              {{ section_st.business_image | image_url: width: 120 | image_tag: class: 'gbr-business-avatar', alt: section_st.business_name }}
+            {%- else -%}
+              <div class="gbr-business-avatar-placeholder-{{ section_id }}" id="gbr-avatar-ph-{{ section_id }}">
+                {{ section_st.business_name | slice: 0 | upcase }}
+              </div>
+            {%- endif -%}
+          </div>
+
+          <h3 class="gbr-business-title-{{ section_id }}" id="gbr-title-{{ section_id }}">
+            {{ section_st.business_name }}
+          </h3>
+        </div>
+
+        <div class="gbr-rating-row-{{ section_id }}">
+          <span class="gbr-rating-score-{{ section_id }}" id="gbr-overall-rating-{{ section_id }}">{{ section_st.overall_rating }}</span>
+          <div class="gbr-stars-{{ section_id }}">
+            {%- for i in (1..5) -%}
+              <svg class="gbr-star-icon-{{ section_id }}" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              </svg>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <p class="gbr-reviews-count-{{ section_id }}" id="gbr-count-text-{{ section_id }}">{{ section_st.reviews_count_text }}</p>
+
+        <div class="gbr-powered-by-{{ section_id }}">
+          powered by 
+          <span class="gbr-google-text-g">G</span><span class="gbr-google-text-o1">o</span><span class="gbr-google-text-o2">o</span><span class="gbr-google-text-g2">g</span><span class="gbr-google-text-l">l</span><span class="gbr-google-text-e">e</span>
+        </div>
+
+        <a href="{{ section_st.button_link | default: '#' }}" class="gbr-google-btn-{{ section_id }}" id="gbr-btn-link-{{ section_id }}" target="_blank" rel="noopener noreferrer">
+          <span id="gbr-btn-text-{{ section_id }}">{{ section_st.button_text }}</span>
+          <span class="gbr-btn-g-icon">
+            <svg viewBox="0 0 24 24" width="14" height="14">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Right Column: Customer Reviews Carousel -->
+      <div class="gbr-carousel-wrapper-{{ section_id }}" id="gbr-carousel-{{ section_id }}">
+        
+        <button type="button" class="gbr-nav-btn-{{ section_id }} gbr-nav-btn-prev-{{ section_id }}" aria-label="Previous Review" data-nav="prev">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="gbr-card-container-{{ section_id }}">
+          <div class="gbr-track-{{ section_id }}" id="gbr-track-{{ section_id }}" data-track>
+            {%- for block in section.blocks -%}
+              {%- assign block_st = block.settings -%}
+              <div class="gbr-slide-{{ section_id }}" {{ block.shopify_attributes }}>
+                <div class="gbr-card-{{ section_id }}">
+                  
+                  <div>
+                    <div class="gbr-card-header-{{ section_id }}">
+                      <div class="gbr-author-info-{{ section_id }}">
+                        {%- if block_st.author_image != blank -%}
+                          {{ block_st.author_image | image_url: width: 90 | image_tag: class: 'gbr-author-avatar', alt: block_st.author_name }}
+                        {%- else -%}
+                          {%- assign initial = block_st.author_name | slice: 0 | downcase -%}
+                          <div class="gbr-author-initial-{{ section_id }}">
+                            {{ initial | default: 'u' }}
+                          </div>
+                        {%- endif -%}
+                        <div class="gbr-author-details-{{ section_id }}">
+                          <span class="gbr-author-name-{{ section_id }}">{{ block_st.author_name }}</span>
+                          {%- if block_st.author_date != blank -%}
+                            <span class="gbr-author-date-{{ section_id }}">{{ block_st.author_date }}</span>
+                          {%- endif -%}
+                        </div>
+                      </div>
+
+                      <svg class="gbr-google-card-logo" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                      </svg>
+                    </div>
+
+                    <div class="gbr-card-rating-{{ section_id }}">
+                      {%- assign rating = block_st.rating | default: 5 -%}
+                      {%- for i in (1..5) -%}
+                        <svg class="gbr-star-icon-{{ section_id }}" viewBox="0 0 24 24" style="{% if i > rating %}fill: #e2e8f0;{% endif %}">
+                          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                      {%- endfor -%}
+                    </div>
+
+                    {%- if block_st.review_text != blank -%}
+                      <p class="gbr-card-text-{{ section_id }}">{{ block_st.review_text }}</p>
+                    {%- endif -%}
+                  </div>
+
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <button type="button" class="gbr-nav-btn-{{ section_id }} gbr-nav-btn-next-{{ section_id }}" aria-label="Next Review" data-nav="next">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="gbr-dots-{{ section_id }}" id="gbr-dots-{{ section_id }}" data-dots>
+          {%- for block in section.blocks -%}
+            <button type="button" class="gbr-dot-{{ section_id }}{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Go to review {{ forloop.index }}"></button>
+          {%- endfor -%}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    let sliderInstance = null;
+
+    function initGBRSlider() {
+      const wrapper = document.getElementById('gbr-carousel-{{ section_id }}');
+      if (!wrapper) return;
+
+      const track = wrapper.querySelector('[data-track]');
+      const slides = wrapper.querySelectorAll('.gbr-slide-{{ section_id }}');
+      const dots = wrapper.querySelectorAll('.gbr-dot-{{ section_id }}');
+      const prevBtn = wrapper.querySelector('[data-nav="prev"]');
+      const nextBtn = wrapper.querySelector('[data-nav="next"]');
+
+      if (!track || slides.length === 0) return;
+
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+
+      function updateSlider(index) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        currentIndex = index;
+
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentIndex);
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.onclick = function() {
+          updateSlider(currentIndex - 1);
+        };
+      }
+
+      if (nextBtn) {
+        nextBtn.onclick = function() {
+          updateSlider(currentIndex + 1);
+        };
+      }
+
+      dots.forEach((dot) => {
+        dot.onclick = function() {
+          const idx = parseInt(this.getAttribute('data-index'), 10);
+          updateSlider(idx);
+        };
+      });
+
+      let startX = 0;
+      let isDragging = false;
+
+      track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+      }, { passive: true });
+
+      track.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        const endX = e.changedTouches[0].clientX;
+        const diffX = startX - endX;
+
+        if (Math.abs(diffX) > 40) {
+          if (diffX > 0) {
+            updateSlider(currentIndex + 1);
+          } else {
+            updateSlider(currentIndex - 1);
+          }
+        }
+        isDragging = false;
+      }, { passive: true });
+    }
+
+    {% if section_st.enable_live_api and section_st.api_key != blank and section_st.place_id != blank %}
+      function fetchGooglePlacesData() {
+        const apiKey = "{{ section_st.api_key | escape }}";
+        const placeId = "{{ section_st.place_id | escape }}";
+
+        if (!apiKey || !placeId) return;
+
+        // Load Google Maps JS API dynamically with Places Library
+        if (typeof google === 'undefined' || !google.maps || !google.maps.places) {
+          const script = document.createElement('script');
+          script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=gbrGoogleApiLoaded_{{ section_id }}`;
+          script.async = true;
+          script.defer = true;
+          window['gbrGoogleApiLoaded_{{ section_id }}'] = function() {
+            queryGooglePlaces(placeId);
+          };
+          document.head.appendChild(script);
+        } else {
+          queryGooglePlaces(placeId);
+        }
+      }
+
+      function queryGooglePlaces(placeId) {
+        const dummyElem = document.createElement('div');
+        const service = new google.maps.places.PlacesService(dummyElem);
+
+        service.getDetails({
+          placeId: placeId,
+          fields: ['name', 'rating', 'user_ratings_total', 'reviews', 'url', 'photos']
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK && place) {
+            
+            // Update left business summary
+            if (place.name) {
+              const titleElem = document.getElementById('gbr-title-{{ section_id }}');
+              if (titleElem) titleElem.textContent = place.name;
+            }
+
+            if (place.rating) {
+              const ratingElem = document.getElementById('gbr-overall-rating-{{ section_id }}');
+              if (ratingElem) ratingElem.textContent = place.rating.toFixed(1);
+            }
+
+            if (place.user_ratings_total) {
+              const countElem = document.getElementById('gbr-count-text-{{ section_id }}');
+              if (countElem) countElem.textContent = `Based on ${place.user_ratings_total} reviews`;
+            }
+
+            if (place.url) {
+              const btnElem = document.getElementById('gbr-btn-link-{{ section_id }}');
+              if (btnElem) btnElem.href = place.url;
+            }
+
+            // Update review carousel slides if Google returned reviews
+            if (place.reviews && place.reviews.length > 0) {
+              const track = document.getElementById('gbr-track-{{ section_id }}');
+              const dotsContainer = document.getElementById('gbr-dots-{{ section_id }}');
+              
+              if (track) {
+                track.innerHTML = '';
+                if (dotsContainer) dotsContainer.innerHTML = '';
+
+                place.reviews.forEach((review, idx) => {
+                  const authorName = review.author_name || 'Google Customer';
+                  const authorDate = review.relative_time_description || '';
+                  const photoUrl = review.profile_photo_url || '';
+                  const rating = review.rating || 5;
+                  const reviewText = review.text || '';
+                  const initial = authorName.charAt(0).toLowerCase();
+
+                  // Slide HTML
+                  const slideHtml = `
+                    <div class="gbr-slide-{{ section_id }}">
+                      <div class="gbr-card-{{ section_id }}">
+                        <div>
+                          <div class="gbr-card-header-{{ section_id }}">
+                            <div class="gbr-author-info-{{ section_id }}">
+                              ${photoUrl ? `<img src="${photoUrl}" class="gbr-author-avatar-{{ section_id }}" alt="${authorName}">` : `<div class="gbr-author-initial-{{ section_id }}">${initial}</div>`}
+                              <div class="gbr-author-details-{{ section_id }}">
+                                <span class="gbr-author-name-{{ section_id }}">${authorName}</span>
+                                <span class="gbr-author-date-{{ section_id }}">${authorDate}</span>
+                              </div>
+                            </div>
+                            <svg class="gbr-google-card-logo" viewBox="0 0 24 24">
+                              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                            </svg>
+                          </div>
+                          <div class="gbr-card-rating-{{ section_id }}">
+                            ${[1,2,3,4,5].map(star => `<svg class="gbr-star-icon-{{ section_id }}" viewBox="0 0 24 24" style="${star > rating ? 'fill:#e2e8f0;' : ''}"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`).join('')}
+                          </div>
+                          <p class="gbr-card-text-{{ section_id }}">${reviewText}</p>
+                        </div>
+                      </div>
+                    </div>
+                  `;
+                  track.insertAdjacentHTML('beforeend', slideHtml);
+
+                  // Dot HTML
+                  if (dotsContainer) {
+                    const dotBtn = document.createElement('button');
+                    dotBtn.type = 'button';
+                    dotBtn.className = `gbr-dot-{{ section_id }} ${idx === 0 ? 'active' : ''}`;
+                    dotBtn.setAttribute('data-index', idx);
+                    dotBtn.setAttribute('aria-label', `Go to review ${idx + 1}`);
+                    dotsContainer.appendChild(dotBtn);
+                  }
+                });
+
+                // Re-initialize slider with live Google data
+                initGBRSlider();
+              }
+            }
+          }
+        });
+      }
+    {% endif %}
+
+    function initSection() {
+      initGBRSlider();
+      {% if section_st.enable_live_api and section_st.api_key != blank and section_st.place_id != blank %}
+        fetchGooglePlacesData();
+      {% endif %}
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSection);
+    } else {
+      initSection();
+    }
+
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.detail.sectionId === '{{ section.id }}') {
+        initSection();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Google Business Review",
+  "tag": "section",
+  "class": "section-google-business-review",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Google Places API Sync (Live Reviews)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_live_api",
+      "label": "Enable Live Google API Sync",
+      "default": false,
+      "info": "Automatically fetches your latest business reviews directly from Google."
+    },
+    {
+      "type": "text",
+      "id": "api_key",
+      "label": "Google Places API Key",
+      "info": "Enter your API key from Google Cloud Console."
+    },
+    {
+      "type": "text",
+      "id": "place_id",
+      "label": "Google Place ID",
+      "info": "Find your business Place ID using Google's Place ID Finder."
+    },
+    {
+      "type": "header",
+      "content": "Business Profile Settings (Fallback / Manual)"
+    },
+    {
+      "type": "image_picker",
+      "id": "business_image",
+      "label": "Business Profile Photo/Logo"
+    },
+    {
+      "type": "text",
+      "id": "business_name",
+      "label": "Business Name",
+      "default": "Pixelrigz"
+    },
+    {
+      "type": "text",
+      "id": "overall_rating",
+      "label": "Overall Rating Score",
+      "default": "5.0"
+    },
+    {
+      "type": "text",
+      "id": "reviews_count_text",
+      "label": "Reviews Subtitle Text",
+      "default": "Based on 3 reviews"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Label",
+      "default": "review us on"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Google Review Link"
+    },
+    {
+      "type": "header",
+      "content": "Colors & Layout"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Rating Color",
+      "default": "#ff8c00"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background Color",
+      "default": "#1a73e8"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#101828"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Review Card Background",
+      "default": "#f4f4f4"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum Width",
+      "min": 800,
+      "max": 1400,
+      "step": 20,
+      "default": 1100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review_item",
+      "name": "Google Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author Photo (optional)"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "farooq khan"
+        },
+        {
+          "type": "text",
+          "id": "author_date",
+          "label": "Review Date / Time",
+          "default": "14 days ago"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating (1 to 5 Stars)",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review Body",
+          "default": "They made customize PC for me and it's best."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Google Business Review",
+      "blocks": [
+        {
+          "type": "review_item",
+          "settings": {
+            "author_name": "farooq khan",
+            "author_date": "14 days ago",
+            "rating": 5,
+            "review_text": "They made customize PC for me and it's best."
+          }
+        },
+        {
+          "type": "review_item",
+          "settings": {
+            "author_name": "Ali Raza",
+            "author_date": "1 month ago",
+            "rating": 5,
+            "review_text": "Excellent service and high quality products. Highly recommended!"
+          }
+        },
+        {
+          "type": "review_item",
+          "settings": {
+            "author_name": "Hamza Ahmed",
+            "author_date": "2 months ago",
+            "rating": 5,
+            "review_text": "Great customer support and very fast delivery."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
