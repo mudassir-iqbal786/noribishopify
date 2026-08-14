@@ -352,10 +352,10 @@
       "type": "apps",
       "settings": {}
     },
-    "google_business_review_GeWmN9": {
+    "google_business_review_AGATgX": {
       "type": "google-business-review",
       "blocks": {
-        "review_item_dTVxzR": {
+        "review_item_a68Dft": {
           "type": "review_item",
           "settings": {
             "author_name": "farooq khan",
@@ -364,7 +364,7 @@
             "review_text": "They made customize PC for me and it's best."
           }
         },
-        "review_item_DhMAXp": {
+        "review_item_A8yeeM": {
           "type": "review_item",
           "settings": {
             "author_name": "Ali Raza",
@@ -373,7 +373,7 @@
             "review_text": "Excellent service and high quality products. Highly recommended!"
           }
         },
-        "review_item_PKPiyJ": {
+        "review_item_6M8ygj": {
           "type": "review_item",
           "settings": {
             "author_name": "Hamza Ahmed",
@@ -384,9 +384,9 @@
         }
       },
       "block_order": [
-        "review_item_dTVxzR",
-        "review_item_DhMAXp",
-        "review_item_PKPiyJ"
+        "review_item_a68Dft",
+        "review_item_A8yeeM",
+        "review_item_6M8ygj"
       ],
       "name": "Google Business Review",
       "settings": {
@@ -424,6 +424,6 @@
     "1775484846891f51cf",
     "17781029425100f937",
     "1785630246880b9c02",
-    "google_business_review_GeWmN9"
+    "google_business_review_AGATgX"
   ]
 }
