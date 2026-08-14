@@ -70,7 +70,7 @@
     }
 
     .gbr-container-{{ section_id }} {
-      padding: 0 16px;
+      padding: 0 14px;
     }
 
     .gbr-content-grid-{{ section_id }} {
@@ -92,6 +92,7 @@
     gap: 14px;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
   }
 
   .gbr-badge-card-{{ section_id }}::before {
@@ -108,7 +109,7 @@
     .gbr-badge-card-{{ section_id }} {
       align-items: center;
       text-align: center;
-      padding: 22px 18px;
+      padding: 24px 18px;
     }
   }
 
@@ -268,22 +269,24 @@
     max-width: 580px;
     margin: 0 auto;
     width: 100%;
+    box-sizing: border-box;
   }
 
   .gbr-card-container-{{ section_id }} {
     overflow: hidden;
-    padding: 12px 6px;
+    padding: 8px 4px;
   }
 
   .gbr-track-{{ section_id }} {
     display: flex;
+    align-items: stretch;
     transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   .gbr-slide-{{ section_id }} {
     min-width: 100%;
     box-sizing: border-box;
-    padding: 0 6px;
+    padding: 0 4px;
   }
 
   /* Card Design */
@@ -297,7 +300,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    height: 100%;
   }
 
   @media (max-width: 767px) {
@@ -307,21 +311,17 @@
     }
   }
 
-  .gbr-card-{{ section_id }}:hover {
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-  }
-
   .gbr-card-header-{{ section_id }} {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .gbr-author-info-{{ section_id }} {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
   }
 
   .gbr-avatar-wrapper-{{ section_id }} {
@@ -329,16 +329,16 @@
   }
 
   .gbr-author-avatar-{{ section_id }} {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
 
   .gbr-author-initial-{{ section_id }} {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background: linear-gradient(135deg, #0f5132, #044e42);
     color: #ffffff;
@@ -346,7 +346,7 @@
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 20px;
     text-transform: lowercase;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
@@ -355,8 +355,8 @@
     position: absolute;
     bottom: -2px;
     right: -2px;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background: #16a34a;
     border: 2px solid #ffffff;
     border-radius: 50%;
@@ -373,7 +373,7 @@
 
   .gbr-author-name-{{ section_id }} {
     font-weight: 700;
-    font-size: 17px;
+    font-size: 16px;
     color: #0f172a;
     margin: 0;
     line-height: 1.25;
@@ -382,39 +382,40 @@
 
   @media (max-width: 767px) {
     .gbr-author-name-{{ section_id }} {
-      font-size: 15.5px;
+      font-size: 15px;
     }
   }
 
   .gbr-author-date-{{ section_id }} {
-    font-size: 13px;
+    font-size: 12.5px;
     color: #94a3b8;
-    margin-top: 3px;
+    margin-top: 2px;
     font-weight: 500;
   }
 
   .gbr-google-card-logo {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
 
   .gbr-card-rating-{{ section_id }} {
     display: flex;
     gap: 4px;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
   .gbr-card-text-{{ section_id }} {
-    font-size: 15.5px;
+    font-size: 15px;
     line-height: 1.6;
     color: #334155;
     margin: 0;
     font-weight: 400;
+    word-break: break-word;
   }
 
   @media (max-width: 767px) {
     .gbr-card-text-{{ section_id }} {
-      font-size: 14.5px;
+      font-size: 14px;
       line-height: 1.55;
     }
   }
@@ -423,14 +424,14 @@
   .gbr-review-photos-{{ section_id }} {
     display: flex;
     gap: 10px;
-    margin-top: 16px;
+    margin-top: 14px;
     overflow-x: auto;
     padding-bottom: 4px;
   }
 
   .gbr-review-photo-thumb-{{ section_id }} {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
     border-radius: 12px;
     object-fit: cover;
     border: 1px solid #e2e8f0;
@@ -441,8 +442,8 @@
 
   @media (max-width: 767px) {
     .gbr-review-photo-thumb-{{ section_id }} {
-      width: 65px;
-      height: 65px;
+      width: 60px;
+      height: 60px;
       border-radius: 10px;
     }
   }
@@ -452,53 +453,65 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
 
-  /* Nav Arrows */
+  /* Controls Row Below Card on Mobile */
+  .gbr-controls-bar-{{ section_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
   .gbr-nav-btn-{{ section_id }} {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background-color: #ffffff;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 5;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
     color: #475569;
     padding: 0;
     outline: none;
+    flex-shrink: 0;
   }
 
-  .gbr-nav-btn-{{ section_id }}:hover {
-    background-color: #ffffff;
-    color: #0f172a;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-    transform: translateY(-50%) scale(1.08);
-  }
+  /* Desktop Absolute Arrows */
+  @media (min-width: 768px) {
+    .gbr-nav-btn-{{ section_id }} {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      z-index: 5;
+    }
 
-  .gbr-nav-btn-prev-{{ section_id }} {
-    left: -21px;
-  }
+    .gbr-nav-btn-{{ section_id }}:hover {
+      background-color: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      transform: translateY(-50%) scale(1.08);
+    }
 
-  .gbr-nav-btn-next-{{ section_id }} {
-    right: -21px;
+    .gbr-nav-btn-prev-{{ section_id }} {
+      left: -21px;
+    }
+
+    .gbr-nav-btn-next-{{ section_id }} {
+      right: -21px;
+    }
   }
 
   @media (max-width: 767px) {
-    .gbr-nav-btn-{{ section_id }} {
-      width: 34px;
-      height: 34px;
-    }
-    .gbr-nav-btn-prev-{{ section_id }} {
-      left: 0px;
-    }
-    .gbr-nav-btn-next-{{ section_id }} {
-      right: 0px;
+    .gbr-nav-btn-{{ section_id }}:active {
+      background-color: #f1f5f9;
+      transform: scale(0.95);
     }
   }
 
@@ -508,7 +521,6 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-    margin-top: 18px;
   }
 
   .gbr-dot-{{ section_id }} {
@@ -524,7 +536,7 @@
 
   .gbr-dot-{{ section_id }}.active {
     background-color: {{ section_st.star_color }};
-    width: 24px;
+    width: 22px;
     border-radius: 12px;
   }
 {% endstyle %}
@@ -605,12 +617,6 @@
       <!-- Right Column: Customer Reviews Carousel -->
       <div class="gbr-carousel-wrapper-{{ section_id }}" id="gbr-carousel-{{ section_id }}">
         
-        <button type="button" class="gbr-nav-btn-{{ section_id }} gbr-nav-btn-prev-{{ section_id }}" aria-label="Previous Review" data-nav="prev">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-
         <div class="gbr-card-container-{{ section_id }}">
           <div class="gbr-track-{{ section_id }}" id="gbr-track-{{ section_id }}" data-track>
             {%- for block in section.blocks -%}
@@ -679,16 +685,25 @@
           </div>
         </div>
 
-        <button type="button" class="gbr-nav-btn-{{ section_id }} gbr-nav-btn-next-{{ section_id }}" aria-label="Next Review" data-nav="next">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
+        <!-- Controls Bar below card on mobile, side buttons on desktop -->
+        <div class="gbr-controls-bar-{{ section_id }}">
+          <button type="button" class="gbr-nav-btn-{{ section_id }} gbr-nav-btn-prev-{{ section_id }}" aria-label="Previous Review" data-nav="prev">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
 
-        <div class="gbr-dots-{{ section_id }}" id="gbr-dots-{{ section_id }}" data-dots>
-          {%- for block in section.blocks -%}
-            <button type="button" class="gbr-dot-{{ section_id }}{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Go to review {{ forloop.index }}"></button>
-          {%- endfor -%}
+          <div class="gbr-dots-{{ section_id }}" id="gbr-dots-{{ section_id }}" data-dots>
+            {%- for block in section.blocks -%}
+              <button type="button" class="gbr-dot-{{ section_id }}{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Go to review {{ forloop.index }}"></button>
+            {%- endfor -%}
+          </div>
+
+          <button type="button" class="gbr-nav-btn-{{ section_id }} gbr-nav-btn-next-{{ section_id }}" aria-label="Next Review" data-nav="next">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
         </div>
 
       </div>
