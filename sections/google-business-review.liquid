@@ -854,11 +854,11 @@
     function fetchPlacesNewApi(apiKey, placeId) {
       logDebug('Fetching live reviews from Google Places API (New)...');
       
-      const endpoint = `https://places.googleapis.com/v1/places/${placeId}?fields=displayName,rating,userRatingCount,reviews,reviews.photos,googleMapsUri&key=${apiKey}`;
+      const endpoint = `https://places.googleapis.com/v1/places/${placeId}?fields=displayName,rating,userRatingCount,reviews,googleMapsUri&key=${apiKey}`;
 
       fetch(endpoint, {
         headers: {
-          'X-Goog-FieldMask': 'displayName,rating,userRatingCount,reviews,reviews.photos,googleMapsUri'
+          'X-Goog-FieldMask': 'displayName,rating,userRatingCount,reviews,googleMapsUri'
         }
       })
       .then(res => {
