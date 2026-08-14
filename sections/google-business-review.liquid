@@ -566,6 +566,45 @@
   }
 {% endstyle %}
 
+<!-- SEO Schema.org JSON-LD Structured Data for Google Rich Snippets -->
+<script type="application/ld+json" id="gbr-schema-{{ section_id }}">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": {{ section_st.business_name | json }},
+  "url": {{ shop.url | json }},
+  "description": {{ shop.description | default: section_st.business_name | json }},
+  {% if section_st.business_image != blank %}
+    "image": {{ section_st.business_image | image_url: width: 600 | prepend: "https:" | json }},
+  {% endif %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ section_st.overall_rating | default: '5.0' }}",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "{{ section.blocks.size | default: 4 }}"
+  },
+  "review": [
+    {% for block in section.blocks %}
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": {{ block.settings.author_name | json }}
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "{{ block.settings.rating | default: 5 }}",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "reviewBody": {{ block.settings.review_text | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>
+
 <div class="gbr-section-{{ section_id }}">
   <div class="gbr-container-{{ section_id }}">
 
@@ -871,11 +910,53 @@
       .then(data => {
         logDebug(`Successfully received Google Places data for: "${data.displayName ? data.displayName.text : 'Business'}" (${data.reviews ? data.reviews.length : 0} reviews, ${data.photos ? data.photos.length : 0} place photos)`);
         renderGoogleDataNew(data, placeId, apiKey);
+        updateSchemaJsonLd(data);
       })
       .catch(err => {
         logDebug(`Places API (New) fetch error: ${err.message}. Trying Maps SDK fallback...`, true);
         fetchGooglePlacesSdk(apiKey, placeId);
       });
+    }
+
+    function updateSchemaJsonLd(data) {
+      const schemaElem = document.getElementById('gbr-schema-{{ section_id }}');
+      if (!schemaElem || !data) return;
+
+      try {
+        const schemaData = JSON.parse(schemaElem.textContent);
+        if (data.displayName && data.displayName.text) {
+          schemaData.name = data.displayName.text;
+        }
+        if (data.rating && data.userRatingCount) {
+          schemaData.aggregateRating = {
+            "@type": "AggregateRating",
+            "ratingValue": Number(data.rating).toFixed(1),
+            "bestRating": "5",
+            "worstRating": "1",
+            "ratingCount": String(data.userRatingCount)
+          };
+        }
+        if (data.reviews && data.reviews.length > 0) {
+          schemaData.review = data.reviews.map(r => ({
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": (r.authorAttribution && r.authorAttribution.displayName) ? r.authorAttribution.displayName : "Google Customer"
+            },
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": String(r.rating || 5),
+              "bestRating": "5",
+              "worstRating": "1"
+            },
+            "reviewBody": (r.text && r.text.text) ? r.text.text : ""
+          }));
+        }
+        schemaElem.textContent = JSON.stringify(schemaData);
+        logDebug('Updated Schema.org JSON-LD structured data with live Google reviews.');
+      } catch (e) {
+        console.error('Schema JSON-LD update error:', e);
+      }
     }
 
     function renderGoogleDataNew(data, placeId, apiKey) {
