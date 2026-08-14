@@ -460,28 +460,27 @@
   }
 
   .gbr-review-photo-thumb-{{ section_id }} {
-    width: 85px;
-    height: 85px;
+    max-width: 100%;
+    max-height: 240px;
     border-radius: 14px;
     object-fit: cover;
     border: 1px solid #cbd5e1;
     cursor: pointer;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
   }
 
   @media (max-width: 767px) {
     .gbr-review-photo-thumb-{{ section_id }} {
-      width: 70px;
-      height: 70px;
-      border-radius: 10px;
+      max-height: 180px;
+      border-radius: 12px;
     }
   }
 
   .gbr-review-photo-thumb-{{ section_id }}:hover {
-    transform: scale(1.06);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    transform: scale(1.02);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
   }
 
   /* Controls Row Below Card on Mobile */
@@ -700,7 +699,7 @@
 
                     {%- if section_st.show_review_photos and block_st.review_photo != blank -%}
                       <div class="gbr-review-photos-{{ section_id }}">
-                        {{ block_st.review_photo | image_url: width: 300 | image_tag: class: 'gbr-review-photo-thumb', alt: 'Customer Review Photo' }}
+                        {{ block_st.review_photo | image_url: width: 400 | image_tag: class: 'gbr-review-photo-thumb', alt: 'Customer Review Photo' }}
                       </div>
                     {%- endif -%}
                   </div>
@@ -852,13 +851,13 @@
     }
 
     function fetchPlacesNewApi(apiKey, placeId) {
-      logDebug('Fetching live reviews from Google Places API (New)...');
+      logDebug('Fetching live reviews & photos from Google Places API (New)...');
       
-      const endpoint = `https://places.googleapis.com/v1/places/${placeId}?fields=displayName,rating,userRatingCount,reviews,googleMapsUri&key=${apiKey}`;
+      const endpoint = `https://places.googleapis.com/v1/places/${placeId}?fields=displayName,rating,userRatingCount,reviews,photos&key=${apiKey}`;
 
       fetch(endpoint, {
         headers: {
-          'X-Goog-FieldMask': 'displayName,rating,userRatingCount,reviews,googleMapsUri'
+          'X-Goog-FieldMask': 'displayName,rating,userRatingCount,reviews,photos'
         }
       })
       .then(res => {
@@ -870,7 +869,7 @@
         return res.json();
       })
       .then(data => {
-        logDebug(`Successfully received Google Places data for: "${data.displayName ? data.displayName.text : 'Business'}"`);
+        logDebug(`Successfully received Google Places data for: "${data.displayName ? data.displayName.text : 'Business'}" (${data.reviews ? data.reviews.length : 0} reviews, ${data.photos ? data.photos.length : 0} place photos)`);
         renderGoogleDataNew(data, placeId, apiKey);
       })
       .catch(err => {
@@ -901,6 +900,8 @@
         btnElem.href = customUrl || `https://search.google.com/local/writereview?placeid=${placeId}`;
       }
 
+      const placePhotos = data.photos || [];
+
       if (data.reviews && data.reviews.length > 0) {
         const track = document.getElementById('gbr-track-{{ section_id }}');
         const dotsContainer = document.getElementById('gbr-dots-{{ section_id }}');
@@ -919,21 +920,44 @@
             const reviewText = (review.text && review.text.text) ? review.text.text : '';
             const initial = authorName.charAt(0).toLowerCase();
 
-            let photosHtml = '';
-            if (showReviewPhotos && review.photos && review.photos.length > 0) {
-              const photoImgs = review.photos.map(p => {
+            let matchedPhotoUrls = [];
+
+            // 1. Direct review photos if returned by API
+            if (review.photos && review.photos.length > 0) {
+              review.photos.forEach(p => {
                 let imgUrl = '';
                 if (p.name) {
-                  imgUrl = `https://places.googleapis.com/v1/${p.name}/media?maxWidthPx=600&key=${apiKey}`;
+                  imgUrl = `https://places.googleapis.com/v1/${p.name}/media?maxWidthPx=800&key=${apiKey}`;
                 } else if (p.photoUri) {
                   imgUrl = p.photoUri;
                 }
-                return imgUrl ? `<img src="${imgUrl}" class="gbr-review-photo-thumb-{{ section_id }}" alt="Google Review Photo" loading="lazy">` : '';
-              }).join('');
-              
-              if (photoImgs) {
-                photosHtml = `<div class="gbr-review-photos-{{ section_id }}">${photoImgs}</div>`;
-              }
+                if (imgUrl && !matchedPhotoUrls.includes(imgUrl)) {
+                  matchedPhotoUrls.push(imgUrl);
+                }
+              });
+            }
+
+            // 2. Cross-reference Place Photos matching this reviewer's name
+            if (placePhotos.length > 0) {
+              placePhotos.forEach(p => {
+                if (p.authorAttributions && p.authorAttributions.length > 0) {
+                  const matchesAuthor = p.authorAttributions.some(att => att.displayName === authorName);
+                  if (matchesAuthor && p.name) {
+                    const photoMediaUrl = `https://places.googleapis.com/v1/${p.name}/media?maxWidthPx=800&key=${apiKey}`;
+                    if (!matchedPhotoUrls.includes(photoMediaUrl)) {
+                      matchedPhotoUrls.push(photoMediaUrl);
+                    }
+                  }
+                }
+              });
+            }
+
+            let photosHtml = '';
+            if (showReviewPhotos && matchedPhotoUrls.length > 0) {
+              const photoImgs = matchedPhotoUrls.map(imgUrl => 
+                `<img src="${imgUrl}" class="gbr-review-photo-thumb-{{ section_id }}" alt="Google Review Photo by ${authorName}" loading="lazy">`
+              ).join('');
+              photosHtml = `<div class="gbr-review-photos-{{ section_id }}">${photoImgs}</div>`;
             }
 
             const slideHtml = `
