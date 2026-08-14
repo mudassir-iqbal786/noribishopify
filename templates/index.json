@@ -351,6 +351,63 @@
     "1785630246880b9c02": {
       "type": "apps",
       "settings": {}
+    },
+    "google_business_review_GeWmN9": {
+      "type": "google-business-review",
+      "blocks": {
+        "review_item_dTVxzR": {
+          "type": "review_item",
+          "settings": {
+            "author_name": "farooq khan",
+            "author_date": "14 days ago",
+            "rating": 5,
+            "review_text": "They made customize PC for me and it's best."
+          }
+        },
+        "review_item_DhMAXp": {
+          "type": "review_item",
+          "settings": {
+            "author_name": "Ali Raza",
+            "author_date": "1 month ago",
+            "rating": 5,
+            "review_text": "Excellent service and high quality products. Highly recommended!"
+          }
+        },
+        "review_item_PKPiyJ": {
+          "type": "review_item",
+          "settings": {
+            "author_name": "Hamza Ahmed",
+            "author_date": "2 months ago",
+            "rating": 5,
+            "review_text": "Great customer support and very fast delivery."
+          }
+        }
+      },
+      "block_order": [
+        "review_item_dTVxzR",
+        "review_item_DhMAXp",
+        "review_item_PKPiyJ"
+      ],
+      "name": "Google Business Review",
+      "settings": {
+        "enable_live_api": false,
+        "api_key": "AIzaSyAn2-if4WOlbIrpX-u3vqJToze6Fpie7qA",
+        "place_id": "ChIJgapin3MzwokRFgCP5jnKIiM",
+        "business_name": "Pixelrigz",
+        "overall_rating": "5.0",
+        "reviews_count_text": "Based on 3 reviews",
+        "button_text": "review us on",
+        "button_link": "",
+        "star_color": "#ff8c00",
+        "btn_bg_color": "#1a73e8",
+        "btn_text_color": "#ffffff",
+        "text_color": "#101828",
+        "card_bg_color": "#f4f4f4",
+        "bg_color": "#ffffff",
+        "max_width": 1100,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     }
   },
   "order": [
@@ -366,6 +423,7 @@
     "1775484502fe3e7674",
     "1775484846891f51cf",
     "17781029425100f937",
-    "1785630246880b9c02"
+    "1785630246880b9c02",
+    "google_business_review_GeWmN9"
   ]
 }
