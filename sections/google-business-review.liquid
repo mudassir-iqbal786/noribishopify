@@ -477,8 +477,6 @@
 
 <script>
   (function() {
-    let sliderInstance = null;
-
     function initGBRSlider() {
       const wrapper = document.getElementById('gbr-carousel-{{ section_id }}');
       if (!wrapper) return;
@@ -551,12 +549,11 @@
 
     {% if section_st.enable_live_api and section_st.api_key != blank and section_st.place_id != blank %}
       function fetchGooglePlacesData() {
-        const apiKey = "{{ section_st.api_key | escape }}";
-        const placeId = "{{ section_st.place_id | escape }}";
+        const apiKey = "{{ section_st.api_key | strip }}";
+        const placeId = "{{ section_st.place_id | strip }}";
 
         if (!apiKey || !placeId) return;
 
-        // Load Google Maps JS API dynamically with Places Library
         if (typeof google === 'undefined' || !google.maps || !google.maps.places) {
           const script = document.createElement('script');
           script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&callback=gbrGoogleApiLoaded_{{ section_id }}`;
@@ -564,6 +561,9 @@
           script.defer = true;
           window['gbrGoogleApiLoaded_{{ section_id }}'] = function() {
             queryGooglePlaces(placeId);
+          };
+          script.onerror = function() {
+            console.error('Google Maps JS API failed to load. Please check your API key.');
           };
           document.head.appendChild(script);
         } else {
@@ -619,7 +619,6 @@
                   const reviewText = review.text || '';
                   const initial = authorName.charAt(0).toLowerCase();
 
-                  // Slide HTML
                   const slideHtml = `
                     <div class="gbr-slide-{{ section_id }}">
                       <div class="gbr-card-{{ section_id }}">
@@ -649,7 +648,6 @@
                   `;
                   track.insertAdjacentHTML('beforeend', slideHtml);
 
-                  // Dot HTML
                   if (dotsContainer) {
                     const dotBtn = document.createElement('button');
                     dotBtn.type = 'button';
@@ -660,10 +658,11 @@
                   }
                 });
 
-                // Re-initialize slider with live Google data
                 initGBRSlider();
               }
             }
+          } else {
+            console.warn('Google Places API returned status:', status, 'Please check your API key, Places API activation, and Place ID.');
           }
         });
       }
