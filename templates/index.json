@@ -391,10 +391,11 @@
       "name": "Google Business Review",
       "settings": {
         "enable_live_api": true,
+        "show_review_photos": true,
         "show_debug_info": false,
         "api_key": "AIzaSyAn2-if4WOlbIrpX-u3vqJToze6Fpie7qA",
         "place_id": "ChIJgapin3MzwokRFgCP5jnKIiM",
-        "business_name": "Pixelrigz",
+        "business_name": "Noribi",
         "overall_rating": "5.0",
         "reviews_count_text": "Based on 3 reviews",
         "button_text": "review us on",
