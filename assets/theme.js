@@ -4810,7 +4810,7 @@ var BlsMilanoAdminLi = (function () {
     },
   };
 })();
-BlsMilanoAdminLi.init();
+// BlsMilanoAdminLi.init();
 
 class QuickView extends PopupBase {
   constructor() {
