@@ -49,7 +49,7 @@
             <div class="header-search header-search__mega {% if theme_st.search_type != 'default' %}flex justify-content-end{% endif %}">
               {%- liquid
                 if top_search
-                  render 'top-search-header' | type: 'header_mega'
+                  render 'top-search-header', type: 'header_mega'
                 endif
               -%}
             </div>
@@ -94,13 +94,13 @@
               </svg>
               {%- liquid
                 if my_account
-                  render 'my-account' | type : 'header_mega'
+                  render 'my-account', type: 'header_mega'
                 endif
                 if wishlist
-                  render 'wishlist' | type : 'header_mega'
+                  render 'wishlist', type: 'header_mega'
                 endif
                 if minicart and theme_st.enable_catalog_mode == false
-                  render 'minicart_header' | type : 'header_mega'
+                  render 'minicart_header', type: 'header_mega'
                 endif
               -%}
             </div>
@@ -114,13 +114,13 @@
           <div class="header__menu flex justify-between" style="--section-pt: 0; --section-pb: 0;">
             <div class="header__menu-nav">
               {%- liquid
-                render 'horizontal-menu' , show_language: show_language | type: 'header_mega'
+                render 'horizontal-menu', show_language: show_language, type: 'header_mega'
               -%}
             </div>
             <div class="header-information relative z-1 flex gap-30 justify-between align-center">
               {% liquid
                 if recently_viewed
-                  render 'recently-viewed' | type: 'header_mega'
+                  render 'recently-viewed', type: 'header_mega'
                 endif
               %}
               {%- if section_st.header_link != blank -%}
@@ -873,3 +873,28 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "                  render 'top-search-header' | type: 'header_mega'"
+  to: "                  render 'top-search-header', type: 'header_mega'"
+  position: 2546..2611
+- from: "                  render 'my-account' | type : 'header_mega'"
+  to: "                  render 'my-account', type: 'header_mega'"
+  position: 6630..6688
+- from: "                  render 'wishlist' | type : 'header_mega'"
+  to: "                  render 'wishlist', type: 'header_mega'"
+  position: 6739..6795
+- from: "                  render 'minicart_header' | type : 'header_mega'"
+  to: "                  render 'minicart_header', type: 'header_mega'"
+  position: 6888..6951
+- from: 'render ''horizontal-menu'' , show_language: show_language | type: ''header_mega'''
+  to: 'render ''horizontal-menu'', show_language: show_language, type: ''header_mega'''
+  position: 7488..7563
+- from: "                  render 'recently-viewed' | type: 'header_mega'"
+  to: "                  render 'recently-viewed', type: 'header_mega'"
+  position: 7759..7822
+{% endcomment %}

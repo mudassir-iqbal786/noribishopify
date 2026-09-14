@@ -220,7 +220,7 @@
                               class="menu-list"
                               style="--row-gap: 40px; --col-desktop:{{ block_st.promotion_menu_column }};"
                             >
-                              {%- render 'submenu-list' | link: link -%}
+                              {%- render 'submenu-list', link: link -%}
                             </div>
                           {% endif %}
                           {%- if block_st.promotion_image_1 != blank or block_st.promotion_image_2 != blank -%}
@@ -310,7 +310,7 @@
                               class="menu-list"
                               style="--row-gap: 40px; --col-desktop:{{ block_st.collection_menu_column }};"
                             >
-                              {%- render 'submenu-list' | link: link -%}
+                              {%- render 'submenu-list', link: link -%}
                             </div>
                           {% endif %}
                           {%- if collection_count > 0 -%}
@@ -385,7 +385,7 @@
                               class="menu-list"
                               style="--row-gap: 40px; --col-desktop:{{ block_st.product_menu_column }};"
                             >
-                              {%- render 'submenu-list' | link: link -%}
+                              {%- render 'submenu-list', link: link -%}
                             </div>
                           {% endif %}
                           {%- if product_count > 0 -%}
@@ -477,7 +477,7 @@
                       </svg>
                     </close-menu>
                   </div>
-                  {%- render 'submenu-list' | link: link | menu_type: 'dropdown' -%}
+                  {%- render 'submenu-list', link: link, menu_type: 'dropdown' -%}
                 </div>
               {%- endif -%}
             </li>
@@ -591,7 +591,7 @@
         {% endif %}
       </ul>
       {% if menu_mobile_tab == 'custom-collections' and collection_list != blank %}
-        {%- render 'categories-menu-mobile' | section_st: section_st -%}
+        {%- render 'categories-menu-mobile', section_st: section_st -%}
       {% endif %}
     </div>
     <div class="lang__currency-on-nav mt-30 flex flex-wrap  hidden-1025 border-top px-20">
@@ -600,3 +600,25 @@
     </div>
   </nav>
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'submenu-list' | link: link -%}"
+  to: "{%- render 'submenu-list', link: link -%}"
+  position: 11699..11740
+- from: "{%- render 'submenu-list' | link: link -%}"
+  to: "{%- render 'submenu-list', link: link -%}"
+  position: 17017..17058
+- from: "{%- render 'submenu-list' | link: link -%}"
+  to: "{%- render 'submenu-list', link: link -%}"
+  position: 21698..21739
+- from: "{%- render 'submenu-list' | link: link | menu_type: 'dropdown' -%}"
+  to: "{%- render 'submenu-list', link: link, menu_type: 'dropdown' -%}"
+  position: 26793..26857
+- from: "{%- render 'categories-menu-mobile' | section_st: section_st -%}"
+  to: "{%- render 'categories-menu-mobile', section_st: section_st -%}"
+  position: 31972..32035
+{% endcomment %}

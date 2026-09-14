@@ -76,14 +76,14 @@
             <div class="{% if section_st.header_vertical_layout == 'layout_2' %}hidden-md z-1{% endif %} header-search header-search__mega {% if theme_st.search_type != 'default' %}flex justify-content-end{% endif %}">
               {%- liquid
                 if top_search
-                  render 'top-search-header' | type: 'header_vertical'
+                  render 'top-search-header', type: 'header_vertical'
                 endif
               -%}
             </div>
             {% if section_st.header_vertical_layout == 'layout_2' %}
               <div class="header__menu-nav header__menu-nav_vertical hidden block-1025 flex-1">
                 {%- liquid
-                  render 'horizontal-menu' , show_language: show_language | type: 'header_vertical'
+                  render 'horizontal-menu', show_language: show_language, type: 'header_vertical'
                 -%}
               </div>
             {% endif %}
@@ -131,13 +131,13 @@
               </svg>
               {%- liquid
                 if my_account
-                  render 'my-account' | type : 'header_mega'
+                  render 'my-account', type: 'header_mega'
                 endif
                 if wishlist
-                  render 'wishlist' | type : 'header_mega'
+                  render 'wishlist', type: 'header_mega'
                 endif
                 if minicart and theme_st.enable_catalog_mode == false
-                  render 'minicart_header' | type : 'header_mega'
+                  render 'minicart_header', type: 'header_mega'
                 endif
               -%}
             </div>
@@ -160,13 +160,13 @@
               {% endif %}
               <div class="flex-1 header__menu-nav hidden block-1025 header-search__mega {% if theme_st.search_type != 'default' %}flex justify-content-end{% endif %}">
                 {%- liquid
-                  render 'horizontal-menu' , show_language: show_language  | type: 'header_vertical'
+                  render 'horizontal-menu', show_language: show_language, type: 'header_vertical'
                 -%}
               </div>
               <div class="header-information relative z-1 flex gap-30 justify-between align-center">
                 {% liquid
                   if recently_viewed
-                    render 'recently-viewed' | type: 'header_mega'
+                    render 'recently-viewed', type: 'header_mega'
                   endif
                 %}
                 {% if show_language or show_currency %}
@@ -214,14 +214,14 @@
           <div class="hidden block-md flex-1 z-1 py-8 header-search header-search__mega {% if theme_st.search_type != 'default' %}flex justify-content-end{% endif %}">
             {%- liquid
               if top_search
-                render 'top-search-header' | type: 'header_vertical'
+                render 'top-search-header', type: 'header_vertical'
               endif
             -%}
           </div>
           <div class="header-information relative z-1 flex gap-30 justify-between align-center">
             {% liquid
               if recently_viewed
-                render 'recently-viewed' | type: 'header_mega'
+                render 'recently-viewed', type: 'header_mega'
               endif
             %}
             {% if show_language or show_currency %}
@@ -1032,3 +1032,37 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "                  render 'top-search-header' | type: 'header_vertical'"
+  to: "                  render 'top-search-header', type: 'header_vertical'"
+  position: 3861..3930
+- from: 'render ''horizontal-menu'' , show_language: show_language | type: ''header_vertical'''
+  to: 'render ''horizontal-menu'', show_language: show_language, type: ''header_vertical'''
+  position: 4200..4279
+- from: "                  render 'my-account' | type : 'header_mega'"
+  to: "                  render 'my-account', type: 'header_mega'"
+  position: 10160..10218
+- from: "                  render 'wishlist' | type : 'header_mega'"
+  to: "                  render 'wishlist', type: 'header_mega'"
+  position: 10269..10325
+- from: "                  render 'minicart_header' | type : 'header_mega'"
+  to: "                  render 'minicart_header', type: 'header_mega'"
+  position: 10418..10481
+- from: 'render ''horizontal-menu'' , show_language: show_language  | type: ''header_vertical'''
+  to: 'render ''horizontal-menu'', show_language: show_language, type: ''header_vertical'''
+  position: 11529..11608
+- from: "                    render 'recently-viewed' | type: 'header_mega'"
+  to: "                    render 'recently-viewed', type: 'header_mega'"
+  position: 11814..11879
+- from: "                render 'top-search-header' | type: 'header_vertical'"
+  to: "                render 'top-search-header', type: 'header_vertical'"
+  position: 13995..14062
+- from: "                render 'recently-viewed' | type: 'header_mega'"
+  to: "                render 'recently-viewed', type: 'header_mega'"
+  position: 14268..14329
+{% endcomment %}

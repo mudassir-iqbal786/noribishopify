@@ -208,7 +208,7 @@
                               class="menu-list"
                               style="--row-gap: 40px; --col-desktop:{{ block_st.promotion_menu_column }};"
                             >
-                              {%- render 'submenu-list-drawer' | link: link -%}
+                              {%- render 'submenu-list-drawer', link: link -%}
                             </div>
                           {% endif %}
                           {%- if block_st.promotion_image_1 != blank or block_st.promotion_image_2 != blank -%}
@@ -298,7 +298,7 @@
                               class="menu-list"
                               style="--row-gap: 40px; --col-desktop:{{ block_st.collection_menu_column }};"
                             >
-                              {%- render 'submenu-list-drawer' | link: link -%}
+                              {%- render 'submenu-list-drawer', link: link -%}
                             </div>
                           {% endif %}
                           {%- if collection_count > 0 -%}
@@ -373,7 +373,7 @@
                               class="menu-list"
                               style="--row-gap: 40px; --col-desktop:{{ block_st.product_menu_column }};"
                             >
-                              {%- render 'submenu-list-drawer' | link: link -%}
+                              {%- render 'submenu-list-drawer', link: link -%}
                             </div>
                           {% endif %}
                           {%- if product_count > 0 -%}
@@ -465,7 +465,7 @@
                       </svg>
                     </close-menu>
                   </div>
-                  {%- render 'submenu-list-drawer' | link: link | menu_type: 'dropdown' -%}
+                  {%- render 'submenu-list-drawer', link: link, menu_type: 'dropdown' -%}
                 </div>
               {%- endif -%}
             </li>
@@ -558,7 +558,7 @@
         {%- endif -%}
       </ul>
       {% if menu_mobile_tab == 'custom-collections' and collection_list != blank %}
-        {%- render 'categories-menu-mobile' | section_st: section_st -%}
+        {%- render 'categories-menu-mobile', section_st: section_st -%}
       {% endif %}
     </div>
     {%- if settings.facebook != blank
@@ -583,3 +583,25 @@
     </div>
   </nav>
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'submenu-list-drawer' | link: link -%}"
+  to: "{%- render 'submenu-list-drawer', link: link -%}"
+  position: 10533..10581
+- from: "{%- render 'submenu-list-drawer' | link: link -%}"
+  to: "{%- render 'submenu-list-drawer', link: link -%}"
+  position: 15848..15896
+- from: "{%- render 'submenu-list-drawer' | link: link -%}"
+  to: "{%- render 'submenu-list-drawer', link: link -%}"
+  position: 20526..20574
+- from: "{%- render 'submenu-list-drawer' | link: link | menu_type: 'dropdown' -%}"
+  to: "{%- render 'submenu-list-drawer', link: link, menu_type: 'dropdown' -%}"
+  position: 25405..25476
+- from: "{%- render 'categories-menu-mobile' | section_st: section_st -%}"
+  to: "{%- render 'categories-menu-mobile', section_st: section_st -%}"
+  position: 29367..29430
+{% endcomment %}

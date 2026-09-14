@@ -114,9 +114,9 @@
           {%- render 'logo', isTransparent: transparent -%}
         </div>
         <div class="header__menu flex gap-5 align-center {{  show_language }}">
-          {%- render 'toggle-menu' | type: 'header_drawer' -%}
+          {%- render 'toggle-menu', type: 'header_drawer' -%}
           {%- liquid
-            render 'horizontal-menu-drawer', | type: 'header_drawer', class: 'min-h-1025-50', show_language: show_language
+            render 'horizontal-menu-drawer', type: 'header_drawer', class: 'min-h-1025-50', show_language: show_language
           -%}
           {% if show_language or show_country %}
             <div class="lang__currency-desktop z-1 me-20 hidden flex-1025 gap-15">
@@ -878,3 +878,18 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'toggle-menu' | type: 'header_drawer' -%}"
+  to: "{%- render 'toggle-menu', type: 'header_drawer' -%}"
+  position: 5398..5449
+- from: 'render ''horizontal-menu-drawer'', | type: ''header_drawer'', class: ''min-h-1025-50'',
+    show_language: show_language'
+  to: 'render ''horizontal-menu-drawer'', type: ''header_drawer'', class: ''min-h-1025-50'',
+    show_language: show_language'
+  position: 5483..5591
+{% endcomment %}

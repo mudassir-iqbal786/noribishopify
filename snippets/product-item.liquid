@@ -644,7 +644,7 @@
               >
                 {{- 'products.product.loading' | t -}}
                 <script type="application/json" class="product-review-json">
-                  {%- render 'review' | product: card_product -%}
+                  {%- render 'review', product: card_product -%}
                 </script>
               </review-product>
             {%- endif -%}
@@ -665,9 +665,9 @@
         {% if template_enable_color_swatches == true %}
           {%- if enable_color_swatches -%}
             {% if type == 'bundle' %}
-              {%- render 'color-swatches' | product: card_product | type: "bundle" -%}
+              {%- render 'color-swatches', product: card_product, type: "bundle" -%}
             {% else %}
-              {%- render 'color-swatches' | product: card_product | type: "item" -%}
+              {%- render 'color-swatches', product: card_product, type: "item" -%}
             {% endif %}
           {%- endif -%}
         {% endif %}
@@ -1033,9 +1033,29 @@
           class="product-item__price justify-content-{{ settings.product_alignment }} fs-custom flex gap-custom lh-normal"
           style="--font-size: {{ settings.price_size }}"
         >
-          {%- render 'price' | scope: 'item', show_badges: false, class: priceclass -%}
+          {%- render 'price', scope: 'item', show_badges: false, class: priceclass -%}
         </div>
       </div>
     </div>
   </div>
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'review' | product: card_product -%}"
+  to: "{%- render 'review', product: card_product -%}"
+  position: 38515..38561
+- from: '{%- render ''color-swatches'' | product: card_product | type: "bundle" -%}'
+  to: '{%- render ''color-swatches'', product: card_product, type: "bundle" -%}'
+  position: 39574..39644
+- from: '{%- render ''color-swatches'' | product: card_product | type: "item" -%}'
+  to: '{%- render ''color-swatches'', product: card_product, type: "item" -%}'
+  position: 39682..39750
+- from: "{%- render 'price' | scope: 'item', show_badges: false, class: priceclass
+    -%}"
+  to: "{%- render 'price', scope: 'item', show_badges: false, class: priceclass -%}"
+  position: 59164..59240
+{% endcomment %}

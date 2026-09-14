@@ -102,7 +102,7 @@
                           >
                             {% if link.links.size > 0 %}
                               <div class="menu-list flex-1 mt-1025-0-impo" style="--row-gap: 40px">
-                                {%- render 'horizontal-menu' | link: link | type: "mega" | column: block_st.promotion_menu_column | is_mega: true -%}
+                                {%- render 'horizontal-menu', link: link, type: "mega", column: block_st.promotion_menu_column, is_mega: true -%}
                               </div>
                             {% endif %}
                             {%- if block_st.promotion_image_1 != blank -%}
@@ -156,7 +156,7 @@
                                 class="menu-list menu-column-{{ block_st.collection_menu_column }}"
                                 style="--row-gap: 40px"
                               >
-                                {%- render 'submenu-list' | link: link -%}
+                                {%- render 'submenu-list', link: link -%}
                               </div>
                             {% endif %}
                             {%- if collection_count > 0 -%}
@@ -199,7 +199,7 @@
                                                   alt: banner_alt
                                               }}
                                             {%- else -%}
-                                              {% render 'placeholder-render' | type: "collection" %}
+                                              {% render 'placeholder-render', type: "collection" %}
                                             {%- endif -%}
                                             <div class="collection-information mt-15 text-left absolute d-flex flex-column inset-0 color-light px-15 pb-15 pb-sm-30 px-sm-30 pointer-none flex-end">
                                               <span class="no-underline h5 m-0 relative z-2">
@@ -229,7 +229,7 @@
                                 class="menu-list menu-column-{{ block_st.collection_menu_column }}"
                                 style="--row-gap: 40px"
                               >
-                                {%- render 'submenu-list' | link: link -%}
+                                {%- render 'submenu-list', link: link -%}
                               </div>
                             {% endif %}
                             {%- if product_count > 0 -%}
@@ -273,7 +273,7 @@
                       </back-menu>
                       <close-menu class="icon-x close-menu pointer"></close-menu>
                     </div>
-                    {%- render 'submenu-list' | link: link -%}
+                    {%- render 'submenu-list', link: link -%}
                   </div>
                 {%- endif -%}
               </li>
@@ -292,3 +292,27 @@
     </div>
   </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{%- render ''horizontal-menu'' | link: link | type: "mega" | column: block_st.promotion_menu_column
+    | is_mega: true -%}'
+  to: '{%- render ''horizontal-menu'', link: link, type: "mega", column: block_st.promotion_menu_column,
+    is_mega: true -%}'
+  position: 5066..5179
+- from: "{%- render 'submenu-list' | link: link -%}"
+  to: "{%- render 'submenu-list', link: link -%}"
+  position: 8473..8514
+- from: '{% render ''placeholder-render'' | type: "collection" %}'
+  to: '{% render ''placeholder-render'', type: "collection" %}'
+  position: 11388..11441
+- from: "{%- render 'submenu-list' | link: link -%}"
+  to: "{%- render 'submenu-list', link: link -%}"
+  position: 13253..13294
+- from: "{%- render 'submenu-list' | link: link -%}"
+  to: "{%- render 'submenu-list', link: link -%}"
+  position: 15473..15514
+{% endcomment %}

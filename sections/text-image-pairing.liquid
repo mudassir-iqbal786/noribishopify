@@ -68,7 +68,7 @@
                 %}
                 
               {% else %}
-                {% render 'placeholder-render' | type: "collection" | class:  "w-custom rounded-custom" %}
+                {% render 'placeholder-render', type: "collection", class: "w-custom rounded-custom" %}
               {% endif %}
             </div>
           </a>
@@ -283,3 +283,15 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% render ''placeholder-render'' | type: "collection" | class:  "w-custom
+    rounded-custom" %}'
+  to: '{% render ''placeholder-render'', type: "collection", class: "w-custom rounded-custom"
+    %}'
+  position: 2874..2961
+{% endcomment %}

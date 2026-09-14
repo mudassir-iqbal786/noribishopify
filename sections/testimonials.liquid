@@ -115,7 +115,7 @@
             >
               {% if design == 'morden' %}
                 <div class="icon-quote">
-                  {% render 'icon-quote' | custom_width: 56 %}
+                  {% render 'icon-quote', custom_width: 56 %}
                 </div>
               {% endif %}
               <div class="rate-info">
@@ -666,3 +666,13 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'icon-quote' | custom_width: 56 %}"
+  to: "{% render 'icon-quote', custom_width: 56 %}"
+  position: 5784..5827
+{% endcomment %}
