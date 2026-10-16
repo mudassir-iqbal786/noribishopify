@@ -49,54 +49,34 @@
         "collection_kUA3MH": {
           "type": "collection",
           "settings": {
-            "collection": "bridal-dresses",
-            "collection_image": "shopify://shop_images/file_00000000b614720886d2022d96eaa5d0.png",
+            "collection": "fairy",
             "collection_title": ""
           }
         },
         "collection_ctTBpd": {
           "type": "collection",
           "settings": {
-            "collection": "fairy-dresses",
-            "collection_image": "shopify://shop_images/file_000000004890720896e0ffac8235e28a.png",
-            "collection_title": ""
-          }
-        },
-        "collection_r7aTxN": {
-          "type": "collection",
-          "settings": {
-            "collection": "fairy-wings",
-            "collection_image": "shopify://shop_images/file_00000000c70872088cd2d2f713b7f0d5.png",
-            "collection_title": ""
-          }
-        },
-        "collection_FUAzK4": {
-          "type": "collection",
-          "settings": {
-            "collection": "cosplay-dresses",
-            "collection_image": "shopify://shop_images/tb_image_share_1778022757773.png",
+            "collection": "cosplay",
             "collection_title": ""
           }
         }
       },
       "block_order": [
         "collection_kUA3MH",
-        "collection_ctTBpd",
-        "collection_r7aTxN",
-        "collection_FUAzK4"
+        "collection_ctTBpd"
       ],
       "settings": {
         "section_width": "fluid_container",
         "color_scheme": "default",
-        "heading": "Discover Noribi Collections",
-        "description": "<p>Explore handcrafted fairy dresses, bridal elegance, cosplay creations, and signature accessories designed to bring fantasy, beauty, and timeless style to every moment.</p>",
+        "heading": "Discover Voribi Collections",
+        "description": "<p>Discover enchanting fairy dresses, elegant bridal designs, captivating cosplay creations, and distinctive accessories crafted to bring fantasy, elegance, and individuality to every occasion.</p>",
         "show_view_all_button": false,
         "header_size": "small",
         "header_alignment": "center",
         "display_mode": "grid",
         "image_ratio": "portrait",
         "custom_ratio": "2:3",
-        "items_per_row": 4,
+        "items_per_row": 2,
         "column_gap": 50,
         "collection_information_position": "below_image",
         "design": "morden",
@@ -268,14 +248,14 @@
           "type": "faq-items",
           "settings": {
             "faq_title": "Where do you ship?",
-            "faq_content": "We currently ship to customers in the United States and Canada. Orders are processed within 1–3 business days, and standard delivery usually takes 5–8 business days after shipment."
+            "faq_content": "We currently ship to customers in the United Kingdom & United States Orders are processed within 1-3 business days, and standard delivery usually takes 5-8 business days after shipment."
           }
         },
         "faq_items_Gn8WAM": {
           "type": "faq-items",
           "settings": {
             "faq_title": "How can I track my order?",
-            "faq_content": "Once your order has been shipped, you will receive aconfirmation email with your tracking number. Tracking information may take upto 24–48 hours to become available."
+            "faq_content": "Once your order has been shipped, you will receive aconfirmation email with your tracking number. Tracking information may take upto 24-48 hours to become available."
           }
         },
         "faq_items_3z7rej": {
@@ -289,21 +269,21 @@
           "type": "faq-items",
           "settings": {
             "faq_title": "Can I cancel or change my order?",
-            "faq_content": "You may request to cancel your order before it has been shipped. Once an order has been shipped, it cannot be canceled. If youneed to make changes, please contact us as soon as possible."
+            "faq_content": "You may request to cancel your order before it has been shipped. Once an order has been shipped, it cannot be canceled. If you need to make changes, please contact us as soon as possible."
           }
         },
         "faq_items_y4JpMH": {
           "type": "faq-items",
           "settings": {
             "faq_title": "How can I contact customer support?",
-            "faq_content": "You can contact our customer support team by <strong>Email:</strong> care@noribi.com <strong>Phone:</strong> +1 848 301 2135 <strong>Business Hours: </strong>Monday–Friday 9:00 AM–5:00 PM EST We aim to respond to all inquiries within one business day."
+            "faq_content": "You can contact our customer support team by <strong>Email:</strong> care@voribi.com <strong>Phone: </strong>+44 7401303265 <strong>Business Hours: </strong>Monday-Friday 9:00 AM-5:00 PM EST We aim to respond to all inquiries within one business day."
           }
         },
         "faq_items_pqzxEJ": {
           "type": "faq-items",
           "settings": {
             "faq_title": "Do you charge shipping fees?",
-            "faq_content": "We currently offer <strong>Free Standard Shipping</strong> onall orders shipped within the United States and Canada. Please note that customers in Canada may be responsible for any applicable customs duties, import taxes, or other government fees."
+            "faq_content": "We currently offer <strong>Free Standard Shipping</strong> onall orders shipped within the United Kingdom and United States."
           }
         }
       },
@@ -351,65 +331,6 @@
     "1785630246880b9c02": {
       "type": "apps",
       "settings": {}
-    },
-    "google_business_review_AGATgX": {
-      "type": "google-business-review",
-      "blocks": {
-        "review_item_a68Dft": {
-          "type": "review_item",
-          "settings": {
-            "author_name": "farooq khan",
-            "author_date": "14 days ago",
-            "rating": 5,
-            "review_text": "They made customize PC for me and it's best."
-          }
-        },
-        "review_item_A8yeeM": {
-          "type": "review_item",
-          "settings": {
-            "author_name": "Ali Raza",
-            "author_date": "1 month ago",
-            "rating": 5,
-            "review_text": "Excellent service and high quality products. Highly recommended!"
-          }
-        },
-        "review_item_6M8ygj": {
-          "type": "review_item",
-          "settings": {
-            "author_name": "Hamza Ahmed",
-            "author_date": "2 months ago",
-            "rating": 5,
-            "review_text": "Great customer support and very fast delivery."
-          }
-        }
-      },
-      "block_order": [
-        "review_item_a68Dft",
-        "review_item_A8yeeM",
-        "review_item_6M8ygj"
-      ],
-      "name": "Google Business Review",
-      "settings": {
-        "enable_live_api": true,
-        "show_review_photos": true,
-        "show_debug_info": false,
-        "api_key": "AIzaSyAn2-if4WOlbIrpX-u3vqJToze6Fpie7qA",
-        "place_id": "ChIJgapin3MzwokRFgCP5jnKIiM",
-        "business_name": "Noribi",
-        "overall_rating": "5.0",
-        "reviews_count_text": "Based on 3 reviews",
-        "button_text": "review us on",
-        "button_link": "",
-        "star_color": "#ff8c00",
-        "btn_bg_color": "#1a73e8",
-        "btn_text_color": "#ffffff",
-        "text_color": "#101828",
-        "card_bg_color": "#f4f4f4",
-        "bg_color": "#ffffff",
-        "max_width": 1100,
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
     }
   },
   "order": [
@@ -425,7 +346,6 @@
     "1775484502fe3e7674",
     "1775484846891f51cf",
     "17781029425100f937",
-    "1785630246880b9c02",
-    "google_business_review_AGATgX"
+    "1785630246880b9c02"
   ]
 }
