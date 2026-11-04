@@ -48,6 +48,7 @@
       "blocks": {
         "collection_kUA3MH": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "bridal-dresses",
             "collection_image": "shopify://shop_images/file_00000000b614720886d2022d96eaa5d0.png",
@@ -64,6 +65,7 @@
         },
         "collection_r7aTxN": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "fairy-wings",
             "collection_image": "shopify://shop_images/file_00000000c70872088cd2d2f713b7f0d5.png",
@@ -96,7 +98,7 @@
         "display_mode": "grid",
         "image_ratio": "portrait",
         "custom_ratio": "2:3",
-        "items_per_row": 4,
+        "items_per_row": 2,
         "column_gap": 50,
         "collection_information_position": "below_image",
         "design": "morden",
@@ -149,7 +151,7 @@
       "settings": {
         "section_width": "fluid_container",
         "color_scheme": "default",
-        "heading": "Signature Fairy Dresses",
+        "heading": "Fairy Dresses",
         "description": "Ethereal fairy inspired dresses designed with flowing silhouettes, premium craftsmanship, and magical charm.",
         "show_view_all_button": false,
         "header_size": "small",
@@ -177,6 +179,42 @@
         "items_per_row_mobile": 2,
         "padding_top": 0,
         "padding_bottom": 10,
+        "reset_spacing": false
+      }
+    },
+    "products_carousel_NF7JHy": {
+      "type": "products-carousel",
+      "name": "t:sections.products-carousel.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "Cosplay Dresses",
+        "description": "",
+        "show_view_all_button": false,
+        "header_size": "medium",
+        "header_alignment": "center",
+        "collection": "",
+        "items_to_show": 8,
+        "items_per_row": 4,
+        "column_gap": 30,
+        "equal_height_adjustment": false,
+        "show_banner": false,
+        "title_inside": false,
+        "sticky_banner": false,
+        "banner_width": 30,
+        "position": "left",
+        "banner_link": "",
+        "banner_type": "image",
+        "video_autoplay": true,
+        "show_arrow": false,
+        "carousel_pagination": "disable",
+        "infinite": false,
+        "autoplay": false,
+        "autorotate_speed": 5,
+        "reveal": false,
+        "items_per_row_mobile": 1,
+        "padding_top": 0,
+        "padding_bottom": 0,
         "reset_spacing": false
       }
     },
@@ -417,6 +455,7 @@
     "collection_list_VmEYkJ",
     "multi_content_XwA9Ut",
     "products_carousel_AdKeFt",
+    "products_carousel_NF7JHy",
     "multi_content_R7AW7W",
     "icon_box_igFNYD",
     "faq_RWViN4",
