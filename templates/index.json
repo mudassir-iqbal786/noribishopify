@@ -59,7 +59,7 @@
           "type": "collection",
           "settings": {
             "collection": "fairy-dresses",
-            "collection_image": "shopify://shop_images/file_000000004890720896e0ffac8235e28a.png",
+            "collection_image": "shopify://shop_images/NORIBI_Fairy_Dresses_Collection_1800x2400_Lossless.webp",
             "collection_title": ""
           }
         },
@@ -76,7 +76,7 @@
           "type": "collection",
           "settings": {
             "collection": "cosplay-dresses",
-            "collection_image": "shopify://shop_images/tb_image_share_1778022757773.png",
+            "collection_image": "shopify://shop_images/NORIBI_Cosplay_Dresses_1800x2400_Lossless.webp",
             "collection_title": ""
           }
         }
@@ -205,6 +205,7 @@
         "position": "left",
         "banner_link": "",
         "banner_type": "image",
+        "video_url": "",
         "video_autoplay": true,
         "show_arrow": false,
         "carousel_pagination": "disable",
