@@ -2955,7 +2955,7 @@ mobile-navigation-bar > a {
   :is(
     .skeleton-loading,
     .product__badges-inner,
-    .shopify-payment-button,
+    /* .shopify-payment-button, */
 
   ):after,
 review-product.inline-loading:after {
