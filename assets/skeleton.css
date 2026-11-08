@@ -69,8 +69,3 @@
   z-index: 3;
   box-shadow: none;
 }
-.skeleton .shopify-payment-button::before,
-.skeleton .shopify-payment-button::after {
-  content: none !important;
-  display: none !important;
-}
