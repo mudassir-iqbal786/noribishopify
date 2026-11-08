@@ -10,7 +10,7 @@
     .form__label,
     .product__color-swatch:not(.rounded-50),
     .product__item-option,
-    .shopify-payment-button
+    /* .shopify-payment-button */
   ) {
   border-radius: 5px;
 }
@@ -24,7 +24,7 @@
     .form__label,
     .product__color-swatch,
     .product__item-option,
-    .shopify-payment-button
+    /* .shopify-payment-button */
   ) {
   position: relative;
   overflow: hidden;
@@ -47,7 +47,7 @@
     .form__label,
     .product__color-swatch,
     .product__item-option,
-    .shopify-payment-button
+    /* .shopify-payment-button */
   ):before,
 .skeleton
   :is(
@@ -56,7 +56,7 @@
     .form__label,
     .product__color-swatch,
     .product__item-option,
-    .shopify-payment-button,
+    /* .shopify-payment-button, */
     input.option-disabled + .product__item-option
   ):after {
   content: "";
