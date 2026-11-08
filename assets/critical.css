@@ -2954,9 +2954,7 @@ mobile-navigation-bar > a {
 .skeleton
   :is(
     .skeleton-loading,
-    .product__badges-inner,
-    /* .shopify-payment-button, */
-
+    .product__badges-inner
   ):after,
 review-product.inline-loading:after {
   background-color: var(--grey-color);

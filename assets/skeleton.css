@@ -9,8 +9,7 @@
       ),
     .form__label,
     .product__color-swatch:not(.rounded-50),
-    .product__item-option,
-    .shopify-payment-button
+    .product__item-option
   ) {
   border-radius: 5px;
 }
@@ -23,8 +22,7 @@
     .product__badges-inner,
     .form__label,
     .product__color-swatch,
-    .product__item-option,
-    .shopify-payment-button
+    .product__item-option
   ) {
   position: relative;
   overflow: hidden;
@@ -46,8 +44,7 @@
     .product__badges-inner,
     .form__label,
     .product__color-swatch,
-    .product__item-option,
-    /* .shopify-payment-button */
+    .product__item-option
   ):before,
 .skeleton
   :is(
@@ -56,7 +53,6 @@
     .form__label,
     .product__color-swatch,
     .product__item-option,
-    /* .shopify-payment-button, */
     input.option-disabled + .product__item-option
   ):after {
   content: "";
