@@ -4,7 +4,6 @@
   {%- liquid
     assign gift_card_recipient_feature_active = false
     assign show_dynamic_checkout = false
-    assign require_checkout_terms = false
     if block != blank
       if block.settings.show_gift_card_recipient and product.gift_card?
         assign gift_card_recipient_feature_active = true
@@ -12,11 +11,6 @@
       if block.settings.show_dynamic_checkout
         assign show_dynamic_checkout = true
       endif
-    endif
-    if settings.show_checkbox_in_product_page and type == 'single' or type == 'main_product'
-      assign require_checkout_terms = true
-    elsif settings.show_check_box_in_quick_view and type == 'quickview'
-      assign require_checkout_terms = true
     endif
     assign wishlist = pages.wishlist
     assign compare = pages.compare
@@ -194,7 +188,7 @@
               </button-compare>
             {% endif %}
             {%- if show_dynamic_checkout -%}
-              {%- if require_checkout_terms -%}
+              {%- if settings.show_checkbox_in_product_page and type == 'single' or type == 'main_product' -%}
                 <terms-conditions
                   class="w-full terms-conditions flex mt-12 mb-10 skeleton-loading"
                   data-custom-class="term-and-condition"
@@ -204,21 +198,109 @@
                       class="input w-20 h-20 m-0 opacity-0 absolute inset-0 pointer conditions_form_product"
                       type="checkbox"
                       name="conditions"
-                      id="conditions-{{ product_form_id }}"
+                      id="conditions_form_product"
                     >
                     <span class="checkmark relative me-10  pointer-none pointer inline-flex"></span>
                   </div>
                   <label
                     class="label pointer rich__text-m0"
-                    for="conditions-{{ product_form_id }}"
+                    for="conditions_form_product"
                     style="--color-link: var(--color-heading);"
                   >
                     {{ settings.text_terms_conditions }}
                   </label>
                 </terms-conditions>
               {%- endif -%}
-              <div class="btn-checkout-dynamic w-full{% if require_checkout_terms %} disabled{% endif %}">
-                {{ form | payment_button }}
+              {%- if settings.show_check_box_in_quick_view and type == 'quickview' -%}
+                <terms-conditions
+                  class="w-full terms-conditions flex mt-12 mb-10"
+                  data-custom-class="term-and-condition"
+                >
+                  <div class="checkbox-group relative">
+                    <input
+                      class="input w-20 h-20 m-0 opacity-0 absolute inset-0 pointer conditions_form_product"
+                      type="checkbox"
+                      name="conditions"
+                      id="conditions_form_product"
+                    >
+                    <span class="checkmark relative me-10  pointer-none pointer inline-flex"></span>
+                  </div>
+                  <label
+                    class="label pointer rich__text-m0"
+                    for="conditions_form_product"
+                    style="--color-link: var(--color-heading);"
+                  >
+                    {{ settings.text_terms_conditions }}
+                  </label>
+                </terms-conditions>
+              {%- endif -%}
+
+
+              
+
+
+
+              <div style="display:none;" class="btn-checkout-dynamic product-express-checkout w-full {% if settings.show_check_box_in_quick_view and type == 'quickview' %} disabled {% elsif  settings.show_checkbox_in_product_page  and type == 'single' or type == 'main_product' %} disabled{% endif %}">
+                <button
+                  type="submit"
+                  name="return_to"
+                  value="/checkout"
+                  formaction="{{ routes.cart_add_url }}"
+                  formmethod="post"
+                  data-direct-checkout-button
+                  class="product-express-checkout__button product-express-checkout__button--shop"
+                  aria-label="Checkout with Shop Pay"
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  shop
+                </button>
+                <button
+                  type="submit"
+                  name="return_to"
+                  value="/checkout"
+                  formaction="{{ routes.cart_add_url }}"
+                  formmethod="post"
+                  data-direct-checkout-button
+                  class="product-express-checkout__button product-express-checkout__button--apple"
+                  aria-label="Checkout with Apple Pay"
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  Apple Pay
+                </button>
+                <button
+                  type="submit"
+                  name="return_to"
+                  value="/checkout"
+                  formaction="{{ routes.cart_add_url }}"
+                  formmethod="post"
+                  data-direct-checkout-button
+                  class="product-express-checkout__button product-express-checkout__button--paypal"
+                  aria-label="Checkout with PayPal"
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  PayPal
+                </button>
+                <button
+                  type="submit"
+                  name="return_to"
+                  value="/checkout"
+                  formaction="{{ routes.cart_add_url }}"
+                  formmethod="post"
+                  data-direct-checkout-button
+                  class="product-express-checkout__button product-express-checkout__button--gpay"
+                  aria-label="Checkout with Google Pay"
+                  {% if product.selected_or_first_available_variant.available == false %}
+                    disabled
+                  {% endif %}
+                >
+                  <span class="product-express-checkout__google">G</span> Pay
+                </button>
               </div>
             {%- endif -%}
           </div>
@@ -230,6 +312,11 @@
       </product-form>
     </div>
   {% endif %}
+        {%- if additional_checkout_buttons -%}
+                  <div class="cart__dynamic-checkout-buttons mt-10 additional-checkout-buttons">
+                    {{ content_for_additional_checkout_buttons }}
+                  </div>
+                {% endif %}
 {%- else -%}
   {% if settings.enable_catalog_mode == false %}
     <div class="product-form">
