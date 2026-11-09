@@ -7240,6 +7240,23 @@ if (!customElements.get('product-form')) {
         this.productItem =
           this.form.closest('.product-item') ||
           this.form.closest('sticky-add-cart');
+
+        this.form.querySelector('.btn-checkout-dynamic')?.addEventListener(
+          'click',
+          (event) => {
+            if (
+              event.currentTarget.classList.contains('disabled') ||
+              this.submitButton.disabled ||
+              !this.validateVariantSelections()
+            ) {
+              event.preventDefault();
+              event.stopPropagation();
+              return;
+            }
+            this.syncVariantIdBeforeSubmit();
+          },
+          true
+        );
       }
 
       onSubmitHandler(evt) {
