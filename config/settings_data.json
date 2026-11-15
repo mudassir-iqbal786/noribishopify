@@ -369,8 +369,6 @@
         "settings": {
           "greeting_message": "",
           "button_color": "#000000",
-          "secondary_color": "#ffffff",
-          "ternary_color": "#6a6a6a",
           "button_icon": "chat_bubble",
           "button_text": "live_chat",
           "button_horizontal_position": "bottom_right",
@@ -390,6 +388,11 @@
       },
       "11879641663917679130": {
         "type": "shopify://apps/fav-schema-json-ld/blocks/fav-rich-snippets/0f4af051-833d-495d-a7e0-249ff5f90778",
+        "disabled": false,
+        "settings": {}
+      },
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
         "disabled": false,
         "settings": {}
       }
