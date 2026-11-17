@@ -11,6 +11,10 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "1794883763c90efbe0": {
+      "type": "apps",
+      "settings": {}
+    },
     "1785630327c9747b98": {
       "type": "apps",
       "blocks": {
@@ -106,6 +110,7 @@
     }
   },
   "order": [
+    "1794883763c90efbe0",
     "1785630327c9747b98",
     "footer"
   ]
