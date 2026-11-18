@@ -402,6 +402,11 @@
         "settings": {
           "widget_type": "review-widget"
         }
+      },
+      "17552194674075394853": {
+        "type": "shopify://apps/reviewers-com/blocks/reviewers-inject/019e6dd2-7d88-78e7-a9e7-832720d3d727",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
