@@ -170,12 +170,12 @@
         "menu_mobile_color": "#ffffff",
         "menu_mobile_background": "#000000",
         "show_search": true,
-        "show_account_icon": true,
-        "show_wishlist_icon": true,
+        "show_account_icon": false,
+        "show_wishlist_icon": false,
         "show_shopping_cart": true,
         "show_currency": false,
         "show_language": false,
-        "show_recently_viewed": true,
+        "show_recently_viewed": false,
         "padding_top": 12,
         "padding_bottom": 20
       }
