@@ -87,18 +87,6 @@
             "content": ""
           }
         },
-        "delivery_return_iJHeMD": {
-          "type": "delivery_return",
-          "settings": {
-            "delivery_design": "vertical",
-            "delivery_content_icon": "truck",
-            "delivery_content": "<p>Free shipping on all orders. Estimated delivery within 5-8 business days. Please review our <a href=\"/policies/shipping-policy\" title=\"Shipping Policy\">Shipping Policy</a> for complete details.</p>",
-            "discount_content_icon": "none",
-            "discount_content": "",
-            "return_content_icon": "check_badge",
-            "return_content": "<p>Returns accepted within 30 days. Please review our <a href=\"/policies/refund-policy\" title=\"Refund Policy\">Return Policy</a> for complete details.</p>"
-          }
-        },
         "collapsible_row_m3g6f8": {
           "type": "collapsible_row",
           "settings": {
@@ -111,8 +99,8 @@
         "collapsible_row_eLaQpR": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Delivery & Order Fulfillment",
-            "content": "<p>Every Noribi order is carefully prepared, quality checked, and securely packaged before dispatch. We offer complimentary shipping on all orders, with estimated delivery within 5 to 8 business days. Tracking information is provided as soon as your order has been shipped.</p><p>We are committed to delivering every piece with exceptional care, precision, and attention to detail.</p>",
+            "heading": "Shipping Informations",
+            "content": "<p>We currently ship orders within the United States only and offer free shipping on all orders with no minimum purchase requirement. Orders are processed within 1–3 business days (Monday to Friday), with an order cutoff time of 5:00 PM (GMT-05:00), Eastern Standard Time (New York). Estimated transit time is 5–8 business days (Monday to Friday), making the total estimated delivery time 6–11 business days. Tracking information will be provided by email when available. Delivery times may vary due to weather conditions, carrier delays, holidays, or other unforeseen circumstances. For more information, please see our <a href=\"/policies/shipping-policy\" title=\"Shipping Policy\"><strong>Shipping Policy.</strong></a></p>",
             "use_product_description": false,
             "open": false
           }
@@ -120,21 +108,10 @@
         "collapsible_row_DA4FUC": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Returns & Customer Care",
-            "content": "<p>We accept returns within 30 days of delivery on eligible items. Products must be returned in their original, unworn, and unused condition.<br/><br/>Custom made, personalized, and final sale items may not be eligible for return.<br/><br/>For complete return instructions, please review our <a href=\"https://noribi.com/policies/refund-policy\" title=\"https://noribi.com/policies/refund-policy\">refund policy</a> or contact our <a href=\"https://noribi.com/policies/contact-information\" title=\"https://noribi.com/policies/contact-information\">customer support</a> team for assistance.</p>",
+            "heading": "Returns & Refund Informations",
+            "content": "<p>We offer a 30-day return policy from the date you receive your order. Returned items must be new, unused, and in their original packaging; custom, personalized, and special-order items are not eligible for return, except where required by law. Return shipping costs are the customer's responsibility for change-of-mind returns, while defective, damaged, or incorrect items due to our error are covered by us. Approved returns will receive a downloadable return label. Refunds are processed within 7 business days after return approval to the original payment method. Exchanges are accepted subject to availability. For more detailes please see our <a href=\"/policies/refund-policy\" title=\"Refund Policy\"><strong>Return and Refund Policy</strong></a><strong>.</strong></p>",
             "use_product_description": false,
             "open": false
-          }
-        },
-        "complementary_products_Wip9YG": {
-          "type": "complementary_products",
-          "settings": {
-            "heading": "Pairs well with",
-            "product_list_limit": 6,
-            "products_per_page": 3,
-            "show_navigation": false,
-            "show_pagination": true,
-            "enable_quick_add": false
           }
         }
       },
@@ -150,11 +127,9 @@
         "product_grouped_6epkNf",
         "more_colors_3zmxGq",
         "text_CzxwUn",
-        "delivery_return_iJHeMD",
         "collapsible_row_m3g6f8",
         "collapsible_row_eLaQpR",
-        "collapsible_row_DA4FUC",
-        "complementary_products_Wip9YG"
+        "collapsible_row_DA4FUC"
       ],
       "settings": {
         "section_width": "fluid_container",
@@ -174,24 +149,6 @@
         "padding_bottom": 40,
         "reset_spacing": true
       }
-    },
-    "1794882893841442d6": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_GQ3Ca8": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "review_data": "real_data",
-            "max_width": 1200,
-            "show_shop_reviews": true,
-            "empty_state": "other_products_reviews"
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_GQ3Ca8"
-      ],
-      "settings": {}
     },
     "product-set": {
       "type": "product-set",
@@ -216,10 +173,6 @@
         "reset_spacing": false
       }
     },
-    "1716793714ce89e457": {
-      "type": "apps",
-      "settings": {}
-    },
     "divider_TKLM6L": {
       "type": "divider",
       "settings": {
@@ -234,8 +187,8 @@
       "settings": {
         "section_width": "fluid_container",
         "color_scheme": "",
-        "heading": "People Also Bought",
-        "description": "Here’s some of our most similar products people are buying. Click to discover trending style.",
+        "heading": "You may also like",
+        "description": "",
         "header_size": "medium",
         "header_alignment": "center",
         "items_to_show": 4,
@@ -246,78 +199,13 @@
         "padding_bottom": 0,
         "reset_spacing": false
       }
-    },
-    "divider_HtLXd3": {
-      "type": "divider",
-      "settings": {
-        "section_width": "fluid_container",
-        "border_height": 1,
-        "border_color": "#ebebeb",
-        "reset_spacing": false
-      }
-    },
-    "products_recently_viewed_GdCNUL": {
-      "type": "products-recently-viewed",
-      "settings": {
-        "section_width": "fluid_container",
-        "color_scheme": "",
-        "heading": "Recently Viewed",
-        "description": "Explore your recently viewed items, blending quality and style for a refined living experience.",
-        "header_size": "medium",
-        "header_alignment": "center",
-        "items_to_show": 8,
-        "items_per_row": 4,
-        "column_gap": 30,
-        "show_arrow": true,
-        "carousel_pagination": "show_dots_on_mobile",
-        "infinite": false,
-        "autoplay": false,
-        "autorotate_speed": 5,
-        "reveal": false,
-        "items_per_row_mobile": 2,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "reset_spacing": false
-      }
-    },
-    "1775485495be6e9583": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_321655b_BAePjU": {
-          "type": "ai_gen_block_321655b",
-          "disabled": true,
-          "settings": {
-            "background_color": "#f9f9f9",
-            "show_wishlist": true,
-            "show_share": true,
-            "icon_size": 40,
-            "icon_background": "#ffffff",
-            "icon_color": "#111111",
-            "icon_hover_background": "#111111",
-            "icon_hover_color": "#ffffff",
-            "dot_size": 8,
-            "dot_color": "#ffffff",
-            "dot_active_color": "#111111"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_321655b_BAePjU"
-      ],
-      "settings": {}
     }
   },
   "order": [
     "breadcrumb",
     "main",
-    "1794882893841442d6",
     "product-set",
-    "1716793714ce89e457",
     "divider_TKLM6L",
-    "related_products",
-    "divider_HtLXd3",
-    "products_recently_viewed_GdCNUL",
-    "1775485495be6e9583"
+    "related_products"
   ]
 }
