@@ -31,41 +31,31 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "store_info_tUhcyD": {
+        "store_info_ApcLWf": {
           "type": "store_info",
           "settings": {
-            "image": "shopify://shop_images/Picsart_26-04-02_20-40-34-504_1.png",
-            "image_width": 200,
-            "store_heading": "",
-            "store_description": "<p>Proudly based in New Jersey, USA, Noribi LLC creates luxury fairy dresses, bridal couture, cosplay creations, and statement accessories crafted with elegance, artistry, and exceptional attention to detail for unforgettable moments.&nbsp;</p><p><strong>BusinessHours &nbsp;Monday-Friday: 9:00 AM–5:00 PM EST</strong></p>",
-            "store_address": true,
-            "store_phone": true,
-            "store_email": true,
+            "image_width": 70,
+            "store_heading": "Company Information",
+            "store_description": "<p><strong>Registered Company: </strong>Noribi LLC<strong><br/>Address: </strong>26 Wildhedge Ln, Holmdel, NJ 07733, United States<br/><strong>Phone: </strong>+1 848 301 2135<br/><strong>Email: </strong>care@noribi.com</p><p><strong>Business Hours: </strong>Monday to Saturday, 9 AM to 5 PM, Closed on Sundays. (GMT-05:00) Eastern Standard Time (New York)</p>",
+            "store_address": false,
+            "store_phone": false,
+            "store_email": false,
             "content_width": "33.333%"
           }
         },
         "link_list_JTq77M": {
           "type": "link_list",
           "settings": {
-            "heading": "Quick Links",
-            "menu": "about-noribi",
+            "heading": "",
+            "menu": "footer",
             "content_width": "25%"
           }
         },
         "link_list_x4zwRH": {
           "type": "link_list",
           "settings": {
-            "heading": "All Collections",
-            "menu": "footer",
-            "content_width": "16%"
-          }
-        },
-        "link_list_LETFXJ": {
-          "type": "link_list",
-          "disabled": true,
-          "settings": {
-            "heading": "Shop Categories",
-            "menu": "",
+            "heading": "",
+            "menu": "customer-account-main-menu",
             "content_width": "16%"
           }
         },
@@ -84,10 +74,9 @@
         }
       },
       "block_order": [
-        "store_info_tUhcyD",
+        "store_info_ApcLWf",
         "link_list_JTq77M",
         "link_list_x4zwRH",
-        "link_list_LETFXJ",
         "newsletter_Rk8BD6"
       ],
       "settings": {
