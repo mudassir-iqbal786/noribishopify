@@ -22,16 +22,11 @@
             "page_title": "",
             "header_size": "default"
           }
-        },
-        "description_FAmcR8": {
-          "type": "description",
-          "settings": {}
         }
       },
       "block_order": [
         "breadcrumb_MJHLQb",
-        "heading_fntt9G",
-        "description_FAmcR8"
+        "heading_fntt9G"
       ],
       "settings": {
         "section_width": "stretch_width",
@@ -40,8 +35,8 @@
         "show_collection_image": false,
         "overlay_opacity": 0,
         "height": "adapt",
-        "padding_top": 80,
-        "padding_bottom": 0
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     },
     "subcollection": {
@@ -116,7 +111,7 @@
         "promotion_postion": 6,
         "items_per_row_mobile": "2",
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 20
       }
     }
   },
