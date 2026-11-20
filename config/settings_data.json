@@ -87,7 +87,7 @@
     "show_search_price": true,
     "show_message_when_remove": true,
     "action_when_click_added_wishlist": "remove",
-    "action_after_add_cart": "open_drawer",
+    "action_after_add_cart": "go_to_cart_page",
     "show_on_minicart_cart_page": false,
     "free_shipping_minimum": "",
     "show_duration_on_minicart_cart_page": false,
