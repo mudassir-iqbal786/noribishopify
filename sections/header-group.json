@@ -13,41 +13,6 @@
   "sections": {
     "top_bar_CbXNYj": {
       "type": "top-bar",
-      "blocks": {
-        "text_yFC6nh": {
-          "type": "text",
-          "settings": {
-            "text": "Phone: +1 848 301 2135   Email: care@noribi.com",
-            "hidden_on_mobile": true
-          }
-        },
-        "text_slider_LFaC38": {
-          "type": "text_slider",
-          "settings": {
-            "text1": "<strong>DESIGNED & CRAFTED IN THE UNITED STATES</strong>",
-            "text2": "<strong>QUALITY YOU CAN FEEL</strong>",
-            "text3": "<strong>FREE SHIPPING ON ALL ORDERS</strong>",
-            "change_every": 3,
-            "hidden_on_mobile": false,
-            "text_slider_center": true
-          }
-        },
-        "cur_lang_aPwfT9": {
-          "type": "cur_lang",
-          "settings": {
-            "menu_link": "",
-            "show_currency": true,
-            "show_language": false,
-            "show_our_store": false,
-            "hidden_on_mobile": false
-          }
-        }
-      },
-      "block_order": [
-        "text_yFC6nh",
-        "text_slider_LFaC38",
-        "cur_lang_aPwfT9"
-      ],
       "settings": {
         "section_width": "fluid_container",
         "color_scheme": "scheme-4faf0e4d-27f4-4d02-bc51-617383bab1a9",
@@ -144,7 +109,7 @@
         "logo_position": "left",
         "logo_position_option": 2,
         "separator_line": "inner_page",
-        "enable_login_popup": true,
+        "enable_login_popup": false,
         "sticky_header_type": "always",
         "sticky_header_mobile": true,
         "transparent_header": false,

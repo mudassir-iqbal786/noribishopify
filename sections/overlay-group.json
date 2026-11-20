@@ -17,9 +17,9 @@
         "eb_mobile_navbar": true,
         "show_homepage": true,
         "show_shop": false,
-        "show_account": true,
+        "show_account": false,
         "show_cart": true,
-        "show_wishlist": true
+        "show_wishlist": false
       }
     }
   },
