@@ -12,10 +12,6 @@
     "page-heading": {
       "type": "page-heading",
       "blocks": {
-        "breadcrumb_kg6gTP": {
-          "type": "breadcrumb",
-          "settings": {}
-        },
         "heading_fmyy8C": {
           "type": "heading",
           "settings": {
@@ -23,17 +19,16 @@
             "header_size": "default"
           }
         },
-        "description_TfxHmk": {
+        "description_9QwtcP": {
           "type": "description",
           "settings": {
-            "description": "<p>Please use the below form. You can also call customer service on +1 848 301 2135 </p>"
+            "description": ""
           }
         }
       },
       "block_order": [
-        "breadcrumb_kg6gTP",
         "heading_fmyy8C",
-        "description_TfxHmk"
+        "description_9QwtcP"
       ],
       "settings": {
         "section_width": "container",
@@ -41,27 +36,19 @@
         "alignment": "center",
         "overlay_opacity": 0,
         "height": "adapt",
-        "padding_top": 74,
-        "padding_bottom": 0
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     },
     "main": {
       "type": "page-contact",
       "blocks": {
-        "text_block_bYNRjF": {
-          "type": "text_block",
-          "settings": {
-            "heading_text_block": "Suport Customer",
-            "description_text_block": "<p>Have a question? Please contact us using the customer support channels below.</p>",
-            "content": "<p>NoribiProudly based in New Jersey, USA, Noribi creates luxury fairy dresses, bridal couture, cosplay creations, and statement accessories crafted with elegance, artistry, and exceptional attention to detail for unforgettable moments.26 Wild Hedge Lane Holmdel, NJ 07733 United States.<br/><br/>Phone:  +1 848 301 2135 <br/>Email; care@noribi.com<br/>Business Hours: Monday-Friday<br/>9:00 AM–5:00 PM EST</p>"
-          }
-        },
         "contact_E6FKVE": {
           "type": "contact",
           "settings": {
-            "heading": "Contact Us",
-            "description": "<p>Please submit all general enquiries in the contact form below and we look forward to hearing from you soon.</p>",
-            "show_privacy": true,
+            "heading": "Contact Form",
+            "description": "",
+            "show_privacy": false,
             "name": "Your name",
             "email": "",
             "your_comment": "",
@@ -70,7 +57,6 @@
         }
       },
       "block_order": [
-        "text_block_bYNRjF",
         "contact_E6FKVE"
       ],
       "custom_css": [
@@ -78,11 +64,11 @@
       ],
       "settings": {
         "section_width": "container",
-        "color_scheme": "",
+        "color_scheme": "scheme-5af42e36-ad1c-4052-a1c7-25170695ca08",
         "iframe": "",
         "column_gap": 100,
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20,
         "reset_spacing": false
       }
     }
